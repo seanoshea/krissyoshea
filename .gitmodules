@@ -7,3 +7,6 @@
 [submodule "js/mylibs/cycle"]
 	path = js/mylibs/cycle
 	url = https://github.com/malsup/cycle.git
+[submodule "js/mylibs/h5f"]
+	path = js/mylibs/h5f
+	url = https://github.com/ryanseddon/H5F.git
