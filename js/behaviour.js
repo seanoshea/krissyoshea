@@ -17,7 +17,7 @@ KT.navClick = function(evt, portfolioSubMenu) {
         }
         $('.main div.content').each(function(el) {
             var switchTo;
-            if (evt + 'Content' == $(this).attr('id')) {
+            if (evt + 'Content' === $(this).attr('id')) {
                 switchTo = $(this).attr('id').substring(0, $(this).attr('id').length - 7);
                 document.location.hash = switchTo;
                 KT.handlePortfolioContent(switchTo);
@@ -151,14 +151,14 @@ KT.centerImages = function(slideShowId) {
     }, 10);
 };
 KT.focusedOnPortfolioContent = function() {
-    return /current|second/i.test(window.location.hash);
+    return (/current|second/i).test(window.location.hash);
 };
 KT.focusedOnNewsContent = function() {
-    return /news/i.test(window.location.hash);
+    return (/news/i).test(window.location.hash);
 };
 KT.getSlideshowDetails = function() {
     var details = {
-        ssId: /current/i.test(window.location.hash) ? '#current-workShow' : '#second-hand-lifeShow'
+        ssId: (/current/i).test(window.location.hash) ? '#current-workShow' : '#second-hand-lifeShow'
     };
     details.buttonId = details.ssId.substring(0, details.ssId.length - 4) + 'StopStart';
     return details;
@@ -197,9 +197,9 @@ KT.handleNewsContentTab = function(evt) {
         if ($(anchor).hasClass('focused')) {
             $(anchor).removeClass('focused');
             $(anchor).attr('tabindex', '-1');
-            if (i == l - 1 && !isShift) {
+            if (i === l - 1 && !isShift) {
                 $('#license').focus();
-            } else if (i == 0 && isShift) {
+            } else if (i === 0 && isShift) {
                 $('#news').focus();
             } else {
                 // roving index implementation?
@@ -237,14 +237,6 @@ KT.initializeHistoryManagement = function() {
 };
 KT.initializeCycles = function() {
     KT.cycleLoaded = true;
-};
-KT.initializeKonami = function() {
-    // konami stuff
-    $(document).konami(function() {
-        var unit = $('header h1.unit');
-        unit.text(unit.text() === 'Krissie Tosi' ? 'Krissy Tosi' : 'Krissie Tosi');
-        unit.attr('aria-relevant', 'text');
-    });
 };
 KT.showHide = function(node, show) {
     if (show) {
@@ -316,7 +308,7 @@ $(document).ready(function() {
     });
     // legal toggle
     $('.foot a').click(function() {
-        if ($('#.foot div').css('display') == 'block') {
+        if ($('#.foot div').css('display') === 'block') {
             $('#.foot div').fadeOut('slow', function() {
                 $(this).css('display', 'none');
             });
