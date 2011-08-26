@@ -1,3 +1,9 @@
 [submodule "css/oocss"]
 	path = css/oocss
 	url = https://github.com/stubbornella/oocss.git
+[submodule "js/mylibs/jquery-hashchange"]
+	path = js/mylibs/jquery-hashchange
+	url = https://github.com/cowboy/jquery-hashchange.git
+[submodule "js/mylibs/cycle"]
+	path = js/mylibs/cycle
+	url = https://github.com/malsup/cycle.git
