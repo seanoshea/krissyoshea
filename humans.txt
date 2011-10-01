@@ -9,8 +9,8 @@
   Location: SF
 
 /* THANKS */
-  Names (& URL): 
-
+  Names (& URL): Paul Irish - http://www.twitter.com/paul_irish
+                 Nathan Smith - http://960.gs/
 /* SITE */
   Standards: HTML5, CSS3
   Components: Modernizr, jQuery

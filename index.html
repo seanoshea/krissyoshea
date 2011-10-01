@@ -5,28 +5,25 @@
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Krissy Tosi - Fine Art Photography</title>
-        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta name="description" content="Krissy Tosi Fine Art Photography, Installation, Video, Sculpture. San Francisco Art Institute student." />
         <meta name="keywords" content="Krissy, Tosi, Photography, Fine Art, installation, video, sculpture, photographer" />
         <meta name="author" content="Krissy Tosi">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="shortcut icon" href="/favicon.ico">
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" type="text/css" media="all" href="css/krissytosi.css" />
         <script src="js/libs/modernizr-2.0.6.min.js"></script>
     </head>
     <body>
         <div id="container">
             <div>
-                <header class="line">
+                <header>
                     <h1 role="banner" aria-live="polite">Krissy Tosi</h1>
                     <nav role="navigation">
-                        <ul id="nav" class="nav" role="menubar" style="display:none;">
+                        <ul id="nav" role="menubar" style="display:none;">
                             <li role="menu-item">
                                 <a id="home" class="selected" href="javascript:void(0);" tabindex='1'>home</a>
                             </li>
@@ -44,22 +41,22 @@
                             </li>
                         </ul>
                     </nav>
-                    <nav role="navigation" class="portfolioSubMenu">
-                        <ul id="portfolioMenu" class="line" role="menubar" style="display:none;" aria-hidden="true">
-                            <li class="portfolioMenuItem" role="menu-item">
-                                <a id="current-work" class='line' href="javascript:void(0);" tabindex='3'>Current Work</a>
+                    <nav role="navigation">
+                        <ul id="portfolioMenu" role="menubar" style="display:none;" aria-hidden="true">
+                            <li role="menu-item">
+                                <a id="current-work" href="javascript:void(0);" tabindex='3'>Current Work</a>
                             </li>
-                            <li class="breaker" role="separator">
+                            <li role="separator">
                                 |
                             </li>
-                            <li class="portfolioMenuItem" role="menu-item">
-                                <a id="second-hand-life" class='line' href="javascript:void(0);" tabindex='4'>Second Hand Life</a>
+                            <li role="menu-item">
+                                <a id="second-hand-life" href="javascript:void(0);" tabindex='4'>Second Hand Life</a>
                             </li>
                         </ul>
                     </nav>
                 </header>
-                <div class="body ktBody" aria-busy='true'>
-                    <div id="loading" class='centerbox'>
+                <div aria-busy='true'>
+                    <div id="loading">
                         <div id="cssSplash" style="display:none;">
                             <div class="bar1">
                             </div>
@@ -80,87 +77,23 @@
                         </div>
                         <img id="imageSplash" alt="Loading Animation" style="display:none;"/>
                     </div>
-                    <div id="main" class="main" role="main" style="display:none;">
+                    <div id="main" role="main" style="display:none;">
                         <noscript>
                             <h1>Welcome, noble navigator of the JavaScript-less interwebs</h1>
                             <p>
-                                If you enable JavaScript, I this site might look a little better. There's even a JavaScript Easter Egg if that's any temptation for you :)
+                                If you enable JavaScript, this site will look a little better.
                             </p>
                         </noscript>
-                        <div id="homeContent" class="content centerbox">
+                        <div id="homeContent" class="centerbox">
                             <img id="one" src="images/second-hand-life/large/1.jpg" alt="Display Second Hand Life Slideshow" />
                         </div>
-                        <div id="current-workContent" class="content line" style="display:none;" aria-hidden="true" aria-describedby="current-workExplanation">
-                            <div class='slideshowContainer'>
-                                <div id="current-workShow" class="slideshow" aria-live="off">
-                                    
-                                </div>
-                                <form class="slideshowControls" style="display:none;" role="form" aria-controls="current-workShow" aria-hidden="true">
-                                    <fieldset>
-                                        <legend>
-                                        </legend>
-                                        <ol>
-                                            <li>
-                                                <button id="current-workPrev" type="submit" role="button">
-                                                    &larr;
-                                                </button>
-                                                <button id="current-workStopStart" type="submit" role="button">
-                                                    Stop
-                                                </button>
-                                                <button id="current-workNext" type="submit" role="button">
-                                                    &rarr;
-                                                </button>
-                                            </li>
-                                        </ol>
-                                    </fieldset>
-                                </form>
-                            </div>
-                            <div id="current-workExplanation">
-                                <h1>Current Work</h1>
-                                <p>
-                                    Brief Explanation
-                                </p>
-                            </div>
-                        </div>
-                        <div id="second-hand-lifeContent" class="content line" style="display:none;" aria-hidden="true" aria-describedby="second-hand-lifeExplanation">
-                            <div class='slideshowContainer'>
-                                <div id="second-hand-lifeShow" class="slideshow" aria-live="off">
-                                    
-                                </div>
-                                <form class="slideshowControls" style="display:none;" role="form" aria-controls="second-hand-lifeShow" aria-hidden="aria-hidden">
-                                    <fieldset>
-                                        <legend>
-                                        </legend>
-                                        <ol>
-                                            <li>
-                                                <button id="second-hand-lifePrev" type="submit" role="button">
-                                                    &larr;
-                                                </button>
-                                                <button id="second-hand-lifeStopStart" type="submit" role="button">
-                                                    Stop
-                                                </button>
-                                                <button id="second-hand-lifeNext" type="submit" role="button">
-                                                    &rarr;
-                                                </button>
-                                            </li>
-                                        </ol>
-                                    </fieldset>
-                                </form>
-                            </div>
-                            <div id="second-hand-lifeExplanation">
-                                <h1>Second Hand Life</h1>
-                                <p>
-                                    Brief Explanation
-                                </p>
-                            </div>
-                        </div>
-                        <div id="newsContent" class="content" style="display:none;" aria-hidden="true">
+                        <div id="newsContent" style="display:none;" aria-hidden="true">
                             <h2>Past Shows</h2>
                             <ol role="list" aria-active-descendent='hcalendar-VernissageLink'>
-                                <li id="hcalendar-Vernissage" class='line vevent' role="listitem">
-                                    <a id='hcalendar-VernissageLink' href='http://www.sfai.edu/page.aspx?page=290' target="_blank" class='url summary focused' tabindex='0'>Vernissage</a>
+                                <li id="hcalendar-Vernissage" class='vevent' role="listitem">
+                                    <a id='hcalendar-VernissageLink' href='http://www.sfai.edu/page.aspx?page=290' target="_blank" tabindex='0'>Vernissage</a>
                                     <aside>
-                                        <span class="location">San Francisco, CA; </span>
+                                        <span>San Francisco, CA; </span>
                                         <abbr class="dtstart" title="2010-05">
                                             May
                                         </abbr>,
@@ -169,10 +102,10 @@
                                         </abbr>
                                     </aside>
                                 </li>
-                                <li id="hcalendar-CamfedFundraiser" class='line vevent' role="listitem">
-                                    <a id='hcalendar-CamfedFundraiserLink' href='http://us.camfed.org/' target="_blank" class='url summary' tabindex='-1'>Camfed Fundraiser</a>
+                                <li id="hcalendar-CamfedFundraiser" class='vevent' role="listitem">
+                                    <a id='hcalendar-CamfedFundraiserLink' href='http://us.camfed.org/' target="_blank" tabindex='-1'>Camfed Fundraiser</a>
                                     <aside>
-                                        <span class="location">San Francisco, CA; </span>
+                                        <span>San Francisco, CA; </span>
                                         <abbr class="dtstart" title="2010-02">
                                             February
                                         </abbr>,
@@ -181,9 +114,9 @@
                                         </abbr>
                                     </aside>
                                 </li>
-                                <li id="hcalendar-LandscapeInterrupted" class='line vevent' role="listitem">
-                                    <a id='hcalendar-LandscapeInterruptedLink' href='http://www.culturalpartners.org/landscape.htm' target="_blank" class='url summary' tabindex='-1'>Landscape Interrupted</a>
-                                    <aside class='pam'>
+                                <li id="hcalendar-LandscapeInterrupted" class='vevent' role="listitem">
+                                    <a id='hcalendar-LandscapeInterruptedLink' href='http://www.culturalpartners.org/landscape.htm' target="_blank" tabindex='-1'>Landscape Interrupted</a>
+                                    <aside>
                                         <span class="location">Flagstaff, AZ; </span>
                                         <abbr class="dtstart" title="2010-01">
                                             January
@@ -195,7 +128,7 @@
                                 </li>
                             </ol>
                         </div>
-                        <div id="biographyContent" class="content" style="display:none;" aria-hidden="true">
+                        <div id="biographyContent" style="display:none;" aria-hidden="true">
                             <h2>Biography</h2>
                             <p>
                                 An artist, born in Grafton Massachusetts, Krissy Tosi received a BFA in both literature and political science at the University of Vermont in 2004,
@@ -205,39 +138,39 @@
                                 Diego Rivera Gallery (2009), the Swell Gallery(2007), San Francisco Arts Institute and the Still Lights Gallery(2008), San Francisco Art Institute.
                             </p>
                         </div>
-                        <div id="contactContent" class="content" style="display:none;" aria-hidden="true">
+                        <div id="contactContent" style="display:none;" aria-hidden="true">
                             <h2>Contact Me</h2>
                             <form id="contactForm" role="form">
                                 <fieldset>
                                     <legend>
                                     </legend>
                                     <ol>
-                                        <li class='line'>
-                                            <label class="ungenerated" for="name">
+                                        <li>
+                                            <label for="name">
                                                 Name
                                             </label>
                                             <div>
-                                                <input id="name" name="name" tabindex="8" class="pas" type="text" required="" autofocus="" placeholder="What's your name?"/>
+                                                <input id="name" name="name" tabindex="8" type="text" required="" autofocus="" placeholder="What's your name?"/>
                                             </div>
                                         </li>
-                                        <li class='line'>
-                                            <label class="ungenerated" for="email">
+                                        <li>
+                                            <label for="email">
                                                 Email
                                             </label>
                                             <div>
-                                                <input id="email" name="email" tabindex="9" class="pas" type="email" required="" placeholder="What's your email address?" pattern="^(?:(?:\S+@)(?:[a-zA-Z0-9]*[-a-zA-Z0-9]*[a-zA-Z0-9])(?:\.[a-zA-Z0-9]*[-a-zA-Z0-9]*[a-zA-Z0-9])*(?:\.[a-zA-Z]{2,6}))$"/>
+                                                <input id="email" name="email" tabindex="9" type="email" required="" placeholder="What's your email address?" pattern="^(?:(?:\S+@)(?:[a-zA-Z0-9]*[-a-zA-Z0-9]*[a-zA-Z0-9])(?:\.[a-zA-Z0-9]*[-a-zA-Z0-9]*[a-zA-Z0-9])*(?:\.[a-zA-Z]{2,6}))$"/>
                                             </div>
                                         </li>
-                                        <li class='line'>
+                                        <li>
                                             <label class="ungenerated" for="speak">
                                                 Content
                                             </label>
                                             <div>
-                                                <textarea id="speak" name="speak" tabindex="10" class="pas" rows="10" cols="30" value="" required="" placeholder="?">
+                                                <textarea id="speak" name="speak" tabindex="10" rows="10" cols="30" value="" required="" placeholder="?">
                                                 </textarea>
                                             </div>
                                         </li>
-                                        <li id="submit" class='line'>
+                                        <li id="submit">
                                             <div></div>
                                             <div>
                                                 <button type="reset" tabindex="12" role="button">
@@ -254,7 +187,7 @@
                         </div>
                     </div>
                 </div>
-                <footer id="footer" class="foot" style="display:none;">
+                <footer id="footer" style="display:none;">
                     <a id="license" rel="license" href="javascript:void(0);">Legalese</a>
                     <div role="contentinfo" style="display:none;">
                         All images &copy; Krissy Tosi Fine Art Photography. All rights reserved. All photographs appearing on this site are the property of Krissy Tosi.
