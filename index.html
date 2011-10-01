@@ -21,184 +21,163 @@
         <script src="js/libs/modernizr-2.0.6.min.js"></script>
     </head>
     <body>
-        <div id="container">
-            <div>
-                <header>
-                    <h1 role="banner" aria-live="polite">Krissy Tosi</h1>
-                    <nav role="navigation">
-                        <ul id="nav" role="menubar">
-                            <li role="menu-item">
-                                <a id="home" class="selected" href="javascript:void(0);" tabindex='1'>home</a>
-                            </li>
-                            <li role="menu-item">
-                                <a id="portfolio" href="javascript:void(0);" tabindex='2'>portfolio</a>
-                            </li>
-                            <li role="menu-item">
-                                <a id="biography" href="javascript:void(0);" tabindex='5'>biography</a>
-                            </li>
-                            <li role="menu-item">
-                                <a id="news" href="javascript:void(0);" tabindex='6'>news</a>
-                            </li>
-                            <li role="menu-item">
-                                <a id="contact" href="javascript:void(0);" tabindex='7'>contact</a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <nav role="navigation">
-                        <ul id="portfolioMenu" role="menubar" style="display:none;" aria-hidden="true">
-                            <li role="menu-item">
-                                <a id="current-work" href="javascript:void(0);" tabindex='3'>Current Work</a>
-                            </li>
-                            <li role="separator">
-                                |
-                            </li>
-                            <li role="menu-item">
-                                <a id="second-hand-life" href="javascript:void(0);" tabindex='4'>Second Hand Life</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </header>
-                <div aria-busy='true'>
-                    <div id="loading">
-                        <div id="cssSplash" style="display:none;">
-                            <div class="bar1">
-                            </div>
-                            <div class="bar2">
-                            </div>
-                            <div class="bar3">
-                            </div>
-                            <div class="bar4">
-                            </div>
-                            <div class="bar5">
-                            </div>
-                            <div class="bar6">
-                            </div>
-                            <div class="bar7">
-                            </div>
-                            <div class="bar8">
-                            </div>
-                        </div>
-                        <img id="imageSplash" alt="Loading Animation" style="display:none;"/>
+        <div id="container" class="container_12">
+            <header>
+                <h1 role="banner" aria-live="polite" class="grid_2">Krissy Tosi</h1>
+                <nav role="navigation" class="grid_10">
+                    <ul id="nav" role="menubar">
+                        <li role="menu-item" class="grid_1">
+                            <a id="home" class="selected" href="javascript:void(0);" tabindex='1'>home</a>
+                        </li>
+                        <li role="menu-item" class="grid_1">
+                            <a id="portfolio" href="javascript:void(0);" tabindex='2'>portfolio</a>
+                        </li>
+                        <li role="menu-item" class="grid_1">
+                            <a id="biography" href="javascript:void(0);" tabindex='5'>biography</a>
+                        </li>
+                        <li role="menu-item" class="grid_1">
+                            <a id="news" href="javascript:void(0);" tabindex='6'>news</a>
+                        </li>
+                        <li role="menu-item" class="grid_1">
+                            <a id="contact" href="javascript:void(0);" tabindex='7'>contact</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav role="navigation">
+                    <ul id="portfolioMenu" role="menubar" style="display:none;" aria-hidden="true">
+                        <li role="menu-item" class="grid_1">
+                            <a id="current-work" href="javascript:void(0);" tabindex='3'>Current Work</a>
+                        </li>
+                        <li role="separator" class="grid_1">
+                            |
+                        </li>
+                        <li role="menu-item" class="grid_1">
+                            <a id="second-hand-life" href="javascript:void(0);" tabindex='4'>Second Hand Life</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <div aria-busy='true'>
+                <div id="loading">
+                    <div id="cssSplash" style="display:none;">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                        <div class="bar4"></div>
+                        <div class="bar5"></div>
+                        <div class="bar6"></div>
+                        <div class="bar7"></div>
+                        <div class="bar8"></div>
                     </div>
-                    <div id="main" role="main" style="display:none;">
-                        <noscript>
-                            <h1>Welcome, noble navigator of the JavaScript-less interwebs</h1>
-                            <p>
-                                If you enable JavaScript, this site will look a little better.
-                            </p>
-                        </noscript>
-                        <div id="homeContent" class="centerbox">
-                            <img id="one" src="images/second-hand-life/large/1.jpg" alt="Display Second Hand Life Slideshow" />
-                        </div>
-                        <div id="newsContent" aria-hidden="true">
-                            <h2>Past Shows</h2>
-                            <ol role="list" aria-active-descendent='hcalendar-VernissageLink'>
-                                <li id="hcalendar-Vernissage" class='vevent' role="listitem">
-                                    <a id='hcalendar-VernissageLink' href='http://www.sfai.edu/page.aspx?page=290' target="_blank" tabindex='0'>Vernissage</a>
-                                    <aside>
-                                        <span>San Francisco, CA; </span>
-                                        <abbr class="dtstart" title="2010-05">
-                                            May
-                                        </abbr>,
-                                        <abbr class="dtend" title="2010-05">
-                                            2010
-                                        </abbr>
-                                    </aside>
-                                </li>
-                                <li id="hcalendar-CamfedFundraiser" class='vevent' role="listitem">
-                                    <a id='hcalendar-CamfedFundraiserLink' href='http://us.camfed.org/' target="_blank" tabindex='-1'>Camfed Fundraiser</a>
-                                    <aside>
-                                        <span>San Francisco, CA; </span>
-                                        <abbr class="dtstart" title="2010-02">
-                                            February
-                                        </abbr>,
-                                        <abbr class="dtend" title="2010-02">
-                                            2010
-                                        </abbr>
-                                    </aside>
-                                </li>
-                                <li id="hcalendar-LandscapeInterrupted" class='vevent' role="listitem">
-                                    <a id='hcalendar-LandscapeInterruptedLink' href='http://www.culturalpartners.org/landscape.htm' target="_blank" tabindex='-1'>Landscape Interrupted</a>
-                                    <aside>
-                                        <span class="location">Flagstaff, AZ; </span>
-                                        <abbr class="dtstart" title="2010-01">
-                                            January
-                                        </abbr>,
-                                        <abbr class="dtend" title="2010-01">
-                                            2010
-                                        </abbr>
-                                    </aside>
-                                </li>
-                            </ol>
-                        </div>
-                        <div id="biographyContent" aria-hidden="true">
-                            <h2>Biography</h2>
-                            <p>
-                                An artist, born in Grafton Massachusetts, Krissy Tosi received a BFA in both literature and political science at the University of Vermont in 2004,
-                                and completed a Post-Baccalaureat Certificate from the San Francisco Art Institute in 2008. Ms. Tosi was the curator for the Still Lights Gallery,
-                                San Francisco Art Institute (2009-2010) and has curated for the Diego Rivera Gallery, San Francisco Art Institute. Ms. Tosi has exhibited in
-                                "Born Into This" a group show at the Diego Rivera Gallery, San Francisco Art Institute (2009), as well as, the continuing "MFA show" at the
-                                Diego Rivera Gallery (2009), the Swell Gallery(2007), San Francisco Arts Institute and the Still Lights Gallery(2008), San Francisco Art Institute.
-                            </p>
-                        </div>
-                        <div id="contactContent" aria-hidden="true">
-                            <h2>Contact Me</h2>
-                            <form id="contactForm" role="form">
-                                <fieldset>
-                                    <legend>
-                                    </legend>
-                                    <ol>
-                                        <li>
-                                            <label for="name">
-                                                Name
-                                            </label>
-                                            <div>
-                                                <input id="name" name="name" tabindex="8" type="text" required="" autofocus="" placeholder="What's your name?"/>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <label for="email">
-                                                Email
-                                            </label>
-                                            <div>
-                                                <input id="email" name="email" tabindex="9" type="email" required="" placeholder="What's your email address?" pattern="^(?:(?:\S+@)(?:[a-zA-Z0-9]*[-a-zA-Z0-9]*[a-zA-Z0-9])(?:\.[a-zA-Z0-9]*[-a-zA-Z0-9]*[a-zA-Z0-9])*(?:\.[a-zA-Z]{2,6}))$"/>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <label class="ungenerated" for="speak">
-                                                Content
-                                            </label>
-                                            <div>
-                                                <textarea id="speak" name="speak" tabindex="10" rows="10" cols="30" value="" required="" placeholder="?">
-                                                </textarea>
-                                            </div>
-                                        </li>
-                                        <li id="submit">
-                                            <div></div>
-                                            <div>
-                                                <button type="reset" tabindex="12" role="button">
-                                                    Start over again
-                                                </button>
-                                                <button id="submitButton" type="submit" tabindex="11" role="button">
-                                                    I'm done
-                                                </button>
-                                            </div>
-                                        </li>
-                                    </ol>
-                                </fieldset>
-                            </form>
-                        </div>
+                    <img id="imageSplash" alt="Loading Animation" style="display:none;"/>
+                </div>
+                <div id="main" role="main" class="grid_12" style="display:none;">
+                    <noscript>
+                        <h1>Welcome, noble navigator of the JavaScript-less interwebs</h1>
+                        <p>
+                            If you enable JavaScript, this site will look a little better.
+                        </p>
+                    </noscript>
+                    <div id="homeContent" class="centerbox">
+                        <img id="one" src="images/second-hand-life/large/1.jpg" alt="Display Second Hand Life Slideshow" />
+                    </div>
+                    <div id="newsContent" aria-hidden="true">
+                        <h2>Past Shows</h2>
+                        <ol role="list" aria-active-descendent='hcalendar-VernissageLink'>
+                            <li id="hcalendar-Vernissage" class='vevent' role="listitem">
+                                <a id='hcalendar-VernissageLink' href='http://www.sfai.edu/page.aspx?page=290' target="_blank" tabindex='0'>Vernissage</a>
+                                <aside>
+                                    <span>San Francisco, CA; </span>
+                                    <abbr class="dtstart" title="2010-05">
+                                        May
+                                    </abbr>,
+                                    <abbr class="dtend" title="2010-05">
+                                        2010
+                                    </abbr>
+                                </aside>
+                            </li>
+                            <li id="hcalendar-CamfedFundraiser" class='vevent' role="listitem">
+                                <a id='hcalendar-CamfedFundraiserLink' href='http://us.camfed.org/' target="_blank" tabindex='-1'>Camfed Fundraiser</a>
+                                <aside>
+                                    <span>San Francisco, CA; </span>
+                                    <abbr class="dtstart" title="2010-02">
+                                        February
+                                    </abbr>,
+                                    <abbr class="dtend" title="2010-02">
+                                        2010
+                                    </abbr>
+                                </aside>
+                            </li>
+                            <li id="hcalendar-LandscapeInterrupted" class='vevent' role="listitem">
+                                <a id='hcalendar-LandscapeInterruptedLink' href='http://www.culturalpartners.org/landscape.htm' target="_blank" tabindex='-1'>Landscape Interrupted</a>
+                                <aside>
+                                    <span class="location">Flagstaff, AZ; </span>
+                                    <abbr class="dtstart" title="2010-01">
+                                        January
+                                    </abbr>,
+                                    <abbr class="dtend" title="2010-01">
+                                        2010
+                                    </abbr>
+                                </aside>
+                            </li>
+                        </ol>
+                    </div>
+                    <div id="biographyContent" aria-hidden="true">
+                        <h2>Biography</h2>
+                        <p>
+                            An artist, born in Grafton Massachusetts, Krissy Tosi received a BFA in both literature and political science at the University of Vermont in 2004,
+                            and completed a Post-Baccalaureat Certificate from the San Francisco Art Institute in 2008. Ms. Tosi was the curator for the Still Lights Gallery,
+                            San Francisco Art Institute (2009-2010) and has curated for the Diego Rivera Gallery, San Francisco Art Institute. Ms. Tosi has exhibited in
+                            "Born Into This" a group show at the Diego Rivera Gallery, San Francisco Art Institute (2009), as well as, the continuing "MFA show" at the
+                            Diego Rivera Gallery (2009), the Swell Gallery(2007), San Francisco Arts Institute and the Still Lights Gallery(2008), San Francisco Art Institute.
+                        </p>
+                    </div>
+                    <div id="contactContent" aria-hidden="true">
+                        <h2>Contact Me</h2>
+                        <form id="contactForm" role="form">
+                            <fieldset>
+                                <legend>
+                                </legend>
+                                <ol>
+                                    <li>
+                                        <label for="name">Name</label>
+                                        <div>
+                                            <input id="name" name="name" tabindex="8" type="text" required="" autofocus="" placeholder="What's your name?"/>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label for="email">Email</label>
+                                        <div>
+                                            <input id="email" name="email" tabindex="9" type="email" required="" placeholder="What's your email address?" pattern="^(?:(?:\S+@)(?:[a-zA-Z0-9]*[-a-zA-Z0-9]*[a-zA-Z0-9])(?:\.[a-zA-Z0-9]*[-a-zA-Z0-9]*[a-zA-Z0-9])*(?:\.[a-zA-Z]{2,6}))$"/>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label for="speak">Content</label>
+                                        <div>
+                                            <textarea id="speak" name="speak" tabindex="10" rows="10" cols="30" value="" required="" placeholder="?">
+                                            </textarea>
+                                        </div>
+                                    </li>
+                                    <li id="submit">
+                                        <div>
+                                            <button type="reset" tabindex="12" role="button">Start over again</button>
+                                            <button id="submitButton" type="submit" tabindex="11" role="button">I'm done</button>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </form>
                     </div>
                 </div>
-                <footer id="footer">
-                    <a id="license" rel="license" href="javascript:void(0);">Legalese</a>
-                    <div role="contentinfo" style="display:none;">
-                        All images &copy; Krissy Tosi Fine Art Photography. All rights reserved. All photographs appearing on this site are the property of Krissy Tosi.
-                        Commercial or personal use of any of these images without the written permission of Krissy Tosi is prohibited under United States and
-                        International copyright laws. By entering this site you accept these terms.
-                    </div>
-                </footer>
             </div>
+            <footer id="footer" class="grid_12">
+                <a id="license" rel="license" href="javascript:void(0);">Legalese</a>
+                <div role="contentinfo" style="display:none;">
+                    All images &copy; Krissy Tosi Fine Art Photography. All rights reserved. All photographs appearing on this site are the property of Krissy Tosi.
+                    Commercial or personal use of any of these images without the written permission of Krissy Tosi is prohibited under United States and
+                    International copyright laws. By entering this site you accept these terms.
+                </div>
+            </footer>
         </div>
         <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>

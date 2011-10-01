@@ -1,4 +1,4 @@
-var KT = {cycleLoaded: false};
+var KT = {};
 KT.clicks = {};
 KT.displaySplash = function() {
     if ($('html').hasClass('csstransforms')) {
@@ -33,7 +33,6 @@ KT.navClick = function(evt, portfolioSubMenu) {
                 KT.switchSelected(switchTo);
             } else if ($(this).css('display') !== 'none') {
                 KT.showHide($(this));
-                KT.stopPortfolioCycle($(this));
             }
         });
     } else {
@@ -70,7 +69,6 @@ KT.handlePortfolioContent = function(idFadedIn) {
                     $(slideShowId).attr('aria-live', stopped ? 'off' : 'polite');
                 });
                 KT.clicks['#' + idFadedIn + 'StopStart'] = true;
-                KT.centerImages(slideShowId);
             }
             $(slideShowId).cycle({fx: 'fade', next: nextButton, prev: prevButton, after: function() {
                 $(slideShowId).attr('aria-relevant', 'additions,removals');
@@ -115,18 +113,6 @@ KT.fadeSplash = function() {
             $('#footer').fadeIn('slow');
         }, 250);
     });
-};
-KT.centerImages = function(slideShowId) {
-    setTimeout(function() {
-        var content = slideShowId.substring(0, slideShowId.length - 4) + 'Content', marginTop, marginLeft,
-        container = $(content + ' .slideshowContainer'), width = container.width(), height = container.height();
-        $(slideShowId + ' img').each(function() {
-            marginTop = Math.floor((height - $(this).height()) / 2);
-            marginLeft = Math.floor((width - $(this).width()) / 2);
-            marginTop = 0;
-            $(this).css('margin', marginTop + 'px 0 0 ' + marginLeft + 'px');
-        });
-    }, 10);
 };
 KT.focusedOnPortfolioContent = function() {
     return (/current|second/i).test(window.location.hash);
@@ -192,9 +178,6 @@ KT.handleNewsContentTab = function(evt) {
         }
     }
 };
-KT.initializeCycles = function() {
-    KT.cycleLoaded = true;
-};
 KT.showHide = function(node, show) {
     if (show) {
         $(node).css('display', '');
@@ -202,14 +185,6 @@ KT.showHide = function(node, show) {
     } else {
         $(node).css('display', 'none');
         $(node).attr('aria-hidden', 'true');
-    }
-};
-KT.stopPortfolioCycle = function(node) {
-    var id = node.attr('id'), ssid;
-    if (id === 'current-workContent' || id === 'second-hand-lifeContent') {
-        ssid = id.substring(0, id.indexOf('Content')) + 'Show';
-        $(ssid).cycle('pause');
-        $(ssid).attr('aria-live', 'off');
     }
 };
 $(document).ready(function() {
