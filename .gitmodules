@@ -10,3 +10,6 @@
 [submodule "js/mylibs/h5f"]
 	path = js/mylibs/h5f
 	url = https://github.com/ryanseddon/H5F.git
+[submodule "css/960"]
+	path = css/960
+	url = https://github.com/nathansmith/960-Grid-System.git
