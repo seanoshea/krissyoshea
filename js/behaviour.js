@@ -235,7 +235,7 @@ $(document).ready(function() {
             KT.fadeSplash();
         }, 250);
     }).error(function() {
-    }).attr('src', 'images/second-hand-life/1.jpg');
+    }).attr('src', 'images/second-hand-life/large/1.jpg');
     $('#homeContent img').click(function() {
         KT.navClick('second-hand-life');
     });
