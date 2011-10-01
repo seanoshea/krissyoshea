@@ -93,28 +93,6 @@ KT.handlePortfolioContent = function(idFadedIn) {
         }
     }
 };
-KT.initializeValidation = function() {
-    var msgs = {
-        name: 'You know my name. What\'s yours?',
-        email: 'I might want to email you back',
-        speak: 'You got nothing to say?'
-    }, fn = function(id, msg) {
-        var errors = $('label.error', $('#' + id).parent()[0]);
-        if (msg) {
-            if (!errors.length) {
-                $('#' + id).after("<label class='error' for='" + id + "'>" + msg + '</label>');
-            }
-        } else {
-            errors.remove();
-        }
-    };
-    $('#submitButton').click(function() {
-        $.each(['#name', '#email', '#speak'], function(index, item) {
-            var id = $(item).attr('id');
-            $(item).hasClass('placeholder') || $(item).hasClass('mismatch') ? fn(id, msgs[id]) : fn(id);
-        });
-    });
-};
 KT.clearContactForm = function() {
     $('#contactForm label.error').remove();
     $.each(['#name', '#email', '#speak'], function(index, item) {
@@ -213,27 +191,6 @@ KT.handleNewsContentTab = function(evt) {
             break;
         }
     }
-};
-KT.initializeHistoryManagement = function() {
-    // history management
-    $(function() {
-      // Bind an event to window.onhashchange that, when the hash changes, gets the
-      // hash and adds the class "selected" to any matching nav link.
-      $(window).hashchange(function() {
-        var hash = location.hash, current = $('#nav li a.selected'), currentId;
-        if (current) {
-            if (!hash) {
-                hash = '#home';
-            }
-            hash = $.trim(hash.substring(1));
-            currentId = $(current).attr('id');
-            if (hash !== currentId) {
-                KT.navClick(hash, (hash === 'current-work' || hash === 'second-hand-life'));
-            }
-        }
-      });
-      $(window).hashchange();
-    });
 };
 KT.initializeCycles = function() {
     KT.cycleLoaded = true;
