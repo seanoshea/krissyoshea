@@ -17,20 +17,15 @@
         <link rel="shortcut icon" href="/favicon.ico">
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" type="text/css" media="all" href="css/oocss/core/libraries.css" />
-        <link rel="stylesheet" type="text/css" media="all" href="css/oocss/core/template/template.css" />
-        <link rel="stylesheet" type="text/css" media="all" href="css/oocss/core/grid/grids.css" />
-        <link rel="stylesheet" type="text/css" media="all" href="css/oocss/core/core.css" />
-        <link rel="stylesheet" type="text/css" media="all" href="css/oocss/core/content.css" />
         <link rel="stylesheet" type="text/css" media="all" href="css/krissytosi.css" />
         <script src="js/libs/modernizr-2.0.6.min.js"></script>
     </head>
     <body>
         <div id="container">
-            <div class="page liquid app">
+            <div>
                 <header class="line">
-                    <h1 class="unit" role="banner" aria-live="polite">Krissy Tosi</h1>
-                    <nav class="unit lastUnit" role="navigation">
+                    <h1 role="banner" aria-live="polite">Krissy Tosi</h1>
+                    <nav role="navigation">
                         <ul id="nav" class="nav" role="menubar" style="display:none;">
                             <li role="menu-item">
                                 <a id="home" class="selected" href="javascript:void(0);" tabindex='1'>home</a>
@@ -51,13 +46,13 @@
                     </nav>
                     <nav role="navigation" class="portfolioSubMenu">
                         <ul id="portfolioMenu" class="line" role="menubar" style="display:none;" aria-hidden="true">
-                            <li class="unit portfolioMenuItem" role="menu-item">
+                            <li class="portfolioMenuItem" role="menu-item">
                                 <a id="current-work" class='line' href="javascript:void(0);" tabindex='3'>Current Work</a>
                             </li>
-                            <li class="unit breaker" role="separator">
+                            <li class="breaker" role="separator">
                                 |
                             </li>
-                            <li class="unit portfolioMenuItem lastUnit" role="menu-item">
+                            <li class="portfolioMenuItem" role="menu-item">
                                 <a id="second-hand-life" class='line' href="javascript:void(0);" tabindex='4'>Second Hand Life</a>
                             </li>
                         </ul>
@@ -96,7 +91,7 @@
                             <img id="one" src="images/second-hand-life/large/1.jpg" alt="Display Second Hand Life Slideshow" />
                         </div>
                         <div id="current-workContent" class="content line" style="display:none;" aria-hidden="true" aria-describedby="current-workExplanation">
-                            <div class='slideshowContainer unit size2of3'>
+                            <div class='slideshowContainer'>
                                 <div id="current-workShow" class="slideshow" aria-live="off">
                                     
                                 </div>
@@ -120,7 +115,7 @@
                                     </fieldset>
                                 </form>
                             </div>
-                            <div id="current-workExplanation" class='unit size1of3 lastUnit'>
+                            <div id="current-workExplanation">
                                 <h1>Current Work</h1>
                                 <p>
                                     Brief Explanation
@@ -128,7 +123,7 @@
                             </div>
                         </div>
                         <div id="second-hand-lifeContent" class="content line" style="display:none;" aria-hidden="true" aria-describedby="second-hand-lifeExplanation">
-                            <div class='slideshowContainer unit size2of3'>
+                            <div class='slideshowContainer'>
                                 <div id="second-hand-lifeShow" class="slideshow" aria-live="off">
                                     
                                 </div>
@@ -152,7 +147,7 @@
                                     </fieldset>
                                 </form>
                             </div>
-                            <div id="second-hand-lifeExplanation" class='unit size1of3 lastUnit'>
+                            <div id="second-hand-lifeExplanation">
                                 <h1>Second Hand Life</h1>
                                 <p>
                                     Brief Explanation
@@ -163,8 +158,8 @@
                             <h2>Past Shows</h2>
                             <ol role="list" aria-active-descendent='hcalendar-VernissageLink'>
                                 <li id="hcalendar-Vernissage" class='line vevent' role="listitem">
-                                    <a id='hcalendar-VernissageLink' href='http://www.sfai.edu/page.aspx?page=290' target="_blank" class='unit size1of5 pam url summary focused' tabindex='0'>Vernissage</a>
-                                    <aside class='unit size4of5 lastUnit pam'>
+                                    <a id='hcalendar-VernissageLink' href='http://www.sfai.edu/page.aspx?page=290' target="_blank" class='url summary focused' tabindex='0'>Vernissage</a>
+                                    <aside>
                                         <span class="location">San Francisco, CA; </span>
                                         <abbr class="dtstart" title="2010-05">
                                             May
@@ -175,8 +170,8 @@
                                     </aside>
                                 </li>
                                 <li id="hcalendar-CamfedFundraiser" class='line vevent' role="listitem">
-                                    <a id='hcalendar-CamfedFundraiserLink' href='http://us.camfed.org/' target="_blank" class='unit size1of5 pam url summary' tabindex='-1'>Camfed Fundraiser</a>
-                                    <aside class='unit size4of5 lastUnit pam'>
+                                    <a id='hcalendar-CamfedFundraiserLink' href='http://us.camfed.org/' target="_blank" class='url summary' tabindex='-1'>Camfed Fundraiser</a>
+                                    <aside>
                                         <span class="location">San Francisco, CA; </span>
                                         <abbr class="dtstart" title="2010-02">
                                             February
@@ -187,8 +182,8 @@
                                     </aside>
                                 </li>
                                 <li id="hcalendar-LandscapeInterrupted" class='line vevent' role="listitem">
-                                    <a id='hcalendar-LandscapeInterruptedLink' href='http://www.culturalpartners.org/landscape.htm' target="_blank" class='unit size1of5 pam url summary' tabindex='-1'>Landscape Interrupted</a>
-                                    <aside class='unit size4of5 lastUnit pam'>
+                                    <a id='hcalendar-LandscapeInterruptedLink' href='http://www.culturalpartners.org/landscape.htm' target="_blank" class='url summary' tabindex='-1'>Landscape Interrupted</a>
+                                    <aside class='pam'>
                                         <span class="location">Flagstaff, AZ; </span>
                                         <abbr class="dtstart" title="2010-01">
                                             January
@@ -218,34 +213,33 @@
                                     </legend>
                                     <ol>
                                         <li class='line'>
-                                            <label class="ungenerated unit size1of5 pam" for="name">
+                                            <label class="ungenerated" for="name">
                                                 Name
                                             </label>
-                                            <div class="unit size4of5 lastUnit pam">
+                                            <div>
                                                 <input id="name" name="name" tabindex="8" class="pas" type="text" required="" autofocus="" placeholder="What's your name?"/>
                                             </div>
                                         </li>
                                         <li class='line'>
-                                            <label class="ungenerated unit size1of5 pam" for="email">
+                                            <label class="ungenerated" for="email">
                                                 Email
                                             </label>
-                                            <div class="unit size4of5 lastUnit pam">
+                                            <div>
                                                 <input id="email" name="email" tabindex="9" class="pas" type="email" required="" placeholder="What's your email address?" pattern="^(?:(?:\S+@)(?:[a-zA-Z0-9]*[-a-zA-Z0-9]*[a-zA-Z0-9])(?:\.[a-zA-Z0-9]*[-a-zA-Z0-9]*[a-zA-Z0-9])*(?:\.[a-zA-Z]{2,6}))$"/>
                                             </div>
                                         </li>
                                         <li class='line'>
-                                            <label class="ungenerated unit size1of5 pam" for="speak">
+                                            <label class="ungenerated" for="speak">
                                                 Content
                                             </label>
-                                            <div class="unit size4of5 lastUnit pam">
+                                            <div>
                                                 <textarea id="speak" name="speak" tabindex="10" class="pas" rows="10" cols="30" value="" required="" placeholder="?">
                                                 </textarea>
                                             </div>
                                         </li>
                                         <li id="submit" class='line'>
-                                            <div class="unit size1of5 pam">
-                                            </div>
-                                            <div class="unit size4of5 lastUnit pam">
+                                            <div></div>
+                                            <div>
                                                 <button type="reset" tabindex="12" role="button">
                                                     Start over again
                                                 </button>
