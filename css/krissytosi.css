@@ -137,7 +137,7 @@ to {
 }
 
 header {
-    font-family: 'Josefin Sans Std Light', Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 17px;
     font-style: normal;
     font-weight: 400;
@@ -167,7 +167,7 @@ nav {
 }
 
 .ktBody, .foot {
-    font-family: 'OFL Sorts Mill Goudy TT', Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
