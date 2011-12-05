@@ -80,6 +80,7 @@
                     </noscript>
                     <div id="homeContent" class="centerbox">
                         <img id="one" src="images/second-hand-life/large/1.jpg" alt="Display Second Hand Life Slideshow" />
+                        {{view KT.CreateGalleryView id="gView"}}
                     </div>
                     <div id="newsContent" aria-hidden="true">
                         <h2>Past Shows</h2>
@@ -192,8 +193,14 @@
         <!-- A LOT of this would be handled for me automatically if I was running a ruby backend I guess -->
         <script src="js/libs/sproutcore-2.0.a.2.min.js"></script>
         <script src="js/libs/sproutcore/packages/sproutcore-runtime/lib/controllers/array_controller.js"></script>
+        <script src="js/libs/sproutcore/packages/sproutcore-runtime/lib/core.js"></script>
+        <script src="js/libs/sproutcore/packages/handlebars/lib/main.js"></script>
+        <script src="js/libs/sproutcore/packages/sproutcore-handlebars/lib/main.js"></script>
+        <script src="js/libs/sproutcore/packages/sproutcore-views/lib/views/view.js"></script>
         <script src="js/app.js"></script>
+        <!--
         <script src="js/kt/apps/kt/models/Gallery.js"></script>
+        -->
         <script src="js/kt/apps/kt/controllers/GalleryController.js"></script>
         <script src="js/kt/apps/kt/views/GalleryView.js"></script>
         <!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
@@ -203,6 +210,16 @@
             Modernizr.load({
               load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
             });
+        </script>
+        <script>
+            $(document).ready(function() {
+                var source   = $("script[name=gallery]").html();
+                var template = Handlebars.compile(source);
+                var s = template({}, {});
+            });
+        </script>
+        <script type="text/x-handlebars-template" name="gallery">
+            <h1>Im a gallery</h1>
         </script>
         <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
            chromium.org/developers/how-tos/chrome-frame-getting-started -->

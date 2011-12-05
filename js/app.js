@@ -1,9 +1,11 @@
-var KT = SC.Application.create(), ApplicationView;
+var KT = SC.Application.create({
+    VERSION: '0.0.1'
+}), ApplicationView;
 
 KT.ApplicationView = SC.View.extend({
 
     init: function() {
-        // set up the app
+        this._super();
         this._displaySplash();
         this._handleLegalToggle();
     },
@@ -50,3 +52,11 @@ KT.ApplicationView = SC.View.extend({
 });
 
 ApplicationView = new KT.ApplicationView();
+
+ApplicationView.appendTo($('#container')[0]);
+
+$(document).ready(function() {
+   KT.mainPane = SC.MainPane.append({
+        layerId: 'kt'
+   }); 
+});
