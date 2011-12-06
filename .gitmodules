@@ -13,3 +13,9 @@
 [submodule "css/960"]
 	path = css/960
 	url = https://github.com/nathansmith/960-Grid-System.git
+[submodule "js/libs/backbone"]
+	path = js/libs/backbone
+	url = git://github.com/documentcloud/backbone.git
+[submodule "js/libs/underscore"]
+	path = js/libs/underscore
+	url = git://github.com/documentcloud/underscore.git
