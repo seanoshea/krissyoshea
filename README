@@ -3,7 +3,6 @@ TODO:
 Browser support, mobile edition (css media queries and 960)
 Reintroduce krissytosi.css and figure out the app's styling guidelines.
 Need moar images. Updated bio too.
-Models for thumbnails, large images, slideshows.
 Perhaps templating for the navigation.
 Figure out how to do history management in the app.
 HTML 5 form for the contact form.
