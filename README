@@ -3,10 +3,9 @@ TODO:
 Browser support, mobile edition (css media queries and 960)
 Reintroduce krissytosi.css and figure out the app's styling guidelines.
 Need moar images. Updated bio too.
-Being sproutcore into the app.
 Models for thumbnails, large images, slideshows.
 Perhaps templating for the navigation.
 Figure out how to do history management in the app.
-HTML 5 form for the contact form, or does sproutcore have something.
+HTML 5 form for the contact form.
 Build + performance.
 JSLint/JSHint & CSSLint, fixjsstyle, dom monster
