@@ -1,8 +1,13 @@
-/* Author: 
-
-*/
-var KT = {};
+var KT = {cycleLoaded: false};
 KT.clicks = {};
+KT.displaySplash = function() {
+    if ($('html').hasClass('csstransforms')) {
+        $('#cssSplash').css('display', '');
+    } else {
+        $('#imageSplash').attr('src', 'images/chrome/spinner.gif');
+        $('#imageSplash').css('display', '');
+    }
+};
 KT.navClick = function(evt, portfolioSubMenu) {
     if (!portfolioSubMenu) {
         if ($('#portfolioMenu').css('display') !== 'none') {
@@ -12,7 +17,7 @@ KT.navClick = function(evt, portfolioSubMenu) {
         }
         $('.main div.content').each(function(el) {
             var switchTo;
-            if (evt + 'Content' === $(this).attr('id')) {
+            if (evt + 'Content' == $(this).attr('id')) {
                 switchTo = $(this).attr('id').substring(0, $(this).attr('id').length - 7);
                 document.location.hash = switchTo;
                 KT.handlePortfolioContent(switchTo);
@@ -28,6 +33,7 @@ KT.navClick = function(evt, portfolioSubMenu) {
                 KT.switchSelected(switchTo);
             } else if ($(this).css('display') !== 'none') {
                 KT.showHide($(this));
+                KT.stopPortfolioCycle($(this));
             }
         });
     } else {
@@ -64,6 +70,7 @@ KT.handlePortfolioContent = function(idFadedIn) {
                     $(slideShowId).attr('aria-live', stopped ? 'off' : 'polite');
                 });
                 KT.clicks['#' + idFadedIn + 'StopStart'] = true;
+                KT.centerImages(slideShowId);
             }
             $(slideShowId).cycle({fx: 'fade', next: nextButton, prev: prevButton, after: function() {
                 $(slideShowId).attr('aria-relevant', 'additions,removals');
@@ -86,6 +93,28 @@ KT.handlePortfolioContent = function(idFadedIn) {
         }
     }
 };
+KT.initializeValidation = function() {
+    var msgs = {
+        name: 'You know my name. What\'s yours?',
+        email: 'I might want to email you back',
+        speak: 'You got nothing to say?'
+    }, fn = function(id, msg) {
+        var errors = $('label.error', $('#' + id).parent()[0]);
+        if (msg) {
+            if (!errors.length) {
+                $('#' + id).after("<label class='error' for='" + id + "'>" + msg + '</label>');
+            }
+        } else {
+            errors.remove();
+        }
+    };
+    $('#submitButton').click(function() {
+        $.each(['#name', '#email', '#speak'], function(index, item) {
+            var id = $(item).attr('id');
+            $(item).hasClass('placeholder') || $(item).hasClass('mismatch') ? fn(id, msgs[id]) : fn(id);
+        });
+    });
+};
 KT.clearContactForm = function() {
     $('#contactForm label.error').remove();
     $.each(['#name', '#email', '#speak'], function(index, item) {
@@ -99,15 +128,37 @@ KT.switchSelected = function(switchTo) {
     }
     $('#' + switchTo).addClass('selected');
 };
+KT.fadeSplash = function() {
+    $('#loading').fadeOut('fast', function() {
+        $('#main').fadeIn('slow');
+        $('.body.ktBody').attr('aria-busy', 'false');
+        setTimeout(function() {
+            $('#nav').fadeIn('slow');
+            $('#footer').fadeIn('slow');
+        }, 250);
+    });
+};
+KT.centerImages = function(slideShowId) {
+    setTimeout(function() {
+        var content = slideShowId.substring(0, slideShowId.length - 4) + 'Content', marginTop, marginLeft,
+        container = $(content + ' .slideshowContainer'), width = container.width(), height = container.height();
+        $(slideShowId + ' img').each(function() {
+            marginTop = Math.floor((height - $(this).height()) / 2);
+            marginLeft = Math.floor((width - $(this).width()) / 2);
+            marginTop = 0;
+            $(this).css('margin', marginTop + 'px 0 0 ' + marginLeft + 'px');
+        });
+    }, 10);
+};
 KT.focusedOnPortfolioContent = function() {
-    return (/current|second/i).test(window.location.hash);
+    return /current|second/i.test(window.location.hash);
 };
 KT.focusedOnNewsContent = function() {
-    return (/news/i).test(window.location.hash);
+    return /news/i.test(window.location.hash);
 };
 KT.getSlideshowDetails = function() {
     var details = {
-        ssId: (/current/i).test(window.location.hash) ? '#current-workShow' : '#second-hand-lifeShow'
+        ssId: /current/i.test(window.location.hash) ? '#current-workShow' : '#second-hand-lifeShow'
     };
     details.buttonId = details.ssId.substring(0, details.ssId.length - 4) + 'StopStart';
     return details;
@@ -146,9 +197,9 @@ KT.handleNewsContentTab = function(evt) {
         if ($(anchor).hasClass('focused')) {
             $(anchor).removeClass('focused');
             $(anchor).attr('tabindex', '-1');
-            if (i === l - 1 && !isShift) {
+            if (i == l - 1 && !isShift) {
                 $('#license').focus();
-            } else if (i === 0 && isShift) {
+            } else if (i == 0 && isShift) {
                 $('#news').focus();
             } else {
                 // roving index implementation?
@@ -163,6 +214,38 @@ KT.handleNewsContentTab = function(evt) {
         }
     }
 };
+KT.initializeHistoryManagement = function() {
+    // history management
+    $(function() {
+      // Bind an event to window.onhashchange that, when the hash changes, gets the
+      // hash and adds the class "selected" to any matching nav link.
+      $(window).hashchange(function() {
+        var hash = location.hash, current = $('#nav li a.selected'), currentId;
+        if (current) {
+            if (!hash) {
+                hash = '#home';
+            }
+            hash = $.trim(hash.substring(1));
+            currentId = $(current).attr('id');
+            if (hash !== currentId) {
+                KT.navClick(hash, (hash === 'current-work' || hash === 'second-hand-life'));
+            }
+        }
+      });
+      $(window).hashchange();
+    });
+};
+KT.initializeCycles = function() {
+    KT.cycleLoaded = true;
+};
+KT.initializeKonami = function() {
+    // konami stuff
+    $(document).konami(function() {
+        var unit = $('header h1.unit');
+        unit.text(unit.text() === 'Krissie Tosi' ? 'Krissy Tosi' : 'Krissie Tosi');
+        unit.attr('aria-relevant', 'text');
+    });
+};
 KT.showHide = function(node, show) {
     if (show) {
         $(node).css('display', '');
@@ -170,6 +253,14 @@ KT.showHide = function(node, show) {
     } else {
         $(node).css('display', 'none');
         $(node).attr('aria-hidden', 'true');
+    }
+};
+KT.stopPortfolioCycle = function(node) {
+    var id = node.attr('id'), ssid;
+    if (id === 'current-workContent' || id === 'second-hand-lifeContent') {
+        ssid = id.substring(0, id.indexOf('Content')) + 'Show';
+        $(ssid).cycle('pause');
+        $(ssid).attr('aria-live', 'off');
     }
 };
 $(document).ready(function() {
@@ -188,6 +279,14 @@ $(document).ready(function() {
         });
     });
     // home page
+    KT.displaySplash();
+    var img = new Image();
+    $(img).load(function() {
+        setTimeout(function() {
+            KT.fadeSplash();
+        }, 250);
+    }).error(function() {
+    }).attr('src', 'images/second-hand-life/large/1.jpg');
     $('#homeContent img').click(function() {
         KT.navClick('second-hand-life');
     });
@@ -213,6 +312,18 @@ $(document).ready(function() {
             if (evt.keyCode === TAB) {
                 KT.handleNewsContentTab(evt);
             }
+        }
+    });
+    // legal toggle
+    $('.foot a').click(function() {
+        if ($('#.foot div').css('display') == 'block') {
+            $('#.foot div').fadeOut('slow', function() {
+                $(this).css('display', 'none');
+            });
+        } else {
+            $('#.foot div').fadeIn('slow', function() {
+                $(this).css('display', 'block');
+            });
         }
     });
 });
