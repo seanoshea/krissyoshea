@@ -15,20 +15,69 @@ $(function() {
     window.NavigationElementList = Backbone.Collection.extend({
         model: NavigationElement,
         navigationClicked: function(page) {
-            
+            window.Router.navigate(page, true);
         },
         homeClicked: function(evt) {
             this.navigationClicked('home');
+        },
+        portfolioClicked: function(evt) {
+            
         }
     });
 
-    window.Navigation = new NavigationElementList;
+    window.NavigationList = new NavigationElementList;
+    window.PortfolioNavigationList = new NavigationElementList;
+
+    window.NavigationView = Backbone.View.extend({
+        el: $('#nav'),
+        events: {
+            'click a': 'navigationClicked'
+        },
+        navigationClicked: function(evt) {
+            var id = evt.target.id;
+            if (id !== 'portfolio') {
+                window.Router.navigate(id, true);
+                this.markSelected(id);
+                this.togglePortfolioMenu(true);
+            } else {
+                this.togglePortfolioMenu();
+            }
+        },
+        markSelected: function(id) {
+            $('li', this.el).each(function(index, item, array) {
+                item.id === id ? $(item).addClass('selected') : $(item).removeClass('selected');
+            });
+            window.Application.selectPane(id);
+        },
+        togglePortfolioMenu: function(forceHide) {
+            window.PortfolioNavigation.togglePortfolioMenu(forceHide);
+        }
+    });
+
+    window.PortfolioNavigationView = Backbone.View.extend({
+        el: $('#portfolioMenu'),
+        open: false,
+        events: {
+            'click a': 'navigationClicked'
+        },
+        navigationClicked: function(evt) {
+            var id = evt.target.id;
+        },
+        togglePortfolioMenu: function(forceHide) {
+            var wasOpen = forceHide || this.open;
+            this.el.slideToggle('fast', function() {
+                window.Application.toggleShow($(this), !wasOpen);
+                window.PortfolioNavigation.open = !wasOpen;
+            });
+        }
+    });
 
     window.ApplicationView = Backbone.View.extend({
-        el: $("#container"),
+        el: $('#container'),
         events: {
-            "click #banner": "homeClicked",
-            "click #license": "licenseClicked"
+            'click #banner': 'homeClicked',
+            'click #license': 'licenseClicked',
+            'click #homePageImage': 'homePageImageClicked'
         },
         initialize: function() {
             this.cssSplash = this.$('#cssSplash');
@@ -70,7 +119,22 @@ $(function() {
             });
         },
         homeClicked: function(evt) {
-            window.Navigation.homeClicked(evt);
+            window.NavigationList.homeClicked(evt);
+            this.selectPane('home');
+        },
+        homePageImageClicked: function(evt) {
+            window.NavigationList.portfolioClicked(evt);
+            // window.PortfolioNavigation.selectPortfolio();
+        },
+        selectPane: function(id) {
+            var idSuffix = 'Content';
+            $('.content', this.el).each(function(index, item, array) {
+                if (item.id === id + idSuffix) {
+                    window.Application.toggleShow(item, true);
+                } else {
+                    window.Application.toggleShow(item, false);
+                }
+            });
         },
         licenseClicked: function(evt) {
            if (!this.licenseShown) {
@@ -95,4 +159,28 @@ $(function() {
         }
     });
     window.Application = new ApplicationView;
+    window.ApplicationRouter = Backbone.Router.extend({
+        routes: {
+            'home': 'home',
+            'bio': 'bio',
+            'news': 'news',
+            'contact':'contact'
+        },
+        home: function() {
+            
+        },
+        bio: function() {
+            
+        },
+        news: function() {
+            
+        },
+        contact: function() {
+            
+        }
+    });
+    window.Router = new ApplicationRouter;
+    window.Navigation = new NavigationView;
+    window.PortfolioNavigation = new PortfolioNavigationView;
+    Backbone.history.start();
 });
