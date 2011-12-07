@@ -227,7 +227,7 @@
             <img src="<%= src %>" />
         </script>
         <script type="text/template" id="photo-page-template">
-            <a href="#"><%= index %></a>
+            <a href="#" class="<%= active ? 'active' : ''%> <%= enabled ? '' : 'disabled' %>"><%= innerHTML %></a>
         </script>
         <script defer src="js/plugins.js"></script>
         <script defer src="js/script.js"></script>

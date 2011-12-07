@@ -113,11 +113,15 @@ $(function() {
             });
         },
         createControls: function(id) {
+            var startPageView = new PhotoPageView({model: new PhotoPageModel({index: 0, innerHTML: '&larr; Previous', enabled: false})}),
+            endPageView = new PhotoPageView({model: new PhotoPageModel({index: this.models.length - 1, innerHTML: 'Next &rarr;', enabled: true})});
+            $('#' + id + 'Controls').append(startPageView.render().el);
             _.each(this.models, function(item, index, array) {
-                var model = new PhotoPageModel({index: index}),
+                var model = new PhotoPageModel({index: index + 1, innerHTML: index + 1, active: index === 0, enabled: true}),
                 view = new PhotoPageView({model: model});
                 this.$('#' + id + 'Controls').append(view.render().el);
             });
+            $('#' + id + 'Controls').append(endPageView.render().el);
         }
     });
 
@@ -139,8 +143,13 @@ $(function() {
     window.PhotoPageModel = Backbone.Model.extend({
         defaults: function() {
             return {
-                index: 0
+                index: 0,
+                enabled: true,
+                active: false
             };
+        },
+        setActive: function() {
+            
         }
     });
 
@@ -155,7 +164,9 @@ $(function() {
             return this;
         },
         onClick: function(evt) {
-
+            evt.preventDefault();
+            $('a', $(this.el)).addClass('active');
+            this.model.setActive(evt);
         }
     });
 
