@@ -1,4 +1,11 @@
 $(function() {
+    
+    // holds details about the photo urls
+    KT = {};
+    KT.food = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg'];
+    KT.props = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg'];
+    KT.flowers = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg'];
+    KT.interiors = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg'];
 
     window.NavigationElement = Backbone.Model.extend({
         defaults: function() {
@@ -26,7 +33,6 @@ $(function() {
     });
 
     window.NavigationList = new NavigationElementList;
-    window.PortfolioNavigationList = new NavigationElementList;
 
     window.NavigationView = Backbone.View.extend({
         el: $('#nav'),
@@ -44,7 +50,7 @@ $(function() {
             }
         },
         markSelected: function(id) {
-            $('li', this.el).each(function(index, item, array) {
+            $('li a', this.el).each(function(index, item, array) {
                 item.id === id ? $(item).addClass('selected') : $(item).removeClass('selected');
             });
             window.Application.selectPane(id);
@@ -61,7 +67,13 @@ $(function() {
             'click a': 'navigationClicked'
         },
         navigationClicked: function(evt) {
-            var id = evt.target.id;
+            var id = evt.target.id.replace(/MenuItem/, '');
+            if (!window.Application.hasGallery(id)) {
+                window.Application.createGallery(id);
+            }
+            window.Router.navigate(id, true);
+            window.Application.selectPane(id);
+            this.togglePortfolioMenu(true);
         },
         togglePortfolioMenu: function(forceHide) {
             var wasOpen = forceHide || this.open;
@@ -72,6 +84,101 @@ $(function() {
         }
     });
 
+    // GALLERY
+
+    window.PhotoModel = Backbone.Model.extend({
+        defaults: function() {
+            return {
+                src: ''
+            };
+        }
+    });
+
+    window.PhotoList = Backbone.Collection.extend({
+        name: '',
+        model: PhotoModel,
+        initialize: function() {
+
+        },
+        postCreate: function(id) {
+            this.id = id;
+            this.createPhotos(id);
+            this.createControls(id);
+        },
+        createPhotos: function(id) {
+            this.name = id;
+            _.each(this.models, function(model) {
+                var view = new PhotoView({model: model});
+                this.$('#' + id + 'Container').append(view.render().el);
+            });
+        },
+        createControls: function(id) {
+            _.each(this.models, function(item, index, array) {
+                var model = new PhotoPageModel({index: index}),
+                view = new PhotoPageView({model: model});
+                this.$('#' + id + 'Controls').append(view.render().el);
+            });
+        }
+    });
+
+    window.PhotoView = Backbone.View.extend({
+        tagName:  'li',
+        template: _.template($('#photo-template').html()),
+        events: {
+            'dblclick img': 'onDoubleClick',
+        },
+        render: function() {
+            $(this.el).html(this.template(this.model.toJSON()));
+            return this;
+        },
+        onDoubleClick: function(evt) {
+
+        }
+    });
+
+    window.PhotoPageModel = Backbone.Model.extend({
+        defaults: function() {
+            return {
+                index: 0
+            };
+        }
+    });
+
+    window.PhotoPageView = Backbone.View.extend({
+        tagName:  'li',
+        template: _.template($('#photo-page-template').html()),
+        events: {
+            'click': 'onClick',
+        },
+        render: function() {
+            $(this.el).html(this.template(this.model.toJSON()));
+            return this;
+        },
+        onClick: function(evt) {
+
+        }
+    });
+
+    window.GalleryModel = Backbone.Model.extend({
+        position: 0,
+        list: null,
+        numberOfElements: function() {
+            
+        }
+    });
+
+    window.GalleryView = Backbone.View.extend({
+        events: {
+            'keypress ul': 'onKeyPress',
+        },
+        initialize: function() {
+            
+        },
+        onKeyPress: function(evt) {
+            
+        }
+    });
+
     window.ApplicationView = Backbone.View.extend({
         el: $('#container'),
         events: {
@@ -79,13 +186,18 @@ $(function() {
             'click #license': 'licenseClicked',
             'click #homePageImage': 'homePageImageClicked'
         },
+        gallaries: {},
         initialize: function() {
             this.cssSplash = this.$('#cssSplash');
             this.imageSplash = this.$('#imageSplash');
             this.licenseShown = false;
             this.licenseContent = this.$('#footer .license');
             this.displaySplash();
-            this.loadHomePageImage();
+            if (window.location.hash) {
+                this.loadHomePageImage();
+            } else {
+                this.loadHomePageImage();
+            }
         },
         render: function() {
             
@@ -100,13 +212,15 @@ $(function() {
             }
         },
         loadHomePageImage: function() {
-            var img = new Image();
+            var img = new Image(), src = this.randomizeStartImage();
+            img.src = src;
             $(img).load(function() {
                 setTimeout(function() {
                     window.Application.fadeSplash();
                 }, 250);
             }).error(function() {
-            }).attr('src', 'images/second-hand-life/large/1.jpg');
+            }).attr('src', src);
+            $('#homePageImage').attr('src', src);
         },
         fadeSplash: function() {
             $('#loading').fadeOut('fast', function() {
@@ -124,7 +238,6 @@ $(function() {
         },
         homePageImageClicked: function(evt) {
             window.NavigationList.portfolioClicked(evt);
-            // window.PortfolioNavigation.selectPortfolio();
         },
         selectPane: function(id) {
             var idSuffix = 'Content';
@@ -147,6 +260,30 @@ $(function() {
                 });
            }
            this.licenseShown = !this.licenseShown;
+        },
+        hasGallery: function(id) {
+            return this.gallaries[id];
+        },
+        createGallery: function(id) {
+            var photoList = new window.PhotoList(this.generateImageSourcesForGallery(id)), gm;
+            photoList.postCreate(id);
+            galleryModel = new window.GalleryModel({list: photoList});
+            this.gallaries[id] = new window.GalleryView({el: $('#' + id), model: galleryModel, name: 'Food'});
+        },
+        randomizeStartImage: function() {
+            var arr = ['food', 'props', 'flowers', 'interiors'];
+            return '/images/' + arr[Math.floor(Math.random() * 4)] + '/' + this.determineImageSize() + '/1.jpg';
+        },
+        generateImageSourcesForGallery: function(id) {
+            var arr = KT[id], determineImageSize = this.determineImageSize;
+            _.each(arr, function(item, index, array) {
+                arr[index] = {src: '/images/' + id + '/' + determineImageSize() + '/' + item};
+            });
+            return arr;
+        },
+        determineImageSize: function() {
+            // TODO - mobile detection
+            return 'large';
         },
         toggleShow: function(node, show) {
             if (show) {
