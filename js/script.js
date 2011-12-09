@@ -103,7 +103,6 @@ $(function() {
         postCreate: function(id) {
             this.id = id;
             this.createPhotos(id);
-            this.createControls(id);
         },
         createPhotos: function(id) {
             this.name = id;
@@ -111,17 +110,6 @@ $(function() {
                 var view = new PhotoView({model: model});
                 this.$('#' + id + 'Container').append(view.render().el);
             });
-        },
-        createControls: function(id) {
-            var startPageView = new PhotoPageView({model: new PhotoPageModel({index: 0, innerHTML: '&larr; Previous', enabled: false})}),
-            endPageView = new PhotoPageView({model: new PhotoPageModel({index: this.models.length - 1, innerHTML: 'Next &rarr;', enabled: true})});
-            $('#' + id + 'Controls').append(startPageView.render().el);
-            _.each(this.models, function(item, index, array) {
-                var model = new PhotoPageModel({index: index + 1, innerHTML: index + 1, active: index === 0, enabled: true}),
-                view = new PhotoPageView({model: model});
-                this.$('#' + id + 'Controls').append(view.render().el);
-            });
-            $('#' + id + 'Controls').append(endPageView.render().el);
         }
     });
 
@@ -148,8 +136,38 @@ $(function() {
                 active: false
             };
         },
-        setActive: function() {
+        setActive: function(active) {
+            this.set('active', active);
+            if (active) {
+                // tell the rest of the collection that a 
+                // model has it's active flag set
+                this.collection.setActive(this);
+            }
+        }
+    });
+
+    window.PhotoPageList = Backbone.Collection.extend({
+        model: PhotoPageModel,
+        initialize: function() {
             
+        },
+        postCreate: function(id) {
+            this.id = id;
+            this.createControls(id);
+        },
+        createControls: function(id) {
+            _.each(this.models, function(item, index, array) {
+                var view = new PhotoPageView({model: item});
+                this.$('#' + id + 'Controls').append(view.render().el);
+            });
+        },
+        setActive: function(model) {
+            var indexClicked = model.get('index');
+            _.each(this.models, function(item, index, array) {
+                if (item.get('index') !== indexClicked) {
+                    item.setActive(false);
+                }
+            });
         }
     });
 
@@ -159,6 +177,9 @@ $(function() {
         events: {
             'click': 'onClick',
         },
+        initialize: function() {
+            this.model.bind('change', this.onModelChange, this);
+        },
         render: function() {
             $(this.el).html(this.template(this.model.toJSON()));
             return this;
@@ -166,7 +187,13 @@ $(function() {
         onClick: function(evt) {
             evt.preventDefault();
             $('a', $(this.el)).addClass('active');
-            this.model.setActive(evt);
+            this.model.setActive(true);
+        },
+        setActive: function(active) {
+            active ? $('a', $(this.el)).addClass('active') : $('a', $(this.el)).removeClass('active');
+        },
+        onModelChange: function() {
+            this.setActive(this.model.get('active'));
         }
     });
 
@@ -276,21 +303,32 @@ $(function() {
             return this.gallaries[id];
         },
         createGallery: function(id) {
-            var photoList = new window.PhotoList(this.generateImageSourcesForGallery(id)), gm;
+            var photoList = new window.PhotoList(this.generateImageSourcesForPhotoList(id)), gm,
+            photoPageList = new window.PhotoPageList(this.generateImageControlsForPhotoPageList(id));
             photoList.postCreate(id);
+            photoPageList.postCreate(id);
             galleryModel = new window.GalleryModel({list: photoList});
-            this.gallaries[id] = new window.GalleryView({el: $('#' + id), model: galleryModel, name: 'Food'});
+            this.gallaries[id] = new window.GalleryView({el: $('#' + id), model: galleryModel});
         },
         randomizeStartImage: function() {
             var arr = ['food', 'props', 'flowers', 'interiors'];
             return '/images/' + arr[Math.floor(Math.random() * 4)] + '/' + this.determineImageSize() + '/1.jpg';
         },
-        generateImageSourcesForGallery: function(id) {
+        generateImageSourcesForPhotoList: function(id) {
             var arr = KT[id], determineImageSize = this.determineImageSize;
             _.each(arr, function(item, index, array) {
                 arr[index] = {src: '/images/' + id + '/' + determineImageSize() + '/' + item};
             });
             return arr;
+        },
+        generateImageControlsForPhotoPageList: function(id) {
+            var arr = KT[id], res = [];
+            res.push({index: 0, innerHTML: '&larr; Previous', enabled: false});
+            _.each(arr, function(item, index, array) {
+                res.push({index: index + 1, innerHTML: index + 1, enabled: true, active: index === 0});
+            });
+            res.push({index: arr.length - 1, innerHTML: '&rarr; Next', enabled: true});
+            return res;
         },
         determineImageSize: function() {
             // TODO - mobile detection
