@@ -168,6 +168,16 @@ $(function() {
                     item.setActive(false);
                 }
             });
+            this.checkPreviousNextButtons();
+        },
+        checkPreviousNextButtons: function() {
+            var firstPageModel = this.models[1], lastPageModel = this.models[this.models.length - 2];
+            if (firstPageModel.get('active')) {
+                this.models[0].set('enabled', false);
+            }
+            if (lastPageModel.get('active')) {
+                this.models[this.models.length - 1].set('enabled', false);
+            }
         }
     });
 
@@ -186,14 +196,28 @@ $(function() {
         },
         onClick: function(evt) {
             evt.preventDefault();
-            $('a', $(this.el)).addClass('active');
+            if (!this.isPreviousNextButton()) {
+                $('a', $(this.el)).addClass('active');
+            }
             this.model.setActive(true);
         },
         setActive: function(active) {
-            active ? $('a', $(this.el)).addClass('active') : $('a', $(this.el)).removeClass('active');
+            if (!this.isPreviousNextButton()) {
+                active ? $('a', $(this.el)).addClass('active') : $('a', $(this.el)).removeClass('active');
+            }
+        },
+        setEnabled: function(enabled) {
+            if (this.isPreviousNextButton()) {
+                enabled ? $('a', $(this.el)).removeClass('disabled') : $('a', $(this.el)).removeClass('disabled');
+            }
         },
         onModelChange: function() {
             this.setActive(this.model.get('active'));
+            this.setEnabled(this.model.get('enabled'));
+        },
+        isPreviousNextButton: function() {
+            var index = this.model.get('index');
+            return index !== 0 && index !== this.model.collection.length - 1;
         }
     });
 
