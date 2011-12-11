@@ -6,6 +6,9 @@ $(function() {
     KT.props = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg'];
     KT.flowers = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg'];
     KT.interiors = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg'];
+    // some custom events
+    KT.PHOTO_PAGE_VIEW_CLICK = 'PHOTO_PAGE_VIEW_CLICK';
+    KT.PHOTO_CLICK = 'PHOTO_CLICK';
 
     window.NavigationElement = Backbone.Model.extend({
         defaults: function() {
@@ -89,8 +92,15 @@ $(function() {
     window.PhotoModel = Backbone.Model.extend({
         defaults: function() {
             return {
-                src: ''
+                src: '',
+                active: false
             };
+        },
+        setActive: function(active) {
+            this.set('active', active);
+            if (active) {
+                this.collection.setActive(this);
+            }
         }
     });
 
@@ -110,6 +120,11 @@ $(function() {
                 var view = new PhotoView({model: model});
                 this.$('#' + id + 'Container').append(view.render().el);
             });
+        },
+        setActive: function(model) {
+            _.each(this.models, function(model) {
+                
+            });
         }
     });
 
@@ -117,11 +132,18 @@ $(function() {
         tagName:  'li',
         template: _.template($('#photo-template').html()),
         events: {
+            'click img': 'onClick',
             'dblclick img': 'onDoubleClick',
         },
         render: function() {
             $(this.el).html(this.template(this.model.toJSON()));
             return this;
+        },
+        onClick: function(evt) {
+            if (!this.model.get('active')) {
+                $('a', $(this.el)).addClass('active');
+                this.model.setActive(true);
+            }
         },
         onDoubleClick: function(evt) {
 
@@ -168,6 +190,7 @@ $(function() {
                     item.setActive(false);
                 }
             });
+            this.trigger(KT.PHOTO_PAGE_VIEW_CLICK, [indexClicked]);
             this.checkPreviousNextButtons();
         },
         checkPreviousNextButtons: function() {
@@ -222,9 +245,22 @@ $(function() {
     });
 
     window.GalleryModel = Backbone.Model.extend({
-        position: 0,
-        list: null,
-        numberOfElements: function() {
+        defaults: function() {
+            return {
+                currentIndex: 0
+            };
+        },
+        initialize: function() {
+            this.get('pageList').bind(KT.PHOTO_PAGE_VIEW_CLICK, this.onPageListChange, this);
+            this.get('photoList').bind(KT.PHOTO_CLICK, this.onPhotoListChange, this);
+        },
+        onPageListChange: function(indexClicked) {
+            this.set('currentIndex', indexClicked);
+        },
+        onPhotoListChange: function(indexClicked) {
+            this.set('currentIndex', indexClicked);
+        },
+        numberOfPhotos: function() {
             
         }
     });
@@ -255,11 +291,7 @@ $(function() {
             this.licenseShown = false;
             this.licenseContent = this.$('#footer .license');
             this.displaySplash();
-            if (window.location.hash) {
-                this.loadHomePageImage();
-            } else {
-                this.loadHomePageImage();
-            }
+            this.loadHomePageImage();
         },
         render: function() {
             
@@ -331,7 +363,7 @@ $(function() {
             photoPageList = new window.PhotoPageList(this.generateImageControlsForPhotoPageList(id));
             photoList.postCreate(id);
             photoPageList.postCreate(id);
-            galleryModel = new window.GalleryModel({list: photoList});
+            galleryModel = new window.GalleryModel({photoList: photoList, pageList: photoPageList});
             this.gallaries[id] = new window.GalleryView({el: $('#' + id), model: galleryModel});
         },
         randomizeStartImage: function() {
