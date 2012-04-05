@@ -1,15 +1,3 @@
-[submodule "css/oocss"]
-	path = css/oocss
-	url = https://github.com/stubbornella/oocss.git
-[submodule "js/mylibs/jquery-hashchange"]
-	path = js/mylibs/jquery-hashchange
-	url = https://github.com/cowboy/jquery-hashchange.git
-[submodule "js/mylibs/cycle"]
-	path = js/mylibs/cycle
-	url = https://github.com/malsup/cycle.git
-[submodule "js/mylibs/h5f"]
-	path = js/mylibs/h5f
-	url = https://github.com/ryanseddon/H5F.git
 [submodule "css/960"]
 	path = css/960
 	url = https://github.com/nathansmith/960-Grid-System.git
