@@ -4,7 +4,7 @@
 
 /* TEAM */
   Code Slinger: Sean O Shea
-  Site: http://www.whatsthepointeh.blogspot.com/, http://www.github.com/seanoshea
+  Site: http://www.github.com/seanoshea
   Twitter: http://www.twitter.com/seanoshea
   Location: SF
 
