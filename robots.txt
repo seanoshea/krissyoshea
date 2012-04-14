@@ -2,8 +2,3 @@
 # http://code.google.com/web/controlcrawlindex/
 
 User-agent: *
-
-
-/private/etc/apache2/httpd.conf
-/private/etc/apache2/httpd.conf.default
-/private/etc/apache2/original/httpd.conf

@@ -1,0 +1,3 @@
+# some reminders
+sudo /usr/sbin/apachectl restart
+/private/etc/apache2/other/kt.conf
