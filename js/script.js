@@ -95,6 +95,7 @@ $(function() {
     window.PhotoModel = Backbone.Model.extend({
         defaults: function() {
             return {
+            	position: 0,
                 src: '',
                 active: false
             };
@@ -119,7 +120,7 @@ $(function() {
         },
         createPhotos: function(id) {
             this.name = id;
-            _.each(this.models, function(model) {
+            _.each(this.models, function(model, key, list) {
                 var view = new PhotoView({model: model});
                 this.$('#' + id + 'Container').append(view.render().el);
             });
@@ -211,7 +212,7 @@ $(function() {
         tagName:  'li',
         template: _.template($('#photo-page-template').html()),
         events: {
-            'click': 'onClick',
+            'click a': 'onClick',
         },
         initialize: function() {
             this.model.bind('change', this.onModelChange, this);
@@ -376,7 +377,7 @@ $(function() {
         generateImageSourcesForPhotoList: function(id) {
             var arr = KT[id], determineImageSize = this.determineImageSize;
             _.each(arr, function(item, index, array) {
-                arr[index] = {src: '/images/' + id + '/' + determineImageSize() + '/' + item};
+                arr[index] = {src: '/images/' + id + '/' + determineImageSize() + '/' + item, position: index};
             });
             return arr;
         },

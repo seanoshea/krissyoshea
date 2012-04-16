@@ -31,8 +31,8 @@
 		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 		<div id="container" class="container_12">
 			<header>
-				<h1 id="banner" role="banner" aria-live="polite" class="grid_2">Krissy Tosi</h1>
-				<nav role="navigation" class="grid_10">
+				<h1 id="banner" role="banner" aria-live="polite" class="grid_4">Krissy Tosi</h1>
+				<nav role="navigation" class="grid_6">
 					<ul id="nav" role="menubar" style="display:none;">
 						<li role="menu-item" class="grid_1">
 							<a id="home" class="selected" href="javascript:void(0);" tabindex="1">home</a>
@@ -51,7 +51,7 @@
 						</li>
 					</ul>
 				</nav>
-				<nav role="navigation">
+				<nav role="navigation" class="grid_6">
 					<ul id="portfolioMenu" role="menubar" style="display:none;" aria-hidden="true">
 						<li role="menu-item" class="grid_1">
 							<a id="foodMenuItem" href="javascript:void(0);" tabindex="3">Food</a>
@@ -214,7 +214,7 @@
 		<script src="js/libs/backbone/backbone.js"></script>
 		<!-- scripts concatenated and minified via ant build script-->
 		<script type="text/template" id="photo-template">
-			<img src="<%= src %>" />
+			<img src="<%= src %>" style="display: <%= position != 0 ? 'none' : 'block'%>;" />
 		</script>
 		<script type="text/template" id="photo-page-template">
 			<a href="#" class="<%= active ? 'active' : ''%> <%= enabled ? '' : 'disabled' %>"><%= innerHTML %></a>
