@@ -129,6 +129,11 @@ $(function() {
             _.each(this.models, function(model) {
                 
             });
+        },
+        setSelected: function(index) {
+            _.each(this.models, function(model, key, list) {
+            	model.setActive(key + 1 == index);
+            });
         }
     });
 
@@ -143,6 +148,9 @@ $(function() {
             $(this.el).html(this.template(this.model.toJSON()));
             return this;
         },
+        initialize: function() {
+            this.model.bind('change', this.onModelChange, this);
+        },
         onClick: function(evt) {
             if (!this.model.get('active')) {
                 $('a', $(this.el)).addClass('active');
@@ -151,6 +159,9 @@ $(function() {
         },
         onDoubleClick: function(evt) {
 
+        },
+        onModelChange: function(a) {
+            $('a', $(this.el)).addClass('active');
         }
     });
 
@@ -259,10 +270,12 @@ $(function() {
             this.get('photoList').bind(KT.PHOTO_CLICK, this.onPhotoListChange, this);
         },
         onPageListChange: function(indexClicked) {
-            this.set('currentIndex', indexClicked);
+            this.set('currentIndex', indexClicked[0]);
+            this.get('photoList').setSelected(this.get('currentIndex'));
         },
         onPhotoListChange: function(indexClicked) {
-            this.set('currentIndex', indexClicked);
+            this.set('currentIndex', indexClicked[0]);
+            this.get('pageList').setSelected(this.get('currentIndex'));
         },
         numberOfPhotos: function() {
             
