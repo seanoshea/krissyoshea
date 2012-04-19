@@ -74,11 +74,7 @@ $(function() {
         },
         navigationClicked: function(evt) {
             var id = evt.target.id.replace(/MenuItem/, '');
-            if (!window.Application.hasGallery(id)) {
-                window.Application.createGallery(id);
-            }
-            window.Router.navigate(id, true);
-            window.Application.selectPane(id);
+            window.Application.navigateToGallery(id);
             this.togglePortfolioMenu(true);
         },
         togglePortfolioMenu: function(forceHide) {
@@ -121,6 +117,10 @@ $(function() {
         createPhotos: function(id) {
             this.name = id;
             _.each(this.models, function(model, key, list) {
+            	// the first photo in the list should always be marked as active.
+            	if (key == 0) {
+					model.set('active', true);
+            	}
                 var view = new PhotoView({model: model});
                 this.$('#' + id + 'Container').append(view.render().el);
             });
@@ -160,8 +160,14 @@ $(function() {
         onDoubleClick: function(evt) {
 
         },
-        onModelChange: function(a) {
-            $('a', $(this.el)).addClass('active');
+        onModelChange: function(model) {
+        	if (model.get('active')) {
+        		window.Application.toggleShow($('img', this.el), true);
+	            $('img', this.el).addClass('active');
+        	} else {
+        		window.Application.toggleShow($('img', this.el), false);
+	            $('img', this.el).removeClass('active');
+        	}
         }
     });
 
@@ -302,6 +308,7 @@ $(function() {
             'click #homePageImage': 'homePageImageClicked'
         },
         gallaries: {},
+        randomizedPortfolioImage: {},
         initialize: function() {
             this.cssSplash = this.$('#cssSplash');
             this.imageSplash = this.$('#imageSplash');
@@ -348,7 +355,8 @@ $(function() {
             this.selectPane('home');
         },
         homePageImageClicked: function(evt) {
-            window.NavigationList.portfolioClicked(evt);
+        	this.selectPane(this.randomizedPortfolioImage);
+        	window.Router.navigate(this.randomizedPortfolioImage, true);
         },
         selectPane: function(id) {
             var idSuffix = 'Content';
@@ -385,7 +393,8 @@ $(function() {
         },
         randomizeStartImage: function() {
             var arr = ['food', 'props', 'flowers', 'interiors'];
-            return '/images/' + arr[Math.floor(Math.random() * 4)] + '/' + this.determineImageSize() + '/1.jpg';
+            this.randomizedPortfolioImage = arr[Math.floor(Math.random() * 4)];
+            return '/images/' + this.randomizedPortfolioImage + '/' + this.determineImageSize() + '/1.jpg';
         },
         generateImageSourcesForPhotoList: function(id) {
             var arr = KT[id], determineImageSize = this.determineImageSize;
@@ -402,6 +411,13 @@ $(function() {
             });
             res.push({index: arr.length - 1, innerHTML: '&rarr; Next', enabled: true});
             return res;
+        },
+        navigateToGallery: function(id) {
+            if (!window.Application.hasGallery(id)) {
+                window.Application.createGallery(id);
+            }
+            window.Router.navigate(id, true);
+            window.Application.selectPane(id);
         },
         determineImageSize: function() {
             // TODO - mobile detection
