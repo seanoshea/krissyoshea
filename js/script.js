@@ -175,7 +175,6 @@ $(function() {
         defaults: function() {
             return {
                 index: 0,
-                enabled: true,
                 active: false
             };
         },
@@ -212,16 +211,6 @@ $(function() {
                 }
             });
             this.trigger(KT.PHOTO_PAGE_VIEW_CLICK, [indexClicked]);
-            this.checkPreviousNextButtons();
-        },
-        checkPreviousNextButtons: function() {
-            var firstPageModel = this.models[1], lastPageModel = this.models[this.models.length - 2];
-            if (firstPageModel.get('active')) {
-                this.models[0].set('enabled', false);
-            }
-            if (lastPageModel.get('active')) {
-                this.models[this.models.length - 1].set('enabled', false);
-            }
         }
     });
 
@@ -250,14 +239,8 @@ $(function() {
                 active ? $('a', $(this.el)).addClass('active') : $('a', $(this.el)).removeClass('active');
             }
         },
-        setEnabled: function(enabled) {
-            if (this.isPreviousNextButton()) {
-                enabled ? $('a', $(this.el)).removeClass('disabled') : $('a', $(this.el)).removeClass('disabled');
-            }
-        },
         onModelChange: function() {
             this.setActive(this.model.get('active'));
-            this.setEnabled(this.model.get('enabled'));
         },
         isPreviousNextButton: function() {
             var index = this.model.get('index');
@@ -405,11 +388,11 @@ $(function() {
         },
         generateImageControlsForPhotoPageList: function(id) {
             var arr = KT[id], res = [];
-            res.push({index: 0, innerHTML: '&larr; Previous', enabled: false});
+            res.push({index: 0, innerHTML: '&larr; Previous'});
             _.each(arr, function(item, index, array) {
-                res.push({index: index + 1, innerHTML: index + 1, enabled: true, active: index === 0});
+                res.push({index: index + 1, innerHTML: index + 1, active: index === 0});
             });
-            res.push({index: arr.length - 1, innerHTML: '&rarr; Next', enabled: true});
+            res.push({index: arr.length - 1, innerHTML: '&rarr; Next'});
             return res;
         },
         navigateToGallery: function(id) {
