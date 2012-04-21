@@ -1,0 +1,33 @@
+/*
+ * Customization for HTML5 Boilerplate
+ */
+html, button, input, select, textarea { font-family: sans-serif; color: #333; }
+::-moz-selection { background: #999; color: #fff; text-shadow: none; }
+::selection { background: #999; color: #fff; text-shadow: none; }
+ul, ol { margin: 0; padding: 0; list-style: none;}
+/*
+ * Colors
+ * 
+ * #fff background
+ * #333 main text
+ * #999 selected text
+ */
+/*
+ * Navigation
+ */
+.navigation {
+
+}
+.navigation li {
+	display: inline;
+}
+.navigation li a {
+	color:#333;
+	padding:10px;
+	text-decoration: none;
+}
+.navigation li a.active,
+.navigation li a:hover {
+	background: #999;
+	color: #fff;
+}
