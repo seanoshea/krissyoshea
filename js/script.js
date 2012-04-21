@@ -12,6 +12,7 @@ $(function() {
     // some custom events
     KT.PHOTO_PAGE_VIEW_CLICK = 'PHOTO_PAGE_VIEW_CLICK';
     KT.PHOTO_CLICK = 'PHOTO_CLICK';
+    KT.PHOTO_PREVIOUS_NEXT_CLICK = 'PHOTO_PREVIOUS_NEXT_CLICK';
 
     window.NavigationElement = Backbone.Model.extend({
         defaults: function() {
@@ -190,8 +191,9 @@ $(function() {
 
     window.PhotoPageList = Backbone.Collection.extend({
         model: PhotoPageModel,
+        currentIndex: 1,
         initialize: function() {
-            
+
         },
         postCreate: function(id) {
             this.id = id;
@@ -205,12 +207,37 @@ $(function() {
         },
         setActive: function(model) {
             var indexClicked = model.get('index');
+            this.currentIndex = indexClicked;
             _.each(this.models, function(item, index, array) {
                 if (item.get('index') !== indexClicked) {
                     item.setActive(false);
                 }
             });
             this.trigger(KT.PHOTO_PAGE_VIEW_CLICK, [indexClicked]);
+        },
+        onPreviousNextClicked: function(indexClicked) {
+        	var model, nextClicked = indexClicked !== 0;
+        	// cycle
+        	if (nextClicked) {
+        		if (this.models.length === this.currentIndex + 2) {
+        			indexClicked = 1;
+        		} else {
+        			indexClicked = this.currentIndex + 1;
+        		}
+        	} else {
+        		if (this.currentIndex == 1) {
+        			indexClicked = this.models.length -2;
+        		} else {
+        			indexClicked = this.currentIndex - 1;
+        		}
+        	}
+			_.each(this.models, function(item, index, array) {
+                if (item.get('index') === indexClicked) {
+                	item.setActive(true);
+                    model = item;
+                }
+            });
+            this.setActive(model);
         }
     });
 
@@ -231,8 +258,11 @@ $(function() {
             evt.preventDefault();
             if (!this.isPreviousNextButton()) {
                 $('a', $(this.el)).addClass('active');
+                this.model.setActive(true);
+            } else {
+            	// tell the app that the user clicked a previous or next button
+            	this.model.collection.onPreviousNextClicked(this.model.get('index'));
             }
-            this.model.setActive(true);
         },
         setActive: function(active) {
             if (!this.isPreviousNextButton()) {
@@ -244,7 +274,7 @@ $(function() {
         },
         isPreviousNextButton: function() {
             var index = this.model.get('index');
-            return index !== 0 && index !== this.model.collection.length - 1;
+            return index === 0 || index === this.model.collection.length - 1;
         }
     });
 
@@ -392,7 +422,7 @@ $(function() {
             _.each(arr, function(item, index, array) {
                 res.push({index: index + 1, innerHTML: index + 1, active: index === 0});
             });
-            res.push({index: arr.length - 1, innerHTML: '&rarr; Next'});
+            res.push({index: arr.length + 1, innerHTML: '&rarr; Next'});
             return res;
         },
         navigateToGallery: function(id) {
