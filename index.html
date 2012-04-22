@@ -21,8 +21,9 @@
 		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/apple-touch-icon-57x57-precomposed.png">
 		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-		<link rel="stylesheet" type="text/css" media="all" href="css/960/code/css/960.css" />
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/960/code/css/960.css" />
+		<link rel="stylesheet" type="text/css" href="css/krissytosi.css" />
 		<script src="js/libs/modernizr-2.5.3.min.js"></script>
 	</head>
 	<body>
@@ -31,47 +32,47 @@
 		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 		<div id="container" class="container_12">
 			<header>
-				<h1 id="banner" role="banner" aria-live="polite" class="grid_4">Krissy Tosi</h1>
-				<nav role="navigation" class="grid_6">
-					<ul id="nav" role="menubar" style="display:none;">
-						<li role="menu-item" class="grid_1">
-							<a id="home" class="selected" href="javascript:void(0);" tabindex="1">home</a>
+				<h1 id="banner" role="banner" aria-live="polite" class="grid_3">Krissy Tosi</h1>
+				<nav role="navigation" class="grid_9">
+					<ul id="nav" role="menubar" class="navigation" style="display:none;">
+						<li role="menu-item">
+							<a id="home" class="active" href="javascript:void(0);" tabindex="1">home</a>
 						</li>
-						<li role="menu-item" class="grid_1">
+						<li role="menu-item">
 							<a id="portfolio" href="javascript:void(0);" tabindex="2">portfolio</a>
 						</li>
-						<li role="menu-item" class="grid_1">
+						<li role="menu-item">
 							<a id="biography" href="javascript:void(0);" tabindex="5">biography</a>
 						</li>
-						<li role="menu-item" class="grid_1">
+						<li role="menu-item">
 							<a id="news" href="javascript:void(0);" tabindex="6">news</a>
 						</li>
-						<li role="menu-item" class="grid_1">
+						<li role="menu-item">
 							<a id="contact" href="javascript:void(0);" tabindex="7">contact</a>
 						</li>
 					</ul>
 				</nav>
-				<nav role="navigation" class="grid_6">
-					<ul id="portfolioMenu" role="menubar" style="display:none;" aria-hidden="true">
-						<li role="menu-item" class="grid_1">
+				<nav role="navigation" class="grid_9">
+					<ul id="portfolioMenu" role="menubar" class="navigation subNavigation" style="display:none;" aria-hidden="true">
+						<li role="menu-item">
 							<a id="foodMenuItem" href="javascript:void(0);" tabindex="3">Food</a>
 						</li>
-						<li role="separator" class="grid_1">
+						<li role="separator">
 							|
 						</li>
-						<li role="menu-item" class="grid_1">
+						<li role="menu-item">
 							<a id="propsMenuItem" href="javascript:void(0);" tabindex="3">Props</a>
 						</li>
-						<li role="separator" class="grid_1">
+						<li role="separator">
 							|
 						</li>
-						<li role="menu-item" class="grid_1">
+						<li role="menu-item">
 							<a id="flowersMenuItem" href="javascript:void(0);" tabindex="3">Flowers</a>
 						</li>
-						<li role="separator" class="grid_1">
+						<li role="separator">
 							|
 						</li>
-						<li role="menu-item" class="grid_1">
+						<li role="menu-item">
 							<a id="interiorsMenuItem" href="javascript:void(0);" tabindex="3">Interiors</a>
 						</li>
 					</ul>
@@ -103,23 +104,31 @@
 					</div>
 					<div id="foodContent" class="content" style="display:none;">
 						<ul id="foodContainer"></ul>
-						<h3>Food</h3>
-						<ol id="foodControls"></ol>
+						<div>
+							<h3>Food</h3>
+							<ol id="foodControls" class="navigation subNavigation"></ol>
+						</div>
 					</div>
 					<div id="propsContent" class="content" style="display:none;">
 						<ul id="propsContainer"></ul>
-						<h3>Props</h3>
-						<ol id="propsControls"></ol>
+						<div>
+							<h3>Props</h3>
+							<ol id="propsControls" class="navigation subNavigation"></ol>
+						</div>
 					</div>
 					<div id="flowersContent" class="content" style="display:none;">
 						<ul id="flowersContainer"></ul>
-						<h3>Flowers</h3>
-						<ol id="flowersControls"></ol>
+						<div>
+							<h3>Flowers</h3>
+							<ol id="flowersControls" class="navigation subNavigation"></ol>
+						</div>
 					</div>
 					<div id="interiorsContent" class="content" style="display:none;">
 						<ul id="interiorsContainer"></ul>
-						<h3>Interiors</h3>
-						<ol id="interiorsControls"></ol>
+						<div>
+							<h3>Interiors</h3>
+							<ol id="interiorsControls" class="navigation subNavigation"></ol>
+						</div>
 					</div>
 					<div id="newsContent" class="content" aria-hidden="true" style="display:none;">
 						<h2>News</h2>
@@ -198,14 +207,7 @@
 					</div>
 				</div>
 			</div>
-			<footer id="footer" class="grid_12" style="display:none;">
-				<a id="license" rel="license" href="javascript:void(0);">Legalese</a>
-				<div role="contentinfo" class="license secondaryText" style="display:none;">
-					All images &copy; Krissy Tosi. All rights reserved. All photographs appearing on this site are the property of Krissy Tosi.
-					Commercial or personal use of any of these images without the written permission of Krissy Tosi is prohibited under United States and
-					International copyright laws. By entering this site you accept these terms.
-				</div>
-			</footer>
+			<footer id="footer" class="grid_12" style="display:none;"></footer>
 		</div>
 		<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>

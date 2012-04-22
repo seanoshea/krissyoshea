@@ -17,12 +17,12 @@ $(function() {
     window.NavigationElement = Backbone.Model.extend({
         defaults: function() {
             return {
-                selected: false,
+                active: false,
                 page: ''
             };
         },
         toggleSelected: function() {
-            this.selected = this.get('selected') ? false : true;
+            this.active = this.get('active') ? false : true;
         }
     });
 
@@ -33,9 +33,6 @@ $(function() {
         },
         homeClicked: function(evt) {
             this.navigationClicked('home');
-        },
-        portfolioClicked: function(evt) {
-            
         }
     });
 
@@ -50,17 +47,19 @@ $(function() {
             var id = evt.target.id;
             if (id !== 'portfolio') {
                 window.Router.navigate(id, true);
-                this.markSelected(id);
+                this.markActive(id);
                 this.togglePortfolioMenu(true);
             } else {
                 this.togglePortfolioMenu();
             }
         },
-        markSelected: function(id) {
+        markActive: function(id, skip) {
             $('li a', this.el).each(function(index, item, array) {
-                item.id === id ? $(item).addClass('selected') : $(item).removeClass('selected');
+                item.id === id ? $(item).addClass('active') : $(item).removeClass('active');
             });
-            window.Application.selectPane(id);
+            if (!skip) {
+            	window.Application.selectPane(id);
+            }
         },
         togglePortfolioMenu: function(forceHide) {
             window.PortfolioNavigation.togglePortfolioMenu(forceHide);
@@ -80,10 +79,12 @@ $(function() {
         },
         togglePortfolioMenu: function(forceHide) {
             var wasOpen = forceHide || this.open;
-            this.el.slideToggle('fast', function() {
-                window.Application.toggleShow($(this), !wasOpen);
-                window.PortfolioNavigation.open = !wasOpen;
-            });
+            if (!forceHide || this.open) {
+	            this.el.slideToggle('fast', function() {
+	                window.Application.toggleShow($(this), !wasOpen);
+	                window.PortfolioNavigation.open = !wasOpen;
+	            });
+            }
         }
     });
 
@@ -164,7 +165,6 @@ $(function() {
         onModelChange: function(model) {
         	if (model.get('active')) {
         		window.Application.toggleShow($('img', this.el), true);
-	            $('img', this.el).addClass('active');
         	} else {
         		window.Application.toggleShow($('img', this.el), false);
 	            $('img', this.el).removeClass('active');
@@ -238,6 +238,12 @@ $(function() {
                 }
             });
             this.setActive(model);
+        },
+		leftClicked: function() {
+			this.onPreviousNextClicked(0);
+		},
+        rightClicked: function() {
+        	this.onPreviousNextClicked(1);
         }
     });
 
@@ -281,7 +287,8 @@ $(function() {
     window.GalleryModel = Backbone.Model.extend({
         defaults: function() {
             return {
-                currentIndex: 0
+                currentIndex: 0,
+                visible: true
             };
         },
         initialize: function() {
@@ -296,20 +303,31 @@ $(function() {
             this.set('currentIndex', indexClicked[0]);
             this.get('pageList').setSelected(this.get('currentIndex'));
         },
+		leftClicked: function() {
+			this.get('pageList').leftClicked();
+		},
+        rightClicked: function() {
+        	this.get('pageList').rightClicked();
+        },
         numberOfPhotos: function() {
             
         }
     });
 
     window.GalleryView = Backbone.View.extend({
-        events: {
-            'keypress ul': 'onKeyPress',
-        },
         initialize: function() {
-            
+			_.bindAll(this, 'onKeyDown');
+			$(document).bind('keydown', this.onKeyDown);  
         },
-        onKeyPress: function(evt) {
-            
+        onKeyDown: function(evt) {
+        	console.warn('a? ', this.model.get('visible'));
+        	if (this.model.get('visible')) {
+	            if (evt.keyCode == 37) {
+					this.model.leftClicked();
+	            } else if (evt.keyCode == 39) {
+					this.model.rightClicked();
+	            }
+        	}
         }
     });
 
@@ -317,7 +335,6 @@ $(function() {
         el: $('#container'),
         events: {
             'click #banner': 'homeClicked',
-            'click #license': 'licenseClicked',
             'click #homePageImage': 'homePageImageClicked'
         },
         gallaries: {},
@@ -325,8 +342,6 @@ $(function() {
         initialize: function() {
             this.cssSplash = this.$('#cssSplash');
             this.imageSplash = this.$('#imageSplash');
-            this.licenseShown = false;
-            this.licenseContent = this.$('#footer .license');
             this.displaySplash();
             this.loadHomePageImage();
         },
@@ -376,22 +391,16 @@ $(function() {
             $('.content', this.el).each(function(index, item, array) {
                 if (item.id === id + idSuffix) {
                     window.Application.toggleShow(item, true);
+                    if (window.Application.hasGallery(id)) {
+                    	window.Application.gallaries[id].model.set('visible', true);
+                    }
                 } else {
                     window.Application.toggleShow(item, false);
+                    if (window.Application.hasGallery(id)) {
+                    	window.Application.gallaries[id].model.set('visible', false);
+                    }
                 }
             });
-        },
-        licenseClicked: function(evt) {
-           if (!this.licenseShown) {
-                this.licenseContent.fadeIn('slow', function() {
-                    window.Application.toggleShow($(this), true);
-                });
-           } else {
-                this.licenseContent.fadeOut('slow', function() {
-                    window.Application.toggleShow($(this));
-                });
-           }
-           this.licenseShown = !this.licenseShown;
         },
         hasGallery: function(id) {
             return this.gallaries[id];
@@ -401,7 +410,7 @@ $(function() {
             photoPageList = new window.PhotoPageList(this.generateImageControlsForPhotoPageList(id));
             photoList.postCreate(id);
             photoPageList.postCreate(id);
-            galleryModel = new window.GalleryModel({photoList: photoList, pageList: photoPageList});
+            galleryModel = new window.GalleryModel({photoList: photoList, pageList: photoPageList, visible: true});
             this.gallaries[id] = new window.GalleryView({el: $('#' + id), model: galleryModel});
         },
         randomizeStartImage: function() {
@@ -422,7 +431,7 @@ $(function() {
             _.each(arr, function(item, index, array) {
                 res.push({index: index + 1, innerHTML: index + 1, active: index === 0});
             });
-            res.push({index: arr.length + 1, innerHTML: '&rarr; Next'});
+            res.push({index: arr.length + 1, innerHTML: 'Next &rarr;'});
             return res;
         },
         navigateToGallery: function(id) {
@@ -431,6 +440,10 @@ $(function() {
             }
             window.Router.navigate(id, true);
             window.Application.selectPane(id);
+            window.Navigation.markActive('portfolio', true);
+            if (window.Application.hasGallery(id)) {
+            	window.Application.gallaries[id].model.set('visible', true);
+            }
         },
         determineImageSize: function() {
             // TODO - mobile detection

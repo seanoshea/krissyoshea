@@ -1,7 +1,7 @@
 /*
  * Customization for HTML5 Boilerplate
  */
-html, button, input, select, textarea { font-family: sans-serif; color: #333; }
+html, button, input, select, textarea { font-family: Lucida Grande, Arial, Helvetica, sans-serif; color: #333; font-size:0.875em}
 ::-moz-selection { background: #999; color: #fff; text-shadow: none; }
 ::selection { background: #999; color: #fff; text-shadow: none; }
 ul, ol { margin: 0; padding: 0; list-style: none;}
@@ -12,11 +12,25 @@ ul, ol { margin: 0; padding: 0; list-style: none;}
  * #333 main text
  * #999 selected text
  */
-/*
- * Navigation
- */
+header {
+	padding:5px 0 60px 0;
+}
+img {
+	max-height:550px;
+}
+h1 {
+	margin:0;
+}
+h3 {
+	display:inline;
+	float:left;
+	margin:0 20px 0 0;
+}
+#portfolioMenu {
+	margin-top:10px;
+}
 .navigation {
-
+	margin-top:10px;
 }
 .navigation li {
 	display: inline;
@@ -30,4 +44,8 @@ ul, ol { margin: 0; padding: 0; list-style: none;}
 .navigation li a:hover {
 	background: #999;
 	color: #fff;
+}
+.subNavigation li a {
+	font-size:0.75em;
+	padding:4px;
 }
