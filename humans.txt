@@ -9,13 +9,13 @@
   Location: SF
 
 /* THANKS */
-  Names (& URL):	Paul Irish - http://www.twitter.com/paul_irish
-					Divya Manian - http://nimbupani.com/
-					Nathan Smith - http://960.gs/
-					Shi Chuan - http://www.blog.highub.com/
-					Mathias Bynens - http://mathiasbynens.be/
-					Jeremy Ashkenas - https://github.com/jashkenas/
+  Names (& URL):    Paul Irish - http://www.twitter.com/paul_irish
+                    Divya Manian - http://nimbupani.com/
+                    Nathan Smith - http://960.gs/
+                    Shi Chuan - http://www.blog.highub.com/
+                    Mathias Bynens - http://mathiasbynens.be/
+                    Jeremy Ashkenas - https://github.com/jashkenas/
 /* SITE */
   Standards: HTML5, CSS3
-  Components: Modernizr, jQuery
-  Software:
+  Components: Modernizr, jQuery, Backbone.js, 960 grid
+  Software: Aptana Studio, Google AppEngine

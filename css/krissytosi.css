@@ -1,51 +1,65 @@
 /*
  * Customization for HTML5 Boilerplate
  */
-html, button, input, select, textarea { font-family: Lucida Grande, Arial, Helvetica, sans-serif; color: #333; font-size:0.875em}
+html, button, input, select, textarea { font-family: Lucida Grande, Arial, Helvetica, sans-serif; color: #333; font-size:0.875em;}
 ::-moz-selection { background: #999; color: #fff; text-shadow: none; }
 ::selection { background: #999; color: #fff; text-shadow: none; }
 ul, ol { margin: 0; padding: 0; list-style: none;}
+input:invalid, textarea:invalid {background-color: #fff;}
 /*
  * Colors
  * 
  * #fff background
+ * #eee image border
  * #333 main text
  * #999 selected text
  */
 header {
-	padding:5px 0 60px 0;
+    padding:5px 0 65px 0;
 }
 img {
-	max-height:550px;
+    border:1px solid #eee;
+    max-height:550px;
+    padding:4px;
 }
 h1 {
-	margin:0;
+    margin:0;
 }
 h3 {
-	display:inline;
-	float:left;
-	margin:0 20px 0 0;
+    display:inline;
+    float:left;
+    margin:0 20px 0 0;
 }
 #portfolioMenu {
-	margin-top:10px;
+    margin-top:10px;
 }
 .navigation {
-	margin-top:10px;
+    margin-top:10px;
 }
 .navigation li {
-	display: inline;
+    display: inline;
 }
 .navigation li a {
-	color:#333;
-	padding:10px;
-	text-decoration: none;
+    color:#333;
+    padding:10px;
+    text-decoration: none;
 }
 .navigation li a.active,
 .navigation li a:hover {
-	background: #999;
-	color: #fff;
+    background: #999;
+    color: #fff;
+    text-shadow:1px 1px 0px #666;
 }
 .subNavigation li a {
-	font-size:0.75em;
-	padding:4px;
+    font-size:0.75em;
+    padding:4px;
+}
+#homePageImage {
+    cursor: pointer;
+}
+input, textarea {
+    margin-bottom:16px;
+    margin-top:4px;
+    padding:4px;
+    width:250px;
 }

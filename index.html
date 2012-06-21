@@ -5,235 +5,265 @@
 <!--[if IEMobile 7 ]>  <html class="no-js iem7"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en" dir="ltr">
-	<!--<![endif]-->
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>Krissy Tosi</title>
-		<meta name="author" content="Krissy Tosi">
-		<meta name="HandheldFriendly" content="True">
-		<meta name="MobileOptimized" content="320">
-		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<meta http-equiv="cleartype" content="on">
-		<link rel="shortcut icon" href="/favicon.ico">
-		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/apple-touch-icon-57x57-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png">
-		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/960/code/css/960.css" />
-		<link rel="stylesheet" type="text/css" href="css/krissytosi.css" />
-		<script src="js/libs/modernizr-2.5.3.min.js"></script>
-	</head>
-	<body>
-		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
-		chromium.org/developers/how-tos/chrome-frame-getting-started -->
-		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-		<div id="container" class="container_12">
-			<header>
-				<h1 id="banner" role="banner" aria-live="polite" class="grid_3">Krissy Tosi</h1>
-				<nav role="navigation" class="grid_9">
-					<ul id="nav" role="menubar" class="navigation" style="display:none;">
-						<li role="menu-item">
-							<a id="home" class="active" href="javascript:void(0);" tabindex="1">home</a>
-						</li>
-						<li role="menu-item">
-							<a id="portfolio" href="javascript:void(0);" tabindex="2">portfolio</a>
-						</li>
-						<li role="menu-item">
-							<a id="biography" href="javascript:void(0);" tabindex="5">biography</a>
-						</li>
-						<li role="menu-item">
-							<a id="news" href="javascript:void(0);" tabindex="6">news</a>
-						</li>
-						<li role="menu-item">
-							<a id="contact" href="javascript:void(0);" tabindex="7">contact</a>
-						</li>
-					</ul>
-				</nav>
-				<nav role="navigation" class="grid_9">
-					<ul id="portfolioMenu" role="menubar" class="navigation subNavigation" style="display:none;" aria-hidden="true">
-						<li role="menu-item">
-							<a id="foodMenuItem" href="javascript:void(0);" tabindex="3">Food</a>
-						</li>
-						<li role="separator">
-							|
-						</li>
-						<li role="menu-item">
-							<a id="propsMenuItem" href="javascript:void(0);" tabindex="3">Props</a>
-						</li>
-						<li role="separator">
-							|
-						</li>
-						<li role="menu-item">
-							<a id="flowersMenuItem" href="javascript:void(0);" tabindex="3">Flowers</a>
-						</li>
-						<li role="separator">
-							|
-						</li>
-						<li role="menu-item">
-							<a id="interiorsMenuItem" href="javascript:void(0);" tabindex="3">Interiors</a>
-						</li>
-					</ul>
-				</nav>
-			</header>
-			<div id="body" aria-busy="true">
-				<div id="loading">
-					<div id="cssSplash" style="display:none;">
-						<div class="bar1"></div>
-						<div class="bar2"></div>
-						<div class="bar3"></div>
-						<div class="bar4"></div>
-						<div class="bar5"></div>
-						<div class="bar6"></div>
-						<div class="bar7"></div>
-						<div class="bar8"></div>
-					</div>
-					<img id="imageSplash" src="" alt="Loading Animation" style="display:none;"/>
-				</div>
-				<div id="main" role="main" class="grid_12" style="display:none;">
-					<noscript>
-						<h1>Welcome, noble navigator of the JavaScript-less interwebs</h1>
-						<p>
-							If you enable JavaScript, this site will look a little better.
-						</p>
-					</noscript>
-					<div id="homeContent" class="content">
-						<img id="homePageImage" src="" />
-					</div>
-					<div id="foodContent" class="content" style="display:none;">
-						<ul id="foodContainer"></ul>
-						<div>
-							<h3>Food</h3>
-							<ol id="foodControls" class="navigation subNavigation"></ol>
-						</div>
-					</div>
-					<div id="propsContent" class="content" style="display:none;">
-						<ul id="propsContainer"></ul>
-						<div>
-							<h3>Props</h3>
-							<ol id="propsControls" class="navigation subNavigation"></ol>
-						</div>
-					</div>
-					<div id="flowersContent" class="content" style="display:none;">
-						<ul id="flowersContainer"></ul>
-						<div>
-							<h3>Flowers</h3>
-							<ol id="flowersControls" class="navigation subNavigation"></ol>
-						</div>
-					</div>
-					<div id="interiorsContent" class="content" style="display:none;">
-						<ul id="interiorsContainer"></ul>
-						<div>
-							<h3>Interiors</h3>
-							<ol id="interiorsControls" class="navigation subNavigation"></ol>
-						</div>
-					</div>
-					<div id="newsContent" class="content" aria-hidden="true" style="display:none;">
-						<h2>News</h2>
-						<ol role="list" aria-active-descendent="hcalendar-VernissageLink">
-							<li id="hcalendar-Vernissage" class="vevent" role="listitem">
-								<a id="hcalendar-VernissageLink" href="http://www.sfai.edu/page.aspx?page=290" target="_blank" tabindex="0">Vernissage</a>
-								<aside>
-									<span>San Francisco, CA; </span>
-									<abbr class="dtstart" title="2010-05"> May </abbr>, <abbr class="dtend" title="2010-05"> 2010 </abbr>
-								</aside>
-							</li>
-							<li id="hcalendar-CamfedFundraiser" class="vevent" role="listitem">
-								<a id="hcalendar-CamfedFundraiserLink" href="http://us.camfed.org/" target="_blank" tabindex="-1">Camfed Fundraiser</a>
-								<aside>
-									<span>San Francisco, CA; </span>
-									<abbr class="dtstart" title="2010-02"> February </abbr>, <abbr class="dtend" title="2010-02"> 2010 </abbr>
-								</aside>
-							</li>
-							<li id="hcalendar-LandscapeInterrupted" class="vevent" role="listitem">
-								<a id="hcalendar-LandscapeInterruptedLink" href="http://www.culturalpartners.org/landscape.htm" target="_blank" tabindex="-1">Landscape Interrupted</a>
-								<aside>
-									<span class="location">Flagstaff, AZ; </span>
-									<abbr class="dtstart" title="2010-01"> January </abbr>, <abbr class="dtend" title="2010-01"> 2010 </abbr>
-								</aside>
-							</li>
-						</ol>
-					</div>
-					<div id="biographyContent" class="content" aria-hidden="true" style="display:none;">
-						<h2>Biography</h2>
-						<p>
-							An artist, born in Grafton Massachusetts, Krissy Tosi received a BFA in both literature and political science at the University of Vermont in 2004,
-							and completed a Post-Baccalaureat Certificate from the San Francisco Art Institute in 2008. Ms. Tosi was the curator for the Still Lights Gallery,
-							San Francisco Art Institute (2009-2010) and has curated for the Diego Rivera Gallery, San Francisco Art Institute. Ms. Tosi has exhibited in
-							"Born Into This" a group show at the Diego Rivera Gallery, San Francisco Art Institute (2009), as well as, the continuing "MFA show" at the
-							Diego Rivera Gallery (2009), the Swell Gallery (2007), San Francisco Arts Institute and the Still Lights Gallery(2008), San Francisco Art Institute.
-						</p>
-					</div>
-					<div id="contactContent" class="content" aria-hidden="true"  style="display:none;">
-						<h2>Contact</h2>
-						<form id="contactForm" role="form">
-							<fieldset>
-								<legend></legend>
-								<ol>
-									<li>
-										<label for="name">Name</label>
-										<div>
-											<input id="name" name="name" tabindex="8" type="text" required="" autofocus="" placeholder="What's your name?"/>
-										</div>
-									</li>
-									<li>
-										<label for="email">Email</label>
-										<div>
-											<input id="email" name="email" tabindex="9" type="email" required="" placeholder="What's your email address?" pattern="^(?:(?:\S+@)(?:[a-zA-Z0-9]*[-a-zA-Z0-9]*[a-zA-Z0-9])(?:\.[a-zA-Z0-9]*[-a-zA-Z0-9]*[a-zA-Z0-9])*(?:\.[a-zA-Z]{2,6}))$"/>
-										</div>
-									</li>
-									<li>
-										<label for="speak">Content</label>
-										<div>
-											<textarea id="speak" name="speak" tabindex="10" rows="10" cols="30" value="" required="" placeholder="?">
+    <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Krissy Tosi</title>
+        <meta name="author" content="Krissy Tosi">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta http-equiv="cleartype" content="on">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/apple-touch-icon-57x57-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/960/code/css/960.css" />
+        <link rel="stylesheet" type="text/css" href="css/krissytosi.css" />
+        <script src="js/libs/modernizr-2.5.3.min.js"></script>
+    </head>
+    <body>
+        <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+        chromium.org/developers/how-tos/chrome-frame-getting-started -->
+        <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+        <div id="container" class="container_12">
+            <header>
+                <h1 id="banner" role="banner" aria-live="polite" class="grid_3">Krissy Tosi</h1>
+                <nav role="navigation" class="grid_9">
+                    <ul id="nav" role="menubar" class="navigation" style="display:none;">
+                        <li role="menu-item">
+                            <a id="home" class="active" href="javascript:void(0);" tabindex="1">home</a>
+                        </li>
+                        <li role="menu-item">
+                            <a id="portfolio" href="javascript:void(0);" tabindex="2">portfolio</a>
+                        </li>
+                        <li role="menu-item">
+                            <a id="biography" href="javascript:void(0);" tabindex="5">biography</a>
+                        </li>
+                        <li role="menu-item">
+                            <a id="news" href="javascript:void(0);" tabindex="6">news</a>
+                        </li>
+                        <li role="menu-item">
+                            <a id="contact" href="javascript:void(0);" tabindex="7">contact</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav role="navigation" class="grid_9">
+                    <ul id="portfolioMenu" role="menubar" class="navigation subNavigation" style="display:none;" aria-hidden="true">
+                        <li role="menu-item">
+                            <a id="foodMenuItem" href="javascript:void(0);" tabindex="3">Food</a>
+                        </li>
+                        <li role="separator">
+                            |
+                        </li>
+                        <li role="menu-item">
+                            <a id="propsMenuItem" href="javascript:void(0);" tabindex="3">Props</a>
+                        </li>
+                        <li role="separator">
+                            |
+                        </li>
+                        <li role="menu-item">
+                            <a id="flowersMenuItem" href="javascript:void(0);" tabindex="3">Flowers</a>
+                        </li>
+                        <li role="separator">
+                            |
+                        </li>
+                        <li role="menu-item">
+                            <a id="interiorsMenuItem" href="javascript:void(0);" tabindex="3">Interiors</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <div id="body" aria-busy="true">
+                <div id="loading">
+                    <div id="cssSplash" style="display:none;">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                        <div class="bar4"></div>
+                        <div class="bar5"></div>
+                        <div class="bar6"></div>
+                        <div class="bar7"></div>
+                        <div class="bar8"></div>
+                    </div>
+                    <img id="imageSplash" src="" alt="Loading Animation" style="display:none;"/>
+                </div>
+                <div id="main" role="main" class="grid_12" style="display:none;">
+                    <noscript>
+                        <h1>Welcome, noble navigator of the JavaScript-less interwebs</h1>
+                        <p>
+                            If you enable JavaScript, this site will look a little better.
+                        </p>
+                    </noscript>
+                    <div id="homeContent" class="content">
+                        <img id="homePageImage" src="" />
+                    </div>
+                    <div id="foodContent" class="content" style="display:none;">
+                        <ul id="foodContainer"></ul>
+                        <div>
+                            <h3>Food</h3>
+                            <ol id="foodControls" class="navigation subNavigation" style="display:none;"></ol>
+                        </div>
+                    </div>
+                    <div id="propsContent" class="content" style="display:none;">
+                        <ul id="propsContainer"></ul>
+                        <div>
+                            <h3>Props</h3>
+                            <ol id="propsControls" class="navigation subNavigation" style="display:none;"></ol>
+                        </div>
+                    </div>
+                    <div id="flowersContent" class="content" style="display:none;">
+                        <ul id="flowersContainer"></ul>
+                        <div>
+                            <h3>Flowers</h3>
+                            <ol id="flowersControls" class="navigation subNavigation" style="display:none;"></ol>
+                        </div>
+                    </div>
+                    <div id="interiorsContent" class="content" style="display:none;">
+                        <ul id="interiorsContainer"></ul>
+                        <div>
+                            <h3>Interiors</h3>
+                            <ol id="interiorsControls" class="navigation subNavigation" style="display:none;"></ol>
+                        </div>
+                    </div>
+                    <div id="newsContent" class="content" aria-hidden="true" style="display:none;">
+                        <ol role="list" aria-active-descendent="hcalendar-VernissageLink">
+                            <li id="hcalendar-Vernissage" class="vevent" role="listitem">
+                                <a id="hcalendar-VernissageLink" href="http://www.sfai.edu/page.aspx?page=290" target="_blank" tabindex="0">Vernissage</a>
+                                <aside>
+                                    <span>San Francisco, CA; </span>
+                                    <abbr class="dtstart" title="2010-05"> May </abbr>, <abbr class="dtend" title="2010-05"> 2010 </abbr>
+                                </aside>
+                            </li>
+                            <li id="hcalendar-CamfedFundraiser" class="vevent" role="listitem">
+                                <a id="hcalendar-CamfedFundraiserLink" href="http://us.camfed.org/" target="_blank" tabindex="-1">Camfed Fundraiser</a>
+                                <aside>
+                                    <span>San Francisco, CA; </span>
+                                    <abbr class="dtstart" title="2010-02"> February </abbr>, <abbr class="dtend" title="2010-02"> 2010 </abbr>
+                                </aside>
+                            </li>
+                            <li id="hcalendar-LandscapeInterrupted" class="vevent" role="listitem">
+                                <a id="hcalendar-LandscapeInterruptedLink" href="http://www.culturalpartners.org/landscape.htm" target="_blank" tabindex="-1">Landscape Interrupted</a>
+                                <aside>
+                                    <span class="location">Flagstaff, AZ; </span>
+                                    <abbr class="dtstart" title="2010-01"> January </abbr>, <abbr class="dtend" title="2010-01"> 2010 </abbr>
+                                </aside>
+                            </li>
+                        </ol>
+                    </div>
+                    <div id="biographyContent" class="content" aria-hidden="true" style="display:none;">
+                        <p>
+                            An artist, born in Grafton Massachusetts, Krissy Tosi received a BFA in both literature and political science at the University of Vermont in 2004,
+                            and completed a Post-Baccalaureat Certificate from the San Francisco Art Institute in 2008. Ms. Tosi was the curator for the Still Lights Gallery,
+                            San Francisco Art Institute (2009-2010) and has curated for the Diego Rivera Gallery, San Francisco Art Institute. Ms. Tosi has exhibited in
+                            "Born Into This" a group show at the Diego Rivera Gallery, San Francisco Art Institute (2009), as well as, the continuing "MFA show" at the
+                            Diego Rivera Gallery (2009), the Swell Gallery (2007), San Francisco Arts Institute and the Still Lights Gallery(2008), San Francisco Art Institute.
+                        </p>
+                    </div>
+                    <div id="contactContent" class="content container_12" aria-hidden="true" style="display:none;">
+                        <form id="contactForm" role="form" class="grid_6">
+                            <p>
+                                Drop me a line if you want to get in contact ...
+                            </p>
+                            <fieldset>
+                                <legend></legend>
+                                <ol>
+                                    <li>
+                                        <label for="name">Name</label>
+                                        <div>
+                                            <input id="name" name="name" tabindex="8" type="text" required="" autofocus="" placeholder="What's your name?"/>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label for="email">Email</label>
+                                        <div>
+                                            <input id="email" name="email" tabindex="9" type="email" required="" placeholder="What's your email address?" pattern="^(?:(?:\S+@)(?:[a-zA-Z0-9]*[-a-zA-Z0-9]*[a-zA-Z0-9])(?:\.[a-zA-Z0-9]*[-a-zA-Z0-9]*[a-zA-Z0-9])*(?:\.[a-zA-Z]{2,6}))$"/>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label for="speak">Content</label>
+                                        <div>
+                                            <textarea id="speak" name="speak" tabindex="10" rows="10" cols="30" value="" required="" placeholder="What's up?">
                                             </textarea>
-										</div>
-									</li>
-									<li id="submit">
-										<div>
-											<button tabindex="12" role="button">
-												Start over again
-											</button>
-											<button id="submitButton" tabindex="11" role="button">
-												I'm done
-											</button>
-										</div>
-									</li>
-								</ol>
-							</fieldset>
-						</form>
-					</div>
-				</div>
-			</div>
-			<footer id="footer" class="grid_12" style="display:none;"></footer>
-		</div>
-		<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-		<script src="js/libs/underscore/underscore.js"></script>
-		<script src="js/libs/backbone/backbone.js"></script>
-		<!-- scripts concatenated and minified via ant build script-->
-		<script type="text/template" id="photo-template">
-			<img src="<%= src %>" style="display: <%= position != 0 ? 'none' : 'block'%>;" />
-		</script>
-		<script type="text/template" id="photo-page-template">
-			<a href="#" class="<%= active ? 'active' : ''%>"><%= innerHTML %></a>
-		</script>
-		<script src="js/plugins.js"></script>
-		<script src="js/script.js"></script>
-		<!-- end scripts -->
-		<!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
-		mathiasbynens.be/notes/async-analytics-snippet -->
-		<script>
-			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
-			( function(d, t) {
-				var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
-				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
-				s.parentNode.insertBefore(g, s)
-			}(document, 'script'));
+                                        </div>
+                                    </li>
+                                    <li id="submit">
+                                        <div>
+                                            <button tabindex="12" role="button">
+                                                Start over again
+                                            </button>
+                                            <button id="submitButton" tabindex="11" role="button">
+                                                I'm done
+                                            </button>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </form>
+                        <section class="grid_6">
+                            <p>
+                                Other places I'm available online ...
+                            </p>
+                            <p>
+                                I've been blogging for the past two years or so at <a href="http://cottagefarm.blogspot.com/">Cottage Farm</a>.
+                            </p>
+                            <p>
+                                Updates via Twitter: <a href="https://twitter.com/cottagefarm" class="twitter-follow-button" data-show-count="true" data-size="large">Follow @cottagefarm</a>
+                            </p>
+                            <p>
+                                Selected items on sale in Cottage Farm's <a href="http://www.etsy.com/shop/cottagefarm">Etsy</a> store.
+                            </p>
+                            <div class='widget-content'>
+                                <script type='text/javascript' src='http://www.etsy.com/etsy_mini.js'></script>
+                                <script type='text/javascript'>
+                                    new EtsyNameSpace.Mini(7386975, 'shop', 'thumbnail', 4, 4).renderIframe();
 
-		</script>
-	</body>
+                                </script>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <footer id="footer" class="grid_12" style="display:none;"></footer>
+        </div>
+        <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+        <script src="js/libs/underscore/underscore.js"></script>
+        <script src="js/libs/backbone/backbone.js"></script>
+        <!-- scripts concatenated and minified via ant build script-->
+        <script type="text/template" id="photo-template">
+            <img src="<%= src %>" style="display: <%= position != 0 ? 'none' : 'block'%>;" />
+        </script>
+        <script type="text/template" id="photo-page-template">
+            <a href="#" class="<%= active ? 'active' : ''%>"><%= innerHTML %></a>
+        </script>
+        <script src="js/plugins.js"></script>
+        <script src="js/script.js"></script>
+        <!-- end scripts -->
+        <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+        mathiasbynens.be/notes/async-analytics-snippet -->
+        <script>
+            ! function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if(!d.getElementById(id)) {
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//platform.twitter.com/widgets.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }
+            }(document, "script", "twitter-wjs");
+        </script>
+        <script>
+            var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {
+                var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+                g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+                s.parentNode.insertBefore(g, s)
+            }(document, 'script'));
+        </script>
+    </body>
 </html>
