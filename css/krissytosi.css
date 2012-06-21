@@ -1,65 +1,183 @@
 /*
  * Customization for HTML5 Boilerplate
  */
-html, button, input, select, textarea { font-family: Lucida Grande, Arial, Helvetica, sans-serif; color: #333; font-size:0.875em;}
-::-moz-selection { background: #999; color: #fff; text-shadow: none; }
-::selection { background: #999; color: #fff; text-shadow: none; }
-ul, ol { margin: 0; padding: 0; list-style: none;}
-input:invalid, textarea:invalid {background-color: #fff;}
+html, button, input, select, textarea {
+    font-family: Lucida Grande, Arial, Helvetica, sans-serif;
+    color: #333;
+    font-size: 0.875em;
+}
+::-moz-selection {
+    background: #999;
+    color: #fff;
+    text-shadow: none;
+}
+::selection {
+    background: #999;
+    color: #fff;
+    text-shadow: none;
+}
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+input:invalid, textarea:invalid {
+    background-color: #fff;
+}
 /*
  * Colors
- * 
+ *
  * #fff background
  * #eee image border
  * #333 main text
  * #999 selected text
  */
 header {
-    padding:5px 0 65px 0;
+    padding: 5px 0 65px 0;
 }
 img {
-    border:1px solid #eee;
-    max-height:550px;
-    padding:4px;
+    border: 1px solid #eee;
+    max-height: 550px;
+    padding: 4px;
 }
 h1 {
-    margin:0;
+    margin: 0;
 }
 h3 {
-    display:inline;
-    float:left;
-    margin:0 20px 0 0;
+    display: inline;
+    float: left;
+    margin: 0 20px 0 0;
 }
 #portfolioMenu {
-    margin-top:10px;
+    margin-top: 10px;
 }
 .navigation {
-    margin-top:10px;
+    margin-top: 10px;
 }
 .navigation li {
     display: inline;
 }
 .navigation li a {
-    color:#333;
-    padding:10px;
+    color: #333;
+    padding: 10px;
     text-decoration: none;
 }
-.navigation li a.active,
-.navigation li a:hover {
+.navigation li a.active, .navigation li a:hover {
     background: #999;
     color: #fff;
-    text-shadow:1px 1px 0px #666;
+    text-shadow: 1px 1px 0px #666;
 }
 .subNavigation li a {
-    font-size:0.75em;
-    padding:4px;
+    font-size: 0.75em;
+    padding: 4px;
 }
 #homePageImage {
     cursor: pointer;
 }
 input, textarea {
-    margin-bottom:16px;
-    margin-top:4px;
-    padding:4px;
-    width:250px;
+    margin-bottom: 16px;
+    margin-top: 4px;
+    padding: 4px;
+    width: 250px;
+}
+/*
+ * Splash
+ */
+#cssSplash {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    -moz-border-radius: 100px;
+    -moz-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    -webkit-animation-name: rotateThis;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+#cssSplash div {
+    width: 10px;
+    height: 30px;
+    background: #333;
+    position: absolute;
+    top: 35px;
+    left: 45px;
+}
+#cssSplash div {
+    -o-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+}
+#body {
+    display: table;
+    overflow: hidden;
+    margin: 0px auto;
+}
+#loading {
+    display: table-cell;
+    vertical-align: middle;
+}
+.bar1 {
+    -moz-transform: rotate(0deg) translate(0, -40px);
+    -webkit-transform: rotate(0deg) translate(0, -40px);
+    opacity: 0.12;
+}
+.bar2 {
+    -moz-transform: rotate(45deg) translate(0, -40px);
+    -webkit-transform: rotate(45deg) translate(0, -40px);
+    opacity: 0.25;
+}
+.bar3 {
+    -moz-transform: rotate(90deg) translate(0, -40px);
+    -webkit-transform: rotate(90deg) translate(0, -40px);
+    opacity: 0.37;
+}
+.bar4 {
+    -moz-transform: rotate(135deg) translate(0, -40px);
+    -webkit-transform: rotate(135deg) translate(0, -40px);
+    opacity: 0.50;
+}
+.bar5 {
+    -moz-transform: rotate(180deg) translate(0, -40px);
+    -webkit-transform: rotate(180deg) translate(0, -40px);
+    opacity: 0.62;
+}
+.bar6 {
+    -moz-transform: rotate(225deg) translate(0, -40px);
+    -webkit-transform: rotate(225deg) translate(0, -40px);
+    opacity: 0.75;
+}
+.bar7 {
+    -moz-transform: rotate(270deg) translate(0, -40px);
+    -webkit-transform: rotate(270deg) translate(0, -40px);
+    opacity: 0.87;
+}
+.bar8 {
+    -moz-transform: rotate(315deg) translate(0, -40px);
+    -webkit-transform: rotate(315deg) translate(0, -40px);
+    opacity: 1;
+}
+@-webkit-keyframes rotateThis {
+from {
+    -webkit-transform: scale(0.5) rotate(0deg);
+}
+to {
+    -webkit-transform: scale(0.5) rotate(360deg);
+}
+}
+/**
+ * No JavaScript - there's always one.
+ */
+.no-js .main, .no-js .content, noscript, .no-js #biographyContent h2 {
+    display: block !important;
+}
+.no-js #biographyContent p {
+    margin: 10px 0 0 15px;
+}
+noscript {
+    background: #FFFFCC;
+    border: 1px solid #eee;
+    color: #333;
+    padding: 20px;
 }
