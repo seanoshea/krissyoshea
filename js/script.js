@@ -389,7 +389,7 @@ $(function() {
             }
         },
         loadHomePageImage: function() {
-            var img = new Image(), src = this.randomizeStartImage();
+            var img = new Image(), src = this.randomizeStartImage(), homePageImage = $('#homePageImage');
             img.src = src;
             $(img).load(function() {
                 setTimeout(function() {
@@ -397,15 +397,17 @@ $(function() {
                 }, 250);
             }).error(function() {
             }).attr('src', src);
-            $('#homePageImage').attr('src', src);
+            homePageImage.attr('src', src);
+            homePageImage.css('display', 'none');
         },
         fadeSplash: function() {
             $('#loading').fadeOut('fast', function() {
                 $('#main').fadeIn('slow');
                 $('#body').attr('aria-busy', 'false');
                 setTimeout(function() {
-                    $('#nav').fadeIn('slow');
-                    $('#footer').fadeIn('slow');
+                    _.each(['homePageImage', 'nav', 'footer'], function(item, index, array) {
+                        $('#' + item).fadeIn('slow');
+                    });
                 }, 250);
             });
         },
