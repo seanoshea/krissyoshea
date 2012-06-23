@@ -37,6 +37,8 @@ header {
 }
 img {
     border: 1px solid #eee;
+    display: block;
+    margin: 0 auto;
     max-height: 550px;
     padding: 4px;
 }
