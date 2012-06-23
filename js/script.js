@@ -336,7 +336,17 @@ $(function() {
         },
         onFirstGalleryPhotoLoaded: function(id) {
             if (this.get('visible')) {
-                this.get('pageList').setVisible(true);                
+                this.get('pageList').setVisible(true);
+            }
+        },
+        reset: function() {
+            var firstModel;
+            this.set('currentIndex', 0);
+            this.get('photoList').setSelected(1);
+            if (this.get('pageList')) {
+                firstModel = this.get('pageList').models[1];
+                firstModel.setActive(true);
+                this.get('pageList').setActive(firstModel);
             }
         },
         numberOfPhotos: function() {
@@ -417,7 +427,7 @@ $(function() {
         },
         homePageImageClicked: function(evt) {
             window.Router.navigate(this.randomizedPortfolioImage, true);
-            this.navigateToGallery(this.randomizedPortfolioImage, true);
+            this.navigateToGallery(this.randomizedPortfolioImage);
         },
         selectPane: function(id) {
             var idSuffix = 'Content';
@@ -466,18 +476,17 @@ $(function() {
             res.push({index: arr.length + 1, innerHTML: 'Next &rarr;'});
             return res;
         },
-        navigateToGallery: function(id, reset) {
+        navigateToGallery: function(id) {
             if (!window.Application.hasGallery(id)) {
                 window.Application.createGallery(id);
-            } else if (reset) {
-                // go back to the first item in the gallery if the user has requested to reset it
+            } else {
+                // always reset the gallery to the first position.
+                window.Application.gallaries[id].model.reset();
             }
             window.Router.navigate(id, true);
             window.Application.selectPane(id);
             window.Navigation.markActive('portfolio', true);
-            if (window.Application.hasGallery(id)) {
-                window.Application.gallaries[id].model.set('visible', true);
-            }
+            window.Application.gallaries[id].model.set('visible', true);
         },
         determineImageSize: function() {
             // TODO - mobile detection
