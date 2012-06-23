@@ -13,7 +13,7 @@ $(function() {
 
     // navigational elements in the app. Portfolios and main app panes.
     KT.portfolios = ['food', 'props', 'flowers', 'interiors'];
-    KT.panes = ['home', 'biography', 'news', 'contact'];
+    KT.panes = ['biography', 'news', 'contact'];
 
     // some custom events.
     KT.PHOTO_PAGE_VIEW_CLICK = 'PHOTO_PAGE_VIEW_CLICK';
@@ -340,17 +340,14 @@ $(function() {
             }
         },
         reset: function() {
-            var firstModel;
+            var firstModel, pageList = this.get('pageList');
             this.set('currentIndex', 0);
             this.get('photoList').setSelected(1);
-            if (this.get('pageList')) {
-                firstModel = this.get('pageList').models[1];
+            if (pageList) {
+                firstModel = pageList.models[1];
                 firstModel.setActive(true);
-                this.get('pageList').setActive(firstModel);
+                pageList.setActive(firstModel);
             }
-        },
-        numberOfPhotos: function() {
-            
         }
     });
 
@@ -509,6 +506,7 @@ $(function() {
                     }
                 }
                 if (isPortfolioHash) {
+                    this.skipSplash();
                     this.navigateToGallery(hash);
                 } else {
                     // perhaps the user is trying to navigate directly to one of the main panes?
@@ -519,10 +517,14 @@ $(function() {
                         }
                     }
                     if (isMainPaneHash) {
+                        this.skipSplash();
                         window.Navigation.navigationClicked({target: {id: hash}});
                     }
                 }
             }
+        },
+        skipSplash: function() {
+            $('#loading').css('display', 'none');
         },
         toggleShow: function(node, show) {
             if (show) {
