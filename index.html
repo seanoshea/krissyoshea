@@ -229,15 +229,15 @@
         <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-        <script src="js/libs/underscore/underscore.js"></script>
-        <script src="js/libs/backbone/backbone.js"></script>
-        <!-- scripts concatenated and minified via ant build script-->
         <script type="text/template" id="photo-template">
             <img src="<%= src %>" style="display: <%= position != 0 ? 'none' : 'block'%>;" />
         </script>
         <script type="text/template" id="photo-page-template">
             <a href="#" class="<%= active ? 'active' : ''%>"><%= innerHTML %></a>
         </script>
+        <script src="js/libs/underscore/underscore.js"></script>
+        <script src="js/libs/backbone/backbone.js"></script>
+        <!-- scripts concatenated and minified via ant build script-->
         <script src="js/plugins.js"></script>
         <script src="js/script.js"></script>
         <!-- end scripts -->

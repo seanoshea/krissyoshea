@@ -161,7 +161,7 @@ $(function() {
         template: _.template($('#photo-template').html()),
         events: {
             'click img': 'onClick',
-            'dblclick img': 'onDoubleClick',
+            'dblclick img': 'onDoubleClick'
         },
         render: function() {
             $(this.el).html(this.template(this.model.toJSON()));
@@ -273,7 +273,7 @@ $(function() {
         tagName:  'li',
         template: _.template($('#photo-page-template').html()),
         events: {
-            'click a': 'onClick',
+            'click a': 'onClick'
         },
         initialize: function() {
             this.model.bind('change', this.onModelChange, this);
