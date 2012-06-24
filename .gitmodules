@@ -7,3 +7,6 @@
 [submodule "js/libs/underscore"]
 	path = js/libs/underscore
 	url = git://github.com/documentcloud/underscore.git
+[submodule "build"]
+	path = build
+	url = https://github.com/h5bp/ant-build-script.git
