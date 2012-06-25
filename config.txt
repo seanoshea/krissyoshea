@@ -2,3 +2,5 @@
 sudo /usr/sbin/apachectl restart
 /private/etc/apache2/other/kt.conf
 https://developers.google.com/appengine/docs/python/tools/uploadinganapp
+
+ant -Ddir.images=images -Dfile.root.stylesheet=krissytosi.css
