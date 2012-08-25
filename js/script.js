@@ -89,7 +89,7 @@ $(function() {
         togglePortfolioMenu: function(forceHide) {
             var wasOpen = forceHide || this.open;
             if (!forceHide || this.open) {
-                this.el.slideToggle('fast', function() {
+                $(this.el).slideToggle('fast', function() {
                     window.Application.toggleShow($(this), !wasOpen);
                     window.PortfolioNavigation.open = !wasOpen;
                 });
