@@ -6,6 +6,7 @@ from google.appengine.ext import db
 
 import logging
 
+from django.utils import simplejson
 from models import Portfolio
  
 class MainHandler(webapp.RequestHandler):
@@ -15,7 +16,33 @@ class MainHandler(webapp.RequestHandler):
         'url': self.request.uri
     }
     self.response.out.write(template.render("index.html", template_values))
+
+class ApiHandler(webapp.RequestHandler):
  
+  def get(self):
+    # check out the API request
+    version = self.request.get('v')
+    query = self.request.get('q')
+    logging.info('Processing an API request version: %s query: %s', version, query)
+    apiResponse = ''
+    if query == 'portfolios':
+        portfoliosQuery = Portfolio.all()
+        portfolios = portfoliosQuery.count()
+        if portfoliosQuery.count() != 0:
+            apiResponse = simplejson.dumps([p.to_dict() for p in portfoliosQuery.run()])
+        else :
+            apiResponse = self.generateError('There are no portfolios')
+    else :
+        # only portfolios available at this stage - should probably send back some kind of error here
+        apiResponse = self.generateError('Invalid API request')
+    self.response.headers['Content-Type'] = 'application/json;charset=utf-8'
+    self.response.out.write(apiResponse)
+    
+  def generateError(self, error):
+      # TODO - write this error to the response stream.
+      logging.info(error)
+      return error
+
 def main():
 
   # not sure if this is the best place to put the portfolio initialization logic - seems to work fine though
@@ -38,8 +65,8 @@ def main():
       logging.info('Deleting the Portfolios')
       db.delete(query.run())
 
-  application = webapp.WSGIApplication([('/.*', MainHandler)],
-                                       debug=True)
+  # check to see whether the request is trying to hit the api or not
+  application = webapp.WSGIApplication([('/', MainHandler), ('/api', ApiHandler)], debug=True)
   wsgiref.handlers.CGIHandler().run(application)
  
 if __name__ == '__main__':

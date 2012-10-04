@@ -1,18 +1,11 @@
 $(function() {
 
-    // holds details about the photo urls - ideally, this information would be served from an API thus
-    // making the app that little bit more dynamic
     KT = {};
-    KT.food = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg'];
-    KT.props = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg',
-    '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg',
-    '21.jpg', '22.jpg', '23.jpg', '24.jpg', '25.jpg', '26.jpg', '27.jpg', '28.jpg'];
-    KT.flowers = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg',
-    '11.jpg', '12.jpg', '13.jpg'];
-    KT.interiors = ['1.jpg', '2.jpg', '3.jpg'];
+    // some API configuration
+    KT.version = '1.0';
+    KT.apiUrl = 'localhost:8080/';
 
-    // navigational elements in the app. Portfolios and main app panes.
-    KT.portfolios = ['food', 'props', 'flowers', 'interiors'];
+    // navigational elements in the app.
     KT.panes = ['biography', 'news', 'contact'];
 
     // some custom events.
@@ -382,7 +375,6 @@ $(function() {
             this.cssSplash = this.$('#cssSplash');
             this.imageSplash = this.$('#imageSplash');
             this.displaySplash();
-            this.loadHomePageImage();
         },
         render: function() {
 
@@ -454,7 +446,8 @@ $(function() {
             this.gallaries[id] = new window.GalleryView({el: $('#' + id), model: galleryModel});
         },
         randomizeStartImage: function() {
-            this.randomizedPortfolioImage = KT.portfolios[Math.floor(Math.random() * 4)];
+        	var index = Math.floor(Math.random() * 4);
+           	this.randomizedPortfolioImage = KT.portfolios[index];
             return '/images/' + this.randomizedPortfolioImage + '/' + this.determineImageSize() + '/1.jpg';
         },
         generateImageSourcesForPhotoList: function(id) {
@@ -492,36 +485,56 @@ $(function() {
         contactFormSubmitted: function(evt) {
             evt.preventDefault();
         },
-        checkHash: function() {
-            var hash = window.location.hash, isViableHash = hash !== '',
-            isPortfolioHash = false, isMainPaneHash = false;
-            if (isViableHash) {
-                // get rid of the initial pound symbol
-                hash = hash.substring(1);
-                // first check to see if the user is trying to initially navigate to a portfolio page
-                for (var i = 0, l = KT.portfolios.length; i < l; i++) {
-                    if (KT.portfolios[i] === hash) {
-                        isPortfolioHash = true;
-                        break;
-                    }
-                }
-                if (isPortfolioHash) {
-                    this.skipSplash();
-                    this.navigateToGallery(hash);
-                } else {
-                    // perhaps the user is trying to navigate directly to one of the main panes?
-                    for (var k = 0, j = KT.panes.length; k < j; k++) {
-                        if (KT.panes[k] === hash) {
-                            isMainPaneHash = true;
-                            break;
-                        }
-                    }
-                    if (isMainPaneHash) {
-                        this.skipSplash();
-                        window.Navigation.navigationClicked({target: {id: hash}});
-                    }
-                }
-            }
+        start: function() {
+        	// make the API call to retrieve the portfolios before proceeding.
+        	var url = 'http://' + KT.apiUrl + 'api?q=portfolios', portfolio, that = this, portfolioName;
+            $.ajax({url: url})
+            .done(function(data) {
+            	KT.portfolios = [];
+            	for (var index in data) {
+            		portfolio = data[index];
+            		// ensure we're always dealing with lowercase
+            		portfolioName = portfolio.name.toLowerCase();
+            		KT[portfolioName] = [];
+            		for (var i = 0, l = portfolio.numberOfImages; i < l; i++) {
+						KT[portfolioName][i] = i + 1 + '.jpg';
+            		}
+            		KT.portfolios[index] = portfolioName;
+            	}
+            	that.loadHomePageImage();
+				var hash = window.location.hash, isViableHash = hash !== '',
+	            isPortfolioHash = false, isMainPaneHash = false;
+				if (isViableHash) {
+	                // get rid of the initial pound symbol
+	                hash = hash.substring(1);
+	                // first check to see if the user is trying to initially navigate to a portfolio page
+	                for (var i = 0, l = KT.portfolios.length; i < l; i++) {
+	                    if (KT.portfolios[i] === hash) {
+	                        isPortfolioHash = true;
+	                        break;
+	                    }
+	                }
+	                if (isPortfolioHash) {
+	                    this.skipSplash();
+	                    this.navigateToGallery(hash);
+	                } else {
+	                    // perhaps the user is trying to navigate directly to one of the main panes?
+	                    for (var k = 0, j = KT.panes.length; k < j; k++) {
+	                        if (KT.panes[k] === hash) {
+	                            isMainPaneHash = true;
+	                            break;
+	                        }
+	                    }
+	                    if (isMainPaneHash) {
+	                        this.skipSplash();
+	                        window.Navigation.navigationClicked({target: {id: hash}});
+	                    }
+	                }
+	            }
+			})
+			.fail(function(data) { 
+				console.warn('failed to get the portfolios');
+			});
         },
         skipSplash: function() {
             $('#loading').css('display', 'none');
@@ -563,5 +576,5 @@ $(function() {
     Backbone.history.start();
     // only after everything has been initialized do we check to see whether the user is
     // trying to navigate to a specific area in the app.
-    window.Application.checkHash();
+    window.Application.start();
 });
