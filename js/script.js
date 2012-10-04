@@ -366,8 +366,7 @@ $(function() {
         el: $('#container'),
         events: {
             'click #banner': 'homeClicked',
-            'click #homePageImage': 'homePageImageClicked',
-            'submit #contactForm': 'contactFormSubmitted'
+            'click #homePageImage': 'homePageImageClicked'
         },
         gallaries: {},
         randomizedPortfolioImage: {},
@@ -482,9 +481,6 @@ $(function() {
             // TODO - mobile detection
             return 'large';
         },
-        contactFormSubmitted: function(evt) {
-            evt.preventDefault();
-        },
         start: function() {
         	// make the API call to retrieve the portfolios before proceeding.
         	var url = 'http://' + KT.apiUrl + 'api?q=portfolios', portfolio, that = this, portfolioName;
@@ -503,20 +499,21 @@ $(function() {
             	}
             	that.loadHomePageImage();
 				var hash = window.location.hash, isViableHash = hash !== '',
-	            isPortfolioHash = false, isMainPaneHash = false;
+	            isPortfolioHash = false, isMainPaneHash = false, portfolioName;
 				if (isViableHash) {
 	                // get rid of the initial pound symbol
 	                hash = hash.substring(1);
 	                // first check to see if the user is trying to initially navigate to a portfolio page
 	                for (var i = 0, l = KT.portfolios.length; i < l; i++) {
-	                    if (KT.portfolios[i] === hash) {
+	                	portfolioName = KT.portfolios[i].toLowerCase();
+	                    if (portfolioName === hash) {
 	                        isPortfolioHash = true;
 	                        break;
 	                    }
 	                }
 	                if (isPortfolioHash) {
-	                    this.skipSplash();
-	                    this.navigateToGallery(hash);
+	                    that.skipSplash();
+	                    that.navigateToGallery(hash);
 	                } else {
 	                    // perhaps the user is trying to navigate directly to one of the main panes?
 	                    for (var k = 0, j = KT.panes.length; k < j; k++) {
@@ -526,7 +523,7 @@ $(function() {
 	                        }
 	                    }
 	                    if (isMainPaneHash) {
-	                        this.skipSplash();
+	                        that.skipSplash();
 	                        window.Navigation.navigationClicked({target: {id: hash}});
 	                    }
 	                }
