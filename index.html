@@ -15,7 +15,6 @@
         <meta http-equiv="cleartype" content="on">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" type="text/css" href="css/960/code/css/960.css" />
         <link rel="stylesheet" type="text/css" href="css/krissytosi.css" />
         <script src="js/vendor/modernizr-2.6.1.min.js"></script>
     </head>
@@ -188,9 +187,9 @@
         <script type="text/template" id="photo-page-template">
             <a href="#" class="<%= active ? 'active' : ''%>"><%= innerHTML %></a>
         </script>
+		<!-- scripts concatenated and minified via build script -->
         <script src="js/libs/underscore/underscore.js"></script>
         <script src="js/libs/backbone/backbone.js"></script>
-        <!-- scripts concatenated and minified via ant build script-->
         <script src="js/plugins.js"></script>
         <script src="js/script.js"></script>
         <!-- end scripts -->
