@@ -3,7 +3,9 @@ $(function() {
     KT = {};
     // some API configuration
     KT.version = '1.0';
-    KT.apiUrl = 'localhost:8080/';
+    // KT.apiUrl = 'localhost:8080/';
+    // KT.apiUrl = 'krissytosi.com/';
+    KT.apiUrl = 'krissytosi.appspot.com/';
 
     // navigational elements in the app.
     KT.panes = ['biography', 'news', 'contact'];
