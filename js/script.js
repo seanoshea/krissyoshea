@@ -485,10 +485,11 @@ $(function() {
         },
         start: function() {
         	// make the API call to retrieve the portfolios before proceeding.
-        	var url = 'http://' + KT.apiUrl + 'api?q=portfolios', portfolio, that = this, portfolioName;
+        	var url = 'http://' + KT.apiUrl + 'api?q=portfolios', portfolio, that = this, portfolioName, first;
             $.ajax({url: url})
             .done(function(data) {
-            	if (!data.error) {
+            	first = data[0];
+            	if (!first.error) {
 					KT.portfolios = [];
 	            	for (var index in data) {
 	            		portfolio = data[index];
@@ -532,14 +533,15 @@ $(function() {
 		                }
 		            }
 	            } else {
-					that.failedToLoadPortfolios(data.error);
+					that.failedToLoadPortfolios(first);
 	            }
 			})
 			.fail(function(data) {
 				that.failedToLoadPortfolios({error: {description: 'failed to get the portfolios', code: '2'}});
 			});
         },
-        failedToLoadPortfolios: function(error) {
+        failedToLoadPortfolios: function(data) {
+        	var error = data.error;
         	console.warn('Portfolio Load Failure: ', error.description, error.code);
         	this.showError();
         },
