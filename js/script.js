@@ -488,55 +488,67 @@ $(function() {
         	var url = 'http://' + KT.apiUrl + 'api?q=portfolios', portfolio, that = this, portfolioName;
             $.ajax({url: url})
             .done(function(data) {
-            	KT.portfolios = [];
-            	for (var index in data) {
-            		portfolio = data[index];
-            		// ensure we're always dealing with lowercase
-            		portfolioName = portfolio.name.toLowerCase();
-            		KT[portfolioName] = [];
-            		for (var i = 0, l = portfolio.numberOfImages; i < l; i++) {
-						KT[portfolioName][i] = i + 1 + '.jpg';
-            		}
-            		KT.portfolios[index] = portfolioName;
-            	}
-            	that.loadHomePageImage();
-				var hash = window.location.hash, isViableHash = hash !== '',
-	            isPortfolioHash = false, isMainPaneHash = false, portfolioName;
-				if (isViableHash) {
-	                // get rid of the initial pound symbol
-	                hash = hash.substring(1);
-	                // first check to see if the user is trying to initially navigate to a portfolio page
-	                for (var i = 0, l = KT.portfolios.length; i < l; i++) {
-	                	portfolioName = KT.portfolios[i].toLowerCase();
-	                    if (portfolioName === hash) {
-	                        isPortfolioHash = true;
-	                        break;
-	                    }
-	                }
-	                if (isPortfolioHash) {
-	                    that.skipSplash();
-	                    that.navigateToGallery(hash);
-	                } else {
-	                    // perhaps the user is trying to navigate directly to one of the main panes?
-	                    for (var k = 0, j = KT.panes.length; k < j; k++) {
-	                        if (KT.panes[k] === hash) {
-	                            isMainPaneHash = true;
-	                            break;
-	                        }
-	                    }
-	                    if (isMainPaneHash) {
-	                        that.skipSplash();
-	                        window.Navigation.navigationClicked({target: {id: hash}});
-	                    }
-	                }
+            	if (!data.error) {
+					KT.portfolios = [];
+	            	for (var index in data) {
+	            		portfolio = data[index];
+	            		// ensure we're always dealing with lowercase
+	            		portfolioName = portfolio.name.toLowerCase();
+	            		KT[portfolioName] = [];
+	            		for (var i = 0, l = portfolio.numberOfImages; i < l; i++) {
+							KT[portfolioName][i] = i + 1 + '.jpg';
+	            		}
+	            		KT.portfolios[index] = portfolioName;
+	            	}
+	            	that.loadHomePageImage();
+					var hash = window.location.hash, isViableHash = hash !== '',
+		            isPortfolioHash = false, isMainPaneHash = false, portfolioName;
+					if (isViableHash) {
+		                // get rid of the initial pound symbol
+		                hash = hash.substring(1);
+		                // first check to see if the user is trying to initially navigate to a portfolio page
+		                for (var i = 0, l = KT.portfolios.length; i < l; i++) {
+		                	portfolioName = KT.portfolios[i].toLowerCase();
+		                    if (portfolioName === hash) {
+		                        isPortfolioHash = true;
+		                        break;
+		                    }
+		                }
+		                if (isPortfolioHash) {
+		                    that.skipSplash();
+		                    that.navigateToGallery(hash);
+		                } else {
+		                    // perhaps the user is trying to navigate directly to one of the main panes?
+		                    for (var k = 0, j = KT.panes.length; k < j; k++) {
+		                        if (KT.panes[k] === hash) {
+		                            isMainPaneHash = true;
+		                            break;
+		                        }
+		                    }
+		                    if (isMainPaneHash) {
+		                        that.skipSplash();
+		                        window.Navigation.navigationClicked({target: {id: hash}});
+		                    }
+		                }
+		            }
+	            } else {
+					that.failedToLoadPortfolios(data.error);
 	            }
 			})
-			.fail(function(data) { 
-				console.warn('failed to get the portfolios');
+			.fail(function(data) {
+				that.failedToLoadPortfolios({error: {description: 'failed to get the portfolios', code: '2'}});
 			});
         },
+        failedToLoadPortfolios: function(error) {
+        	console.warn('Portfolio Load Failure: ', error.description, error.code);
+        	this.showError();
+        },
         skipSplash: function() {
-            $('#loading').css('display', 'none');
+            this.toggleShow($('#loading'));
+        },
+        showError: function() {
+        	this.toggleShow($('#loading'));
+        	this.toggleShow($('#error'), true);
         },
         toggleShow: function(node, show) {
             if (show) {
