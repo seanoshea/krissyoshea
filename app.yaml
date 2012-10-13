@@ -1,7 +1,12 @@
 application: krissytosi
 version: 10
-runtime: python
+runtime: python27
 api_version: 1
+threadsafe: true
+
+libraries:
+- name: django
+  version: latest
 
 handlers:
 - url: /css
@@ -14,4 +19,4 @@ handlers:
   static_dir: js
 
 - url: /.*
-  script: main.py
+  script: main.app
