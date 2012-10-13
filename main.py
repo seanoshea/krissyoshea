@@ -61,6 +61,6 @@ class ApiHandler(webapp2.RequestHandler):
     
   def generateError(self, error, code):
       logging.info(error)
-      return simplejson.dumps({'error': {'code': code, 'description': error}})
+      return simplejson.dumps([{'error': {'code': code, 'description': error}}])
 
 app = webapp2.WSGIApplication([('/', MainHandler), ('/api', ApiHandler)], debug=True)
