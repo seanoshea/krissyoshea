@@ -1,6 +1,10 @@
 TODO:
 Browser support, mobile edition (css media queries and 960)
+requirejs - is it necessary right now?
 Need moar images. Updated bio too.
-HTML 5 form for the contact form.
-Build + performance.
-JSLint/JSHint & CSSLint, fixjsstyle, dom monster
+fixjsstyle, dom monster.
+Settle on color scheme.
+Settle on overall layout.
+Updated bio.
+Updated news.
+Icons needed (including favicon).
