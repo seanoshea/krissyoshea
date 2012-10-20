@@ -40,7 +40,7 @@ $(function() {
         }
     });
 
-    window.NavigationList = new NavigationElementList;
+    window.NavigationList = new NavigationElementList();
 
     window.NavigationView = Backbone.View.extend({
         el: $('#nav'),
@@ -59,7 +59,11 @@ $(function() {
         },
         markActive: function(id, skip) {
             $('li a', this.el).each(function(index, item, array) {
-                item.id === id ? $(item).addClass('active') : $(item).removeClass('active');
+                if (item.id === id) {
+                    $(item).addClass('active');
+                } else {
+                    $(item).removeClass('active');
+                }
             });
             if (!skip) {
                 window.Application.selectPane(id);
@@ -125,14 +129,14 @@ $(function() {
             this.name = id;
             _.each(this.models, function(model, key, list) {
                 // the first photo in the list should always be marked as active.
-                if (key == 0) {
+                if (key === 0) {
                     model.set('active', true);
                 }
                 var view = new PhotoView({model: model});
                 this.$('#' + id + 'Container').append(view.render().el);
             });
             $('#' + id + 'Container img').each(function(index, item) {
-                if (index == 0) {
+                if (index === 0) {
                     item.onload = function() {
                         that.trigger(KT.FIRST_GALLERY_PHOTO_LOADED, [id]);
                     };
@@ -146,7 +150,7 @@ $(function() {
         },
         setSelected: function(index) {
             _.each(this.models, function(model, key, list) {
-                model.setActive(key + 1 == index);
+                model.setActive(key + 1 === index);
             });
         }
     });
@@ -242,7 +246,7 @@ $(function() {
                     indexClicked = this.currentIndex + 1;
                 }
             } else {
-                if (this.currentIndex == 1) {
+                if (this.currentIndex === 1) {
                     indexClicked = this.models.length -2;
                 } else {
                     indexClicked = this.currentIndex - 1;
@@ -289,7 +293,11 @@ $(function() {
         },
         setActive: function(active) {
             if (!this.isPreviousNextButton()) {
-                active ? $('a', $(this.el)).addClass('active') : $('a', $(this.el)).removeClass('active');
+                if (active) {
+                    $('a', $(this.el)).addClass('active');
+                } else {
+                    $('a', $(this.el)).removeClass('active');
+                }
             }
         },
         onModelChange: function() {
@@ -353,9 +361,9 @@ $(function() {
         },
         onKeyDown: function(evt) {
             if (this.model.get('visible')) {
-                if (evt.keyCode == 37) {
+                if (evt.keyCode === 37) {
                     this.model.leftClicked();
-                } else if (evt.keyCode == 39) {
+                } else if (evt.keyCode === 39) {
                     this.model.rightClicked();
                 }
             }
@@ -447,8 +455,8 @@ $(function() {
             this.gallaries[id] = new window.GalleryView({el: $('#' + id), model: galleryModel});
         },
         randomizeStartImage: function() {
-        	var index = Math.floor(Math.random() * 4);
-           	this.randomizedPortfolioImage = KT.portfolios[index];
+            var index = Math.floor(Math.random() * 4);
+            this.randomizedPortfolioImage = KT.portfolios[index];
             return '/images/' + this.randomizedPortfolioImage + '/' + this.determineImageSize() + '/1.jpg';
         },
         generateImageSourcesForPhotoList: function(id) {
@@ -484,73 +492,75 @@ $(function() {
             return 'large';
         },
         start: function() {
-        	// make the API call to retrieve the portfolios before proceeding.
-        	var url = 'http://' + KT.apiUrl + 'api?q=portfolios', portfolio, that = this, portfolioName, first;
+            // make the API call to retrieve the portfolios before proceeding.
+            var url = 'http://' + KT.apiUrl + 'api?q=portfolios', portfolio, that = this, portfolioName, first;
             $.ajax({url: url})
             .done(function(data) {
-            	first = data[0];
-            	if (!first.error) {
-					KT.portfolios = [];
-	            	for (var index in data) {
-	            		portfolio = data[index];
-	            		// ensure we're always dealing with lowercase
-	            		portfolioName = portfolio.name.toLowerCase();
-	            		KT[portfolioName] = [];
-	            		for (var i = 0, l = portfolio.numberOfImages; i < l; i++) {
-							KT[portfolioName][i] = i + 1 + '.jpg';
-	            		}
-	            		KT.portfolios[index] = portfolioName;
-	            	}
-	            	that.loadHomePageImage();
-					var hash = window.location.hash, isViableHash = hash !== '',
-		            isPortfolioHash = false, isMainPaneHash = false, portfolioName;
-					if (isViableHash) {
-		                // get rid of the initial pound symbol
-		                hash = hash.substring(1);
-		                // first check to see if the user is trying to initially navigate to a portfolio page
-		                for (var i = 0, l = KT.portfolios.length; i < l; i++) {
-		                	portfolioName = KT.portfolios[i].toLowerCase();
-		                    if (portfolioName === hash) {
-		                        isPortfolioHash = true;
-		                        break;
-		                    }
-		                }
-		                if (isPortfolioHash) {
-		                    that.skipSplash();
-		                    that.navigateToGallery(hash);
-		                } else {
-		                    // perhaps the user is trying to navigate directly to one of the main panes?
-		                    for (var k = 0, j = KT.panes.length; k < j; k++) {
-		                        if (KT.panes[k] === hash) {
-		                            isMainPaneHash = true;
-		                            break;
-		                        }
-		                    }
-		                    if (isMainPaneHash) {
-		                        that.skipSplash();
-		                        window.Navigation.navigationClicked({target: {id: hash}});
-		                    }
-		                }
-		            }
-	            } else {
-					that.failedToLoadPortfolios(first);
-	            }
-			})
-			.fail(function(data) {
-				that.failedToLoadPortfolios({error: {description: 'failed to get the portfolios', code: '2'}});
-			});
+                var hash = window.location.hash, isViableHash = hash !== '', isPortfolioHash = false, isMainPaneHash = false;
+                first = data[0];
+                if (!first.error) {
+                    KT.portfolios = [];
+                    for (var index in data) {
+                        // TODO - hasDefinedProperty/
+                        if (1 === 1) {
+                            portfolio = data[index];
+                            // ensure we're always dealing with lowercase
+                            portfolioName = portfolio.name.toLowerCase();
+                            KT[portfolioName] = [];
+                            for (var i = 0, l = portfolio.numberOfImages; i < l; i++) {
+                                KT[portfolioName][i] = i + 1 + '.jpg';
+                            }
+                            KT.portfolios[index] = portfolioName;
+                        }
+                    }
+                    that.loadHomePageImage();
+                    if (isViableHash) {
+                        // get rid of the initial pound symbol
+                        hash = hash.substring(1);
+                        // first check to see if the user is trying to initially navigate to a portfolio page
+                        for (var j = 0, k = KT.portfolios.length; j < k; j++) {
+                            portfolioName = KT.portfolios[j].toLowerCase();
+                            if (portfolioName === hash) {
+                               isPortfolioHash = true;
+                               break;
+                            }
+                        }
+                        if (isPortfolioHash) {
+                            that.skipSplash();
+                            that.navigateToGallery(hash);
+                        } else {
+                            // perhaps the user is trying to navigate directly to one of the main panes?
+                            for (var m = 0, n = KT.panes.length; m < n; m++) {
+                                if (KT.panes[m] === hash) {
+                                    isMainPaneHash = true;
+                                    break;
+                                }
+                            }
+                            if (isMainPaneHash) {
+                                that.skipSplash();
+                                window.Navigation.navigationClicked({target: {id: hash}});
+                            }
+                        }
+                    }
+                } else {
+                    that.failedToLoadPortfolios(first);
+                }
+            })
+            .fail(function(data) {
+                that.failedToLoadPortfolios({error: {description: 'failed to get the portfolios', code: '2'}});
+            });
         },
         failedToLoadPortfolios: function(data) {
-        	var error = data.error;
-        	console.warn('Portfolio Load Failure: ', error.description, error.code);
-        	this.showError();
+            var error = data.error;
+            console.warn('Portfolio Load Failure: ', error.description, error.code);
+            this.showError();
         },
         skipSplash: function() {
             this.toggleShow($('#loading'));
         },
         showError: function() {
-        	this.toggleShow($('#loading'));
-        	this.toggleShow($('#error'), true);
+            this.toggleShow($('#loading'));
+            this.toggleShow($('#error'), true);
         },
         toggleShow: function(node, show) {
             if (show) {
@@ -562,7 +572,7 @@ $(function() {
             }
         }
     });
-    window.Application = new ApplicationView;
+    window.Application = new ApplicationView();
     window.ApplicationRouter = Backbone.Router.extend({
         routes: {
             'home': 'home',
@@ -583,9 +593,9 @@ $(function() {
 
         }
     });
-    window.Router = new ApplicationRouter;
-    window.Navigation = new NavigationView;
-    window.PortfolioNavigation = new PortfolioNavigationView;
+    window.Router = new ApplicationRouter();
+    window.Navigation = new NavigationView();
+    window.PortfolioNavigation = new PortfolioNavigationView();
     Backbone.history.start();
     // only after everything has been initialized do we check to see whether the user is
     // trying to navigate to a specific area in the app.

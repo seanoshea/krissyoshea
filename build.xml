@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="KrissyTosi-Build" default="kt-build">
+
+    <!-- Bring in the boilerplate build file -->
+    <import file="build/build.xml" />
+
+    <!-- ===========================================    -->
+    <!-- HELP                                           -->
+    <!-- ===========================================    -->
+    <target name="help" description="Runs help">
+        <echo message="" />
+        <echo message="KrissyTosi-Build file. This is a very thin wrapper on the html 5 boilerplate build" />
+        <echo message="" />
+        <echo message="-----------------------------------" />
+        <echo message="" />
+        <echo message="Available targets are:" />
+        <echo message="" />
+        <echo message="-----------------------------------" />
+        <echo message="" />
+        <echo message="kt-build         --> Run the build" />
+        <echo message="kt-zip           --> Zip up the publish directory" />
+        <echo message="" />
+    </target>
+
+    <var name="dir.images" value="images" />
+    <var name="file.root.stylesheet" value="krissytosi.css" />
+
+    <!-- ===========================================    -->
+    <!-- KT-BUILD                                       -->
+    <!-- ===========================================    -->
+    <target name="kt-build" description="Runs the build">
+        <echo>*** Building the project for deployment ***</echo>
+        <antcall target="build" />
+        <!-- Clean out all the other unnecessary directories -->
+        <delete dir="intermediate" />
+        <delete dir="publish/css/960" />
+        <delete dir="publish/js/libs" />
+    </target>
+
+    <!-- ===========================================    -->
+    <!-- KT-ZIP                                         -->
+    <!-- ===========================================    -->
+    <target name="kt-zip" description="Zips up the publish directory">
+        <echo>*** Zipping up the publish directory ***</echo>
+        <zip destfile="publish.tar.gz">
+            <zipfileset dir="publish" />
+        </zip>
+    </target>
+
+</project>

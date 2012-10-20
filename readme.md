@@ -1,1 +1,1 @@
-### Simply photography, prop styling and floral website for lady Tosi.
+### Simple photography, prop styling and floral design website.
