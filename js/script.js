@@ -3,9 +3,9 @@ $(function() {
     KT = {};
     // some API configuration
     KT.version = '1.0';
-    // KT.apiUrl = 'localhost:8080/';
+    KT.apiUrl = 'localhost:8080/';
     // KT.apiUrl = 'krissytosi.com/';
-    KT.apiUrl = 'krissytosi.appspot.com/';
+    // KT.apiUrl = 'krissytosi.appspot.com/';
 
     // navigational elements in the app.
     KT.panes = ['biography', 'news', 'contact'];
@@ -501,8 +501,7 @@ $(function() {
                 if (!first.error) {
                     KT.portfolios = [];
                     for (var index in data) {
-                        // TODO - hasDefinedProperty/
-                        if (1 === 1) {
+                        if (data.hasOwnProperty(index)) {
                             portfolio = data[index];
                             // ensure we're always dealing with lowercase
                             portfolioName = portfolio.name.toLowerCase();
