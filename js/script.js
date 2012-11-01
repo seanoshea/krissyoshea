@@ -8,7 +8,7 @@ $(function() {
     // KT.apiUrl = 'krissytosi.appspot.com/';
 
     // navigational elements in the app.
-    KT.panes = ['biography', 'news', 'contact'];
+    KT.panes = ['store', 'biography', 'news', 'contact'];
 
     // some custom events.
     KT.PHOTO_PAGE_VIEW_CLICK = 'PHOTO_PAGE_VIEW_CLICK';
@@ -575,6 +575,7 @@ $(function() {
     window.ApplicationRouter = Backbone.Router.extend({
         routes: {
             'home': 'home',
+            'store': 'store',
             'biography': 'biography',
             'news': 'news',
             'contact':'contact'
