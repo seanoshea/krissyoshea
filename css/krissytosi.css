@@ -3,7 +3,7 @@
  * Customization for HTML5 Boilerplate
  */
 html, button, input, select, textarea {
-    font-family: Lucida Grande, Arial, Helvetica, sans-serif;
+    font-family:"museo-slab", Lucida Grande, Arial, Helvetica, sans-serif;
     color: #333;
     font-size: 0.875em;
 }
