@@ -2,10 +2,8 @@ $(function() {
 
     KT = {};
     // some API configuration
-    KT.version = '1.0';
-    KT.apiUrl = 'localhost:8080/';
-    // KT.apiUrl = 'krissytosi.com/';
-    // KT.apiUrl = 'krissytosi.appspot.com/';
+    KT.apiKey = '3426649638b25fe317be122d3fbbc1b1';
+    KT.userId = '48071389@N07';
 
     // navigational elements in the app.
     KT.panes = ['store', 'biography', 'news', 'contact'];
@@ -52,9 +50,9 @@ $(function() {
             if (id !== 'portfolio') {
                 window.Router.navigate(id, true);
                 this.markActive(id);
-                this.togglePortfolioMenu(true);
+                this.togglePhotoSetMenu(true);
             } else {
-                this.togglePortfolioMenu();
+                this.togglePhotoSetMenu();
             }
         },
         markActive: function(id, skip) {
@@ -69,12 +67,12 @@ $(function() {
                 window.Application.selectPane(id);
             }
         },
-        togglePortfolioMenu: function(forceHide) {
-            window.PortfolioNavigation.togglePortfolioMenu(forceHide);
+        togglePhotoSetMenu: function(forceHide) {
+            window.PhotoSetNavigation.togglePhotoSetMenu(forceHide);
         }
     });
 
-    window.PortfolioNavigationView = Backbone.View.extend({
+    window.PhotoSetNavigationView = Backbone.View.extend({
         el: $('#portfolioMenu'),
         open: false,
         events: {
@@ -83,14 +81,14 @@ $(function() {
         navigationClicked: function(evt) {
             var id = evt.target.id.replace(/MenuItem/, '');
             window.Application.navigateToGallery(id);
-            this.togglePortfolioMenu(true);
+            this.togglePhotoSetMenu(true);
         },
-        togglePortfolioMenu: function(forceHide) {
+        togglePhotoSetMenu: function(forceHide) {
             var wasOpen = forceHide || this.open;
             if (!forceHide || this.open) {
                 $(this.el).slideToggle('fast', function() {
                     window.Application.toggleShow($(this), !wasOpen);
-                    window.PortfolioNavigation.open = !wasOpen;
+                    window.PhotoSetNavigation.open = !wasOpen;
                 });
             }
         }
@@ -379,7 +377,7 @@ $(function() {
             'click #homePageImage': 'homePageImageClicked'
         },
         gallaries: {},
-        randomizedPortfolioImage: {},
+        randomizedPhotoSetImage: {},
         initialize: function() {
             this.cssSplash = this.$('#cssSplash');
             this.imageSplash = this.$('#imageSplash');
@@ -424,8 +422,8 @@ $(function() {
             this.selectPane('home');
         },
         homePageImageClicked: function(evt) {
-            window.Router.navigate(this.randomizedPortfolioImage, true);
-            this.navigateToGallery(this.randomizedPortfolioImage);
+            window.Router.navigate(this.randomizedPhotoSetImage, true);
+            this.navigateToGallery(this.randomizedPhotoSetImage);
         },
         selectPane: function(id) {
             var idSuffix = 'Content';
@@ -455,9 +453,28 @@ $(function() {
             this.gallaries[id] = new window.GalleryView({el: $('#' + id), model: galleryModel});
         },
         randomizeStartImage: function() {
-            var index = Math.floor(Math.random() * 4);
-            this.randomizedPortfolioImage = KT.portfolios[index];
-            return '/images/' + this.randomizedPortfolioImage + '/' + this.determineImageSize() + '/1.jpg';
+            var index = Math.floor(Math.random() * 4), url, count = 0, that = this;
+            _.each(KT.photoSets, function(model, key, list) {
+                var photoSetIdentifier;
+                if (count === index) {
+                    // check to see which one is the primary photo
+                    photoSetIdentifier = key;
+                    _.each(KT.photoSets[key].photoUrls, function(model, key, list) {
+                        if (parseInt(model.isprimary, 10) === 1) {
+                            url = model[that.determineImageSize()];
+                        }
+                    });
+                    // just be sure
+                    if (!url && key) {
+                        url = KT.photoSets[key].photoUrls[0][that.determineImageSize()];
+                    } else {
+                        // TODO
+                    }
+                }
+                count++;
+            });
+            this.randomizedPhotoSetImage = url;
+            return this.randomizedPhotoSetImage;
         },
         generateImageSourcesForPhotoList: function(id) {
             var arr = KT[id], determineImageSize = this.determineImageSize;
@@ -489,67 +506,86 @@ $(function() {
         },
         determineImageSize: function() {
             // TODO - mobile detection
-            return 'large';
+            return 'url_m';
+        },
+        checkAreAllPhotoSetUrlsLoaded: function() {
+            var numberOfPhotoSets = _.size(KT.photoSets), count = 0,
+            hash = window.location.hash, isViableHash = hash !== '', isPhotoSetHash = false, isMainPaneHash = false;
+            for (var photoset_id in KT.photoSets) {
+                if (KT.photoSets[photoset_id].photoUrls) {
+                    count++;
+                }
+            }
+            if (count === numberOfPhotoSets) {
+                this.loadHomePageImage();
+                if (isViableHash) {
+                    // get rid of the initial pound symbol
+                    hash = hash.substring(1);
+                    // first check to see if the user is trying to initially navigate to a photo set page
+                    for (var j = 0, k = KT.photoSets.length; j < k; j++) {
+                        photoSetName = KT.photoSets[j].toLowerCase();
+                        if (photoSetName === hash) {
+                           isPhotoSetHash = true;
+                           break;
+                        }
+                    }
+                    if (isPhotoSetHash) {
+                        this.skipSplash();
+                        this.navigateToGallery(hash);
+                    } else {
+                        // perhaps the user is trying to navigate directly to one of the main panes?
+                        for (var m = 0, n = KT.panes.length; m < n; m++) {
+                            if (KT.panes[m] === hash) {
+                                isMainPaneHash = true;
+                                break;
+                            }
+                        }
+                        if (isMainPaneHash) {
+                            this.skipSplash();
+                            window.Navigation.navigationClicked({target: {id: hash}});
+                        }
+                    }
+                }
+            }
+        },
+        loadPhotoSetPhotos: function() {
+            var that = this;
+            for (var photoset_id in KT.photoSets) {
+                $.getJSON('http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=' + photoset_id + '&api_key=' + KT.apiKey + '&jsoncallback=?',
+                    { format: 'json' },
+                    function(data) {
+                        KT.photoSets[data.photoset.id].photoUrls = data.photoset.photo;
+                        that.checkAreAllPhotoSetUrlsLoaded();
+                    }
+                );
+            }
         },
         start: function() {
+            var that = this, photoSetName;
             // make the API call to retrieve the portfolios before proceeding.
-            var url = 'http://' + KT.apiUrl + 'api?q=portfolios', portfolio, that = this, portfolioName, first;
-            $.ajax({url: url})
-            .done(function(data) {
-                var hash = window.location.hash, isViableHash = hash !== '', isPortfolioHash = false, isMainPaneHash = false;
-                first = data[0];
-                if (!first.error) {
-                    KT.portfolios = [];
-                    for (var index in data) {
-                        if (data.hasOwnProperty(index)) {
-                            portfolio = data[index];
-                            // ensure we're always dealing with lowercase
-                            portfolioName = portfolio.name.toLowerCase();
-                            KT[portfolioName] = [];
-                            for (var i = 0, l = portfolio.numberOfImages; i < l; i++) {
-                                KT[portfolioName][i] = i + 1 + '.jpg';
+            $.getJSON('http://api.flickr.com/services/rest/?method=flickr.photosets.getList&user_id=' + KT.userId + '&api_key=' + KT.apiKey + '&jsoncallback=?',
+                { format: 'json' },
+                function(data) {
+                    var photoSet;
+                    if (data.photosets && data.photosets.photoset) {
+                        KT.photoSets = {};
+                        data = data.photosets.photoset;
+                        for (var index in data) {
+                            if (data.hasOwnProperty(index)) {
+                                photoSet = data[index];
+                                KT.photoSets[photoSet.id] = photoSet;
                             }
-                            KT.portfolios[index] = portfolioName;
                         }
+                        that.loadPhotoSetPhotos();
+                    } else {
+                        that.failedToLoadPhotoSetPhotos({error: {description: 'failed to get the portfolios', code: '2'}});
                     }
-                    that.loadHomePageImage();
-                    if (isViableHash) {
-                        // get rid of the initial pound symbol
-                        hash = hash.substring(1);
-                        // first check to see if the user is trying to initially navigate to a portfolio page
-                        for (var j = 0, k = KT.portfolios.length; j < k; j++) {
-                            portfolioName = KT.portfolios[j].toLowerCase();
-                            if (portfolioName === hash) {
-                               isPortfolioHash = true;
-                               break;
-                            }
-                        }
-                        if (isPortfolioHash) {
-                            that.skipSplash();
-                            that.navigateToGallery(hash);
-                        } else {
-                            // perhaps the user is trying to navigate directly to one of the main panes?
-                            for (var m = 0, n = KT.panes.length; m < n; m++) {
-                                if (KT.panes[m] === hash) {
-                                    isMainPaneHash = true;
-                                    break;
-                                }
-                            }
-                            if (isMainPaneHash) {
-                                that.skipSplash();
-                                window.Navigation.navigationClicked({target: {id: hash}});
-                            }
-                        }
-                    }
-                } else {
-                    that.failedToLoadPortfolios(first);
                 }
-            })
-            .fail(function(data) {
-                that.failedToLoadPortfolios({error: {description: 'failed to get the portfolios', code: '2'}});
+            ).error(function(data) {
+                that.failedToLoadPhotoSetPhotos({error: {description: 'failed to get the portfolios', code: '2'}});
             });
         },
-        failedToLoadPortfolios: function(data) {
+        failedToLoadPhotoSetPhotos: function(data) {
             var error = data.error;
             console.warn('Portfolio Load Failure: ', error.description, error.code);
             this.showError();
@@ -595,7 +631,7 @@ $(function() {
     });
     window.Router = new ApplicationRouter();
     window.Navigation = new NavigationView();
-    window.PortfolioNavigation = new PortfolioNavigationView();
+    window.PhotoSetNavigation = new PhotoSetNavigationView();
     Backbone.history.start();
     // only after everything has been initialized do we check to see whether the user is
     // trying to navigate to a specific area in the app.
