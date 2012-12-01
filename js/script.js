@@ -47,7 +47,6 @@ $(function() {
         },
         navigationClicked: function(evt) {
             var id = evt.target.id;
-            console.warn('id ', id);
             if (id !== 'photoSets') {
                 window.Router.navigate(id, true);
                 this.markActive(id);
@@ -73,11 +72,40 @@ $(function() {
         }
     });
 
+    window.PhotoSetNavigationModel = Backbone.Model.extend({
+        defaults: function() {
+            return {
+                name: ''
+            };
+        }
+    });
+
+    window.PhotoSetNavigationList = Backbone.Collection.extend({
+        model: PhotoSetNavigationModel,
+        createPhotoSets: function() {
+            _.each(this.models, function(model, key, list) {
+                var view = new PhotoSetNavigationView({model: model});
+                this.$('#photoSetMenu').append(view.render().el);
+            });
+        },
+        navigationClicked: function(page) {
+            window.Router.navigate(page, true);
+        },
+        homeClicked: function(evt) {
+            this.navigationClicked('home');
+        }
+    });
+
     window.PhotoSetNavigationView = Backbone.View.extend({
-        el: $('#photoSetMenu'),
+        tagName: 'li',
         open: false,
         events: {
             'click a': 'navigationClicked'
+        },
+        template: _.template($('#photo-set-template').html()),
+        render: function() {
+            $(this.el).html(this.template(this.model.toJSON()));
+            return this;
         },
         navigationClicked: function(evt) {
             var id = evt.target.id.replace(/MenuItem/, '');
@@ -85,10 +113,10 @@ $(function() {
             this.togglePhotoSetMenu(true);
         },
         togglePhotoSetMenu: function(forceHide) {
-            var wasOpen = forceHide || this.open;
+            var wasOpen = forceHide || this.open, node = $('#photoSetMenu');
             if (!forceHide || this.open) {
-                $(this.el).slideToggle('fast', function() {
-                    window.Application.toggleShow($(this), !wasOpen);
+                node.slideToggle('fast', function() {
+                    window.Application.toggleShow(node, !wasOpen);
                     window.PhotoSetNavigation.open = !wasOpen;
                 });
             }
@@ -510,15 +538,20 @@ $(function() {
             return 'url_m';
         },
         checkAreAllPhotoSetUrlsLoaded: function() {
-            var numberOfPhotoSets = _.size(KT.photoSets), count = 0,
+            var numberOfPhotoSets = _.size(KT.photoSets), count = 0, models = [], model;
             hash = window.location.hash, isViableHash = hash !== '', isPhotoSetHash = false, isMainPaneHash = false;
             for (var photoset_id in KT.photoSets) {
-                if (KT.photoSets[photoset_id].photoUrls) {
+                model = KT.photoSets[photoset_id];
+                if (model.photoUrls) {
+                    models.push({name: model.title._content});
                     count++;
                 }
             }
             if (count === numberOfPhotoSets) {
                 this.loadHomePageImage();
+                console.warn('ass ', KT.photoSets)
+                var photoList = new window.PhotoSetNavigationList(models);
+                photoList.createPhotoSets();
                 if (isViableHash) {
                     // get rid of the initial pound symbol
                     hash = hash.substring(1);

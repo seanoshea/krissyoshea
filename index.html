@@ -77,27 +77,6 @@
                 </nav>
                 <nav role="navigation" class="grid_9">
                     <ul id="photoSetMenu" role="menubar" class="navigation subNavigation" style="display:none;" aria-hidden="true">
-                        <li role="menu-item">
-                            <a id="foodMenuItem" href="javascript:void(0);" tabindex="3">Food</a>
-                        </li>
-                        <li role="separator">
-                            |
-                        </li>
-                        <li role="menu-item">
-                            <a id="propsMenuItem" href="javascript:void(0);" tabindex="3">Props</a>
-                        </li>
-                        <li role="separator">
-                            |
-                        </li>
-                        <li role="menu-item">
-                            <a id="flowersMenuItem" href="javascript:void(0);" tabindex="3">Flowers</a>
-                        </li>
-                        <li role="separator">
-                            |
-                        </li>
-                        <li role="menu-item">
-                            <a id="interiorsMenuItem" href="javascript:void(0);" tabindex="3">Interiors</a>
-                        </li>
                     </ul>
                 </nav>
             </header>
@@ -224,6 +203,14 @@
         </script>
         <script type="text/template" id="photo-page-template">
             <a href="#" class="<%= active ? 'active' : ''%>"><%= innerHTML %></a>
+        </script>
+        <script type="text/template" id="photo-set-template">
+            <div role="menu-item">
+                <a id="<%= name %>MenuItem" href="javascript:void(0);" tabindex="3"><%= name %></a>
+            </div>
+            <div role="separator">
+                |
+            </div>
         </script>
         <!-- scripts concatenated and minified via build script -->
         <script src="js/libs/underscore/underscore.js"></script>
