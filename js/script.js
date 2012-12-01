@@ -47,7 +47,8 @@ $(function() {
         },
         navigationClicked: function(evt) {
             var id = evt.target.id;
-            if (id !== 'photoSet') {
+            console.warn('id ', id);
+            if (id !== 'photoSets') {
                 window.Router.navigate(id, true);
                 this.markActive(id);
                 this.togglePhotoSetMenu(true);
