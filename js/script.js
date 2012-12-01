@@ -47,7 +47,7 @@ $(function() {
         },
         navigationClicked: function(evt) {
             var id = evt.target.id;
-            if (id !== 'portfolio') {
+            if (id !== 'photoSet') {
                 window.Router.navigate(id, true);
                 this.markActive(id);
                 this.togglePhotoSetMenu(true);
@@ -73,7 +73,7 @@ $(function() {
     });
 
     window.PhotoSetNavigationView = Backbone.View.extend({
-        el: $('#portfolioMenu'),
+        el: $('#photoSetMenu'),
         open: false,
         events: {
             'click a': 'navigationClicked'
@@ -501,7 +501,7 @@ $(function() {
             }
             window.Router.navigate(id, true);
             window.Application.selectPane(id);
-            window.Navigation.markActive('portfolio', true);
+            window.Navigation.markActive('photoSet', true);
             window.Application.gallaries[id].model.set('visible', true);
         },
         determineImageSize: function() {
@@ -562,7 +562,7 @@ $(function() {
         },
         start: function() {
             var that = this, photoSetName;
-            // make the API call to retrieve the portfolios before proceeding.
+            // make the API call to retrieve the photo sets before proceeding.
             $.getJSON('http://api.flickr.com/services/rest/?method=flickr.photosets.getList&user_id=' + KT.userId + '&api_key=' + KT.apiKey + '&jsoncallback=?',
                 { format: 'json' },
                 function(data) {

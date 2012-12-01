@@ -4,5 +4,3 @@ sudo /usr/sbin/apachectl restart
 https://developers.google.com/appengine/docs/python/tools/uploadinganapp
 
 ant -Ddir.images=images -Dfile.root.stylesheet=krissytosi.css
-
-curl http://localhost:8080?q=portfolios&q=1.0
