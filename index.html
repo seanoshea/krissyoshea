@@ -177,12 +177,12 @@
             <a href="#" class="<%= active ? 'active' : ''%>"><%= innerHTML %></a>
         </script>
         <script type="text/template" id="photo-set-template">
-            <div role="menu-item">
+            <span role="menu-item">
                 <a id="<%= id %>MenuItem" href="javascript:void(0);" tabindex="3"><%= name %></a>
-            </div>
-            <div role="separator" style="display: <%= last ? 'none' : 'block'%>;">
+            </span>
+            <span role="separator" style="display: <%= last ? 'none' : '' %>;">
                 |
-            </div>
+            </span>
         </script>
         <script type="text/template" id="gallery-template">
             <div id="<%= id %>Content" class="content" style="display:none;">
