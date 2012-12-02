@@ -553,8 +553,8 @@ $(function() {
             for (var photoset_id in KT.photoSets) {
                 model = KT.photoSets[photoset_id];
                 if (model.photoUrls) {
-                    models.push({id: model.id, name: model.title._content, last: count === numberOfPhotoSets});
                     count++;
+                    models.push({id: model.id, name: model.title._content, last: count === numberOfPhotoSets});
                 }
             }
             if (count === numberOfPhotoSets) {
