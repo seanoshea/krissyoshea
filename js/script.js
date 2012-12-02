@@ -75,7 +75,9 @@ $(function() {
     window.PhotoSetNavigationModel = Backbone.Model.extend({
         defaults: function() {
             return {
-                name: ''
+                name: '',
+                id: 0,
+                last: false
             };
         }
     });
@@ -341,6 +343,8 @@ $(function() {
     window.GalleryModel = Backbone.Model.extend({
         defaults: function() {
             return {
+                id: 0,
+                name: '',
                 currentIndex: 0,
                 visible: true
             };
@@ -382,6 +386,11 @@ $(function() {
     });
 
     window.GalleryView = Backbone.View.extend({
+        template: _.template($('#gallery-template').html()),
+        render: function() {
+            $(this.el).html(this.template(this.model.toJSON()));
+            return this;
+        },
         initialize: function() {
             _.bindAll(this, 'onKeyDown');
             $(document).bind('keydown', this.onKeyDown);  
@@ -474,12 +483,13 @@ $(function() {
             return this.gallaries[id];
         },
         createGallery: function(id) {
-            var photoList = new window.PhotoList(this.generateImageSourcesForPhotoList(id)), gm,
+            var photoList = new window.PhotoList(this.generateImageSourcesForPhotoList(id)), gm, name = KT.photoSets[id].title._content
             photoPageList = new window.PhotoPageList(this.generateImageControlsForPhotoPageList(id));
+            galleryModel = new window.GalleryModel({photoList: photoList, pageList: photoPageList, id: id, name: name, visible: true});
+            this.gallaries[id] = new window.GalleryView({model: galleryModel});
+            $('#main').append(this.gallaries[id].render().el);
             photoList.postCreate(id);
             photoPageList.postCreate(id);
-            galleryModel = new window.GalleryModel({photoList: photoList, pageList: photoPageList, visible: true});
-            this.gallaries[id] = new window.GalleryView({el: $('#' + id), model: galleryModel});
         },
         randomizeStartImage: function() {
             var index = Math.floor(Math.random() * 4), url, count = 0, that = this;
@@ -506,14 +516,14 @@ $(function() {
             return this.randomizedPhotoSetImage;
         },
         generateImageSourcesForPhotoList: function(id) {
-            var arr = KT[id], determineImageSize = this.determineImageSize;
+            var arr = KT.photoSets[id].photoUrls, determineImageSize = this.determineImageSize, res = [];
             _.each(arr, function(item, index, array) {
-                arr[index] = {src: '/images/' + id + '/' + determineImageSize() + '/' + item, position: index};
+                res[index] = {src: arr[index][determineImageSize()], position: index};
             });
-            return arr;
+            return res;
         },
         generateImageControlsForPhotoPageList: function(id) {
-            var arr = KT[id], res = [];
+            var arr = KT.photoSets[id].photoUrls, res = [];
             res.push({index: 0, innerHTML: '&larr; Previous'});
             _.each(arr, function(item, index, array) {
                 res.push({index: index + 1, innerHTML: index + 1, active: index === 0});
@@ -543,13 +553,12 @@ $(function() {
             for (var photoset_id in KT.photoSets) {
                 model = KT.photoSets[photoset_id];
                 if (model.photoUrls) {
-                    models.push({name: model.title._content});
+                    models.push({id: model.id, name: model.title._content, last: count === numberOfPhotoSets});
                     count++;
                 }
             }
             if (count === numberOfPhotoSets) {
                 this.loadHomePageImage();
-                console.warn('ass ', KT.photoSets)
                 var photoList = new window.PhotoSetNavigationList(models);
                 photoList.createPhotoSets();
                 if (isViableHash) {
