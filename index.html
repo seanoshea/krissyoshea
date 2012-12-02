@@ -108,34 +108,6 @@
                     <div id="homeContent" class="content">
                         <img id="homePageImage" src="" />
                     </div>
-                    <div id="foodContent" class="content" style="display:none;">
-                        <ul id="foodContainer"></ul>
-                        <div>
-                            <h3>Food</h3>
-                            <ol id="foodControls" class="navigation subNavigation" style="display:none;"></ol>
-                        </div>
-                    </div>
-                    <div id="propsContent" class="content" style="display:none;">
-                        <ul id="propsContainer"></ul>
-                        <div>
-                            <h3>Props</h3>
-                            <ol id="propsControls" class="navigation subNavigation" style="display:none;"></ol>
-                        </div>
-                    </div>
-                    <div id="flowersContent" class="content" style="display:none;">
-                        <ul id="flowersContainer"></ul>
-                        <div>
-                            <h3>Flowers</h3>
-                            <ol id="flowersControls" class="navigation subNavigation" style="display:none;"></ol>
-                        </div>
-                    </div>
-                    <div id="interiorsContent" class="content" style="display:none;">
-                        <ul id="interiorsContainer"></ul>
-                        <div>
-                            <h3>Interiors</h3>
-                            <ol id="interiorsControls" class="navigation subNavigation" style="display:none;"></ol>
-                        </div>
-                    </div>
                     <div id="storeContent" class="content" aria-hidden="true" style="display:none;">
                         <h3>Store</h3>
                         <p>I've kept an Etsy store for the past few years. A selection below:</p>
@@ -206,10 +178,19 @@
         </script>
         <script type="text/template" id="photo-set-template">
             <div role="menu-item">
-                <a id="<%= name %>MenuItem" href="javascript:void(0);" tabindex="3"><%= name %></a>
+                <a id="<%= id %>MenuItem" href="javascript:void(0);" tabindex="3"><%= name %></a>
             </div>
-            <div role="separator">
+            <div role="separator" style="display: <%= last ? 'none' : 'block'%>;">
                 |
+            </div>
+        </script>
+        <script type="text/template" id="gallery-template">
+            <div id="<%= id %>Content" class="content" style="display:none;">
+                <ul id="<%= id %>Container"></ul>
+                <div>
+                    <h3><%= name %></h3>
+                    <ol id="<%= id %>Controls" class="navigation subNavigation" style="display:none;"></ol>
+                </div>
             </div>
         </script>
         <!-- scripts concatenated and minified via build script -->
