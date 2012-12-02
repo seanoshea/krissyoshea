@@ -461,7 +461,7 @@ $(function() {
         },
         homePageImageClicked: function(evt) {
             window.Router.navigate(this.randomizedPhotoSetImage, true);
-            this.navigateToGallery(this.randomizedPhotoSetImage);
+            this.navigateToGallery(this.randomizedPhotoSet);
         },
         selectPane: function(id) {
             var idSuffix = 'Content';
@@ -509,11 +509,12 @@ $(function() {
                     } else {
                         // TODO
                     }
+                    that.randomizedPhotoSet = key;
                 }
                 count++;
             });
             this.randomizedPhotoSetImage = url;
-            return this.randomizedPhotoSetImage;
+            return url;
         },
         generateImageSourcesForPhotoList: function(id) {
             var arr = KT.photoSets[id].photoUrls, determineImageSize = this.determineImageSize, res = [];
