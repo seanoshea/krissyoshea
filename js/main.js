@@ -485,7 +485,7 @@ $(function() {
         createGallery: function(id) {
             var photoList = new window.PhotoList(this.generateImageSourcesForPhotoList(id)), gm, name = KT.photoSets[id].title._content
             photoPageList = new window.PhotoPageList(this.generateImageControlsForPhotoPageList(id));
-            galleryModel = new window.GalleryModel({photoList: photoList, pageList: photoPageList, id: id, name: name, visible: true});
+            galleryModel = new window.GalleryModel({photoList: photoList, pageList: photoPageList, id: id, name: name, visible: true, maximumHeight: KT.photoSets[id].maximumHeight});
             this.gallaries[id] = new window.GalleryView({model: galleryModel});
             $('#main').append(this.gallaries[id].render().el);
             photoList.postCreate(id);
@@ -598,7 +598,15 @@ $(function() {
                 $.getJSON('http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=' + photoset_id + '&api_key=' + KT.apiKey + '&jsoncallback=?',
                     { format: 'json' },
                     function(data) {
+                        var maximumHeight = 0;
                         KT.photoSets[data.photoset.id].photoUrls = data.photoset.photo;
+                        // get the maximum height of a photo
+                        _.each(KT.photoSets[data.photoset.id].photoUrls, function(obj, key, list) {
+                            if (obj.height_m > maximumHeight) {
+                                maximumHeight = obj.height_m;
+                            }
+                        });
+                        KT.photoSets[data.photoset.id].maximumHeight = maximumHeight;
                         that.checkAreAllPhotoSetUrlsLoaded();
                     }
                 );
