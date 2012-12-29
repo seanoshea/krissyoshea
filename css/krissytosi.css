@@ -3,7 +3,7 @@
  * Customization for HTML5 Boilerplate
  */
 html, button, input, select, textarea {
-    font-family:"museo-slab", Lucida Grande, Arial, Helvetica, sans-serif;
+    font-family: "museo-slab", Lucida Grande, Arial, Helvetica, sans-serif;
     color: #333;
     font-size: 0.875em;
 }
@@ -84,8 +84,13 @@ input, textarea {
     width: 250px;
 }
 .controls {
-    display:table;
-    margin:20px auto;
+    display: table;
+    margin: 20px auto;
+}
+#twitter {
+    line-height: 30px;
+    padding-right: 10px;
+    vertical-align: top;
 }
 /*
  * Splash
@@ -122,8 +127,9 @@ input, textarea {
     margin: 0px auto;
 }
 #loading {
-    display: table-cell;
-    vertical-align: middle;
+    left: 50%;
+    position: absolute;
+    top: 50%;
 }
 .bar1 {
     -moz-transform: rotate(0deg) translate(0, -40px);
