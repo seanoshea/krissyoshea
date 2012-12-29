@@ -3,7 +3,7 @@ $(function() {
     KT = {};
     // some API configuration
     KT.apiKey = '3426649638b25fe317be122d3fbbc1b1';
-    KT.userId = '48071389@N07';
+    KT.userId = '91622522@N07';
 
     // navigational elements in the app.
     KT.panes = ['store', 'biography', 'news', 'contact'];
