@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html lang="en">
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -11,7 +11,9 @@
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <!-- Mobile viewport optimized: h5bp.com/viewport -->
-        <meta name="viewport" content="width=device-width">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0" />
         <meta http-equiv="cleartype" content="on">
         <script type="text/javascript">
             (function() {
@@ -44,13 +46,14 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" type="text/css" href="css/krissytosi.css" />
+        <script src="js/libs/viewporter/src/viewporter.js"></script>
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
-        <div id="container" class="container_12">
+        <div id="viewporter" class="container_12">
             <header>
                 <h1 id="banner" role="banner" aria-live="polite" class="grid_3">Krissy Tosi</h1>
                 <nav role="navigation" class="grid_9">
@@ -92,7 +95,7 @@
                         <div class="bar7"></div>
                         <div class="bar8"></div>
                     </div>
-                    <img id="imageSplash" src="" alt="Loading Animation" style="display:none;"/>
+                    <img id="imageSplash" alt="Loading Animation" style="display:none;"/>
                 </div>
                 <div id="error" style="display:none;">
                     <h2>There was an error :(</h2>
@@ -106,7 +109,7 @@
                 </noscript>
                 <div id="main" role="main" class="grid_12">
                     <div id="homeContent" class="content">
-                        <img id="homePageImage" src="" />
+                        <img id="homePageImage" alt="View this portfolio." aria-hidden="true" style="display:none;"/>
                     </div>
                     <div id="storeContent" class="content" aria-hidden="true" style="display:none;">
                         <p>I've kept an Etsy store for the past few years. A selection below:</p>
@@ -120,21 +123,21 @@
                     <div id="newsContent" class="content" aria-hidden="true" style="display:none;">
                         <ol role="list" aria-active-descendent="hcalendar-VernissageLink">
                             <li id="hcalendar-Vernissage" class="vevent" role="listitem">
-                                <a id="hcalendar-VernissageLink" href="http://www.sfai.edu/page.aspx?page=290" target="_blank" tabindex="0">Vernissage</a>
+                                <a id="hcalendar-VernissageLink" href="http://www.sfai.edu/facilities/" tabindex="0">Vernissage</a>
                                 <aside>
                                     <span>San Francisco, CA; </span>
                                     <abbr class="dtstart" title="2010-05"> May </abbr>, <abbr class="dtend" title="2010-05"> 2010 </abbr>
                                 </aside>
                             </li>
                             <li id="hcalendar-CamfedFundraiser" class="vevent" role="listitem">
-                                <a id="hcalendar-CamfedFundraiserLink" href="http://us.camfed.org/" target="_blank" tabindex="-1">Camfed Fundraiser</a>
+                                <a id="hcalendar-CamfedFundraiserLink" href="https://camfed.org/" tabindex="-1">Camfed Fundraiser</a>
                                 <aside>
                                     <span>San Francisco, CA; </span>
                                     <abbr class="dtstart" title="2010-02"> February </abbr>, <abbr class="dtend" title="2010-02"> 2010 </abbr>
                                 </aside>
                             </li>
                             <li id="hcalendar-LandscapeInterrupted" class="vevent" role="listitem">
-                                <a id="hcalendar-LandscapeInterruptedLink" href="http://www.culturalpartners.org/landscape.htm" target="_blank" tabindex="-1">Landscape Interrupted</a>
+                                <a id="hcalendar-LandscapeInterruptedLink" href="http://www.culturalpartners.org/landscape.htm" tabindex="-1">Landscape Interrupted</a>
                                 <aside>
                                     <span class="location">Flagstaff, AZ; </span>
                                     <abbr class="dtstart" title="2010-01"> January </abbr>, <abbr class="dtend" title="2010-01"> 2010 </abbr>
