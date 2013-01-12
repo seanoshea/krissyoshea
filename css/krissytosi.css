@@ -97,14 +97,34 @@ input, textarea {
     position: relative;
     width: 100px;
     height: 100px;
-    border-radius: 100px;
+    -o-border-radius: 100px;
     -moz-border-radius: 100px;
-    -moz-transform: scale(0.5);
+    -webkit-border-radius: 100px;
     -o-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-animation-name: rotateThis;
+    -moz-animation-name: rotateThis;
     -webkit-animation-name: rotateThis;
+    -ms-animation-name: rotateThis;
+    -o-animation-duration: 2s;
+    -moz-animation-duration: 2s;
     -webkit-animation-duration: 2s;
+    -ms-animation-duration: 2s;
+    -o-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
     -webkit-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: infinite;
+    -o-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
     -webkit-animation-timing-function: linear;
+    -ms-animation-timing-function: linear;
+    border-radius: 100px;
+    transform: scale(0.5);
+    animation-name: rotateThis;
+    animation-duration: 2s;
+    animation-timing-function: linear;
 }
 #cssSplash div {
     width: 10px;
@@ -113,8 +133,6 @@ input, textarea {
     position: absolute;
     top: 35px;
     left: 45px;
-}
-#cssSplash div {
     -o-border-radius: 20px;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
@@ -134,57 +152,93 @@ input, textarea {
     color:#FFF;
 }
 .bar1 {
+    -o-transform: rotate(0deg) translate(0, -40px);
     -moz-transform: rotate(0deg) translate(0, -40px);
     -webkit-transform: rotate(0deg) translate(0, -40px);
+    -ms-transform: rotate(0deg) translate(0, -40px);
+    transform: rotate(0deg) translate(0, -40px);
     opacity: 0.12;
 }
 .bar2 {
+    -o-transform: rotate(45deg) translate(0, -40px);
     -moz-transform: rotate(45deg) translate(0, -40px);
     -webkit-transform: rotate(45deg) translate(0, -40px);
+    -ms-transform: rotate(45deg) translate(0, -40px);
+    transform: rotate(45deg) translate(0, -40px);
     opacity: 0.25;
 }
 .bar3 {
+    -o-transform: rotate(90deg) translate(0, -40px);
     -moz-transform: rotate(90deg) translate(0, -40px);
     -webkit-transform: rotate(90deg) translate(0, -40px);
+    -ms-transform: rotate(90deg) translate(0, -40px);
+    transform: rotate(90deg) translate(0, -40px);
     opacity: 0.37;
 }
 .bar4 {
+    -o-transform: rotate(135deg) translate(0, -40px);
     -moz-transform: rotate(135deg) translate(0, -40px);
     -webkit-transform: rotate(135deg) translate(0, -40px);
+    -ms-transform: rotate(135deg) translate(0, -40px);
+    transform: rotate(135deg) translate(0, -40px);
     opacity: 0.50;
 }
 .bar5 {
+    -o-transform: rotate(180deg) translate(0, -40px);
     -moz-transform: rotate(180deg) translate(0, -40px);
     -webkit-transform: rotate(180deg) translate(0, -40px);
+    -ms-transform: rotate(180deg) translate(0, -40px);
+    transform: rotate(180deg) translate(0, -40px);
     opacity: 0.62;
 }
 .bar6 {
+    -o-transform: rotate(225deg) translate(0, -40px);
     -moz-transform: rotate(225deg) translate(0, -40px);
     -webkit-transform: rotate(225deg) translate(0, -40px);
+    -ms-transform: rotate(225deg) translate(0, -40px);
+    transform: rotate(225deg) translate(0, -40px);
     opacity: 0.75;
 }
 .bar7 {
+    -o-transform: rotate(270deg) translate(0, -40px);
     -moz-transform: rotate(270deg) translate(0, -40px);
     -webkit-transform: rotate(270deg) translate(0, -40px);
+    -ms-transform: rotate(270deg) translate(0, -40px);
+    transform: rotate(270deg) translate(0, -40px);
     opacity: 0.87;
 }
 .bar8 {
+    -o-transform: rotate(315deg) translate(0, -40px);
     -moz-transform: rotate(315deg) translate(0, -40px);
     -webkit-transform: rotate(315deg) translate(0, -40px);
+    -ms-transform: rotate(315deg) translate(0, -40px);
+    transform: rotate(315deg) translate(0, -40px);
     opacity: 1;
 }
 @-webkit-keyframes rotateThis {
 from {
     -webkit-transform: scale(0.5) rotate(0deg);
+    transform: scale(0.5) rotate(0deg);
 }
 to {
     -webkit-transform: scale(0.5) rotate(360deg);
+    transform: scale(0.5) rotate(360deg);
+}
+}
+@keyframes rotateThis {
+from {
+    -webkit-transform: scale(0.5) rotate(0deg);
+    transform: scale(0.5) rotate(0deg);
+}
+to {
+    -webkit-transform: scale(0.5) rotate(360deg);
+    transform: scale(0.5) rotate(360deg);
 }
 }
 /**
  * No JavaScript - there's always one.
  */
-.no-js .main, .no-js .content, noscript, .no-js #biographyContent h2 {
+.no-js .main, .no-js .content, noscript {
     display: block !important;
 }
 .no-js #biographyContent p {
