@@ -409,7 +409,7 @@ $(function() {
     // MAIN APPLICATION
 
     window.ApplicationView = Backbone.View.extend({
-        el: $('#container'),
+        el: $('#viewporter'),
         events: {
             'click #banner': 'homeClicked',
             'click #homePageImage': 'homePageImageClicked'
@@ -451,6 +451,7 @@ $(function() {
                 setTimeout(function() {
                     _.each(['homePageImage', 'nav', 'footer'], function(item, index, array) {
                         $('#' + item).fadeIn('slow');
+                        $('#' + item).attr('aria-hidden', 'false'); 
                     });
                 }, 250);
             });

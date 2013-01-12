@@ -48,8 +48,6 @@ h1 {
 }
 h3 {
     display: inline;
-    float: left;
-    margin: 0 20px 0 0;
 }
 #photoSetMenu {
     margin-top: 10px;
@@ -65,10 +63,10 @@ h3 {
     padding: 10px;
     text-decoration: none;
 }
-.navigation li a.active, .navigation li a:hover {
+.navigation li .active, .navigation li a:hover {
     background: #999;
     color: #fff;
-    text-shadow: 1px 1px 0px #666;
+    text-shadow: 1px 1px 0 #666;
 }
 .subNavigation li a {
     font-size: 0.75em;
@@ -99,6 +97,7 @@ input, textarea {
     position: relative;
     width: 100px;
     height: 100px;
+    border-radius: 100px;
     -moz-border-radius: 100px;
     -moz-transform: scale(0.5);
     -o-transform: scale(0.5);
@@ -124,12 +123,15 @@ input, textarea {
 #body {
     display: table;
     overflow: hidden;
-    margin: 0px auto;
+    margin: 0 auto;
 }
 #loading {
     left: 50%;
     position: absolute;
     top: 50%;
+}
+.bar {
+    color:#FFF;
 }
 .bar1 {
     -moz-transform: rotate(0deg) translate(0, -40px);
