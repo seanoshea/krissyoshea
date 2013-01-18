@@ -114,11 +114,21 @@
                         <img id="homePageImage" alt="View this portfolio." aria-hidden="true" style="display:none;"/>
                     </div>
                     <div id="storeContent" class="content" aria-hidden="true" style="display:none;">
-                        <p>I've kept an Etsy store for the past few years. A selection below:</p>
-                        <div class='widget-content'>
+                        <p id="etsyAvailable">I've kept an Etsy store for the past few years. A selection below:</p>
+                        <p id="etsyUnavailable" style="display:none;">
+                            I've kept an Etsy store for the past few years.
+                            <a href="http://cottagefarm.etsy.com">Check it out</a>
+                        </p>
+                        <div id="etsyWidget" class='widget-content'>
                             <script type='text/javascript' src='http://www.etsy.com/etsy_mini.js'></script>
                             <script type='text/javascript'>
-                                new EtsyNameSpace.Mini(7386975, 'shop', 'gallery', 3, 5).renderIframe();
+                                try {
+                                    if ('EtsyNameSpace' in window) {
+                                        new EtsyNameSpace.Mini(7386975, 'shop', 'gallery', 3, 5).renderIframe();
+                                    }
+                                } catch (e) {
+                                    
+                                }
                             </script>
                         </div>
                     </div>
