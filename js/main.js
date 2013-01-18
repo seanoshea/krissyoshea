@@ -434,15 +434,19 @@ $(function() {
         },
         loadHomePageImage: function() {
             var img = new Image(), src = this.randomizeStartImage(), homePageImage = $('#homePageImage');
-            img.src = src;
-            $(img).load(function() {
-                setTimeout(function() {
-                    window.Application.fadeSplash();
-                }, 250);
-            }).error(function() {
-            }).attr('src', src);
-            homePageImage.attr('src', src);
-            homePageImage.css('display', 'none');
+            if (src) {
+                img.src = src;
+                $(img).load(function() {
+                    setTimeout(function() {
+                        window.Application.fadeSplash();
+                    }, 250);
+                }).error(function() {
+                }).attr('src', src);
+                homePageImage.attr('src', src);
+                homePageImage.css('display', 'none');
+            } else {
+                window.Application.fadeSplash();
+            }
         },
         fadeSplash: function() {
             $('#loading').fadeOut('fast', function() {
@@ -675,6 +679,15 @@ $(function() {
         },
         home: function() {
 
+        },
+        store: function() {
+            // the etsy mini script can be a little unreliable. Have some fallback logic to hide/show
+            // different elements based on whether or not the script loaded ok.
+            if ('EtsyNameSpace' in window) {
+                window.Application.toggleShow($('#etsyAvailable'));
+                window.Application.toggleShow($('#etsyWidget'));
+                window.Application.toggleShow($('#etsyUnavailable'), true);
+            }
         },
         biography: function() {
 
