@@ -1,4 +1,4 @@
-<!DOCTYPE html lang="en">
+<!DOCTYPE html lang="en" itemscope itemtype="http://schema.org/Person">
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -110,7 +110,7 @@
                     </p>
                 </noscript>
                 <div id="main" role="main" class="grid_12">
-                    <div id="homeContent" class="content">
+                    <div id="homeContent" class="content" itemscope itemtype="http://schema.org/Photograph">
                         <img id="homePageImage" alt="View this portfolio." aria-hidden="true" style="display:none;"/>
                     </div>
                     <div id="storeContent" class="content" aria-hidden="true" style="display:none;">
@@ -185,7 +185,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
         <script type="text/template" id="photo-template">
-            <img src="<%= src %>" style="display: <%= position != 0 ? 'none' : 'block'%>;" />
+            <img src="<%= src %>" style="display: <%= position != 0 ? 'none' : 'block'%>;" itemscope itemtype="http://schema.org/Photograph" />
         </script>
         <script type="text/template" id="photo-page-template">
             <a href="#" class="<%= active ? 'active' : ''%>"><%= innerHTML %></a>
