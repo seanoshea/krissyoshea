@@ -174,7 +174,7 @@ $(function() {
         },
         setActive: function(model) {
             _.each(this.models, function(model) {
-                
+
             });
         },
         setSelected: function(index) {
@@ -185,7 +185,7 @@ $(function() {
     });
 
     window.PhotoView = Backbone.View.extend({
-        tagName:  'li',
+        tagName: 'li',
         template: _.template($('#photo-template').html()),
         events: {
             'click img': 'onClick',
@@ -229,7 +229,7 @@ $(function() {
         setActive: function(active) {
             this.set('active', active);
             if (active) {
-                // tell the rest of the collection that a 
+                // tell the rest of the collection that a
                 // model has it's active flag set
                 this.collection.setActive(this);
             }
@@ -276,7 +276,7 @@ $(function() {
                 }
             } else {
                 if (this.currentIndex === 1) {
-                    indexClicked = this.models.length -2;
+                    indexClicked = this.models.length - 2;
                 } else {
                     indexClicked = this.currentIndex - 1;
                 }
@@ -298,7 +298,7 @@ $(function() {
     });
 
     window.PhotoPageView = Backbone.View.extend({
-        tagName:  'li',
+        tagName: 'li',
         template: _.template($('#photo-page-template').html()),
         events: {
             'click a': 'onClick'
@@ -393,7 +393,7 @@ $(function() {
         },
         initialize: function() {
             _.bindAll(this, 'onKeyDown');
-            $(document).bind('keydown', this.onKeyDown);  
+            $(document).bind('keydown', this.onKeyDown);
         },
         onKeyDown: function(evt) {
             if (this.model.get('visible')) {
@@ -455,7 +455,7 @@ $(function() {
                 setTimeout(function() {
                     _.each(['homePageImage', 'nav', 'footer'], function(item, index, array) {
                         $('#' + item).fadeIn('slow');
-                        $('#' + item).attr('aria-hidden', 'false'); 
+                        $('#' + item).attr('aria-hidden', 'false');
                     });
                 }, 250);
             });
@@ -675,7 +675,7 @@ $(function() {
             'store': 'store',
             'biography': 'biography',
             'news': 'news',
-            'contact':'contact'
+            'contact': 'contact'
         },
         home: function() {
 
