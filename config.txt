@@ -2,5 +2,8 @@
 sudo /usr/sbin/apachectl restart
 /private/etc/apache2/other/kt.conf
 https://developers.google.com/appengine/docs/python/tools/uploadinganapp
+gjslint -r ~/dev/github/krissytosi/js/main.js
+gjslint --nojsdoc -r ~/dev/github/krissytosi/js/main.js
+fixjsstyle path/to/file1.js
 
 ant -Ddir.images=images -Dfile.root.stylesheet=krissytosi.css
