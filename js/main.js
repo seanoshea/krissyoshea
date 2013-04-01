@@ -699,9 +699,10 @@ $(function() {
             // the etsy mini script can be a little unreliable. Have some fallback logic to hide/show
             // different elements based on whether or not the script loaded ok.
             if ('EtsyNameSpace' in window) {
-                window.Application.toggleShow($('#etsyAvailable'));
-                window.Application.toggleShow($('#etsyWidget'));
-                window.Application.toggleShow($('#etsyUnavailable'), true);
+                console.warn('show it');
+                window.Application.toggleShow($('#etsyAvailable'), true);
+                window.Application.toggleShow($('#etsyWidget'), true);
+                window.Application.toggleShow($('#etsyUnavailable'));
             }
         },
         biography: function() {
