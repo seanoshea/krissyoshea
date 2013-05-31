@@ -205,7 +205,19 @@ $(function() {
             this.setContainerOffset(-((100 / this.models.count) * this.currentPane), true);
         },
         setContainerOffset: function(percent, animate) {
-            // TODO
+            var paneWidth = 100, container = this.$('#' + id + 'Container');
+            container.removeClass('animate');
+            if (animate) {
+                container.addClass('animate');
+            }
+            if (Modernizr.csstransforms3d) {
+                container.css('transform', 'translate3d(' + percent +'%,0,0) scale3d(1,1,1)');
+            } else if (Modernizr.csstransforms) {
+                container.css('transform', 'translate(' + percent + '%,0)');
+            } else {
+                var px = ((paneWidth * this.models.count) / 100) * percent;
+                container.css('left', px + 'px');
+            }
         },
         next: function() {
             return this.showPane(this.currentPane + 1, true);
@@ -218,7 +230,7 @@ $(function() {
             // may the browser gods have pity on me.
             if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
                 $('#' + id + 'Content').hammer({ drag_lock_to_axis: true })
-                    .on("release dragleft dragright swipeleft swiperight", function(ev) {
+                    .on('release dragleft dragright swipeleft swiperight', function(ev) {
                         // quite a lot of this code is lifted from https://github.com/EightMedia/hammer.js
                         ev.gesture.preventDefault();
                         switch(ev.type) {
