@@ -54,12 +54,14 @@ header {
 img {
     border: 1px solid #eee;
     display: block;
+	/*
     margin: 0 auto;
     max-height: 550px;
+	*/
     padding: 4px;
 }
 h1 {
-    margin: 0;
+    margin: 20px 0 0 0;
 }
 h3 {
     display: inline;
@@ -71,7 +73,7 @@ h3 {
     margin-top: 10px;
 }
 .navigation li {
-    display: inline;
+	margin:20px 0 0 0;
 }
 .navigation li a {
     color: #333;
