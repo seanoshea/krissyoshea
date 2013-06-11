@@ -56,15 +56,20 @@
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
         <div id="viewporter" class="container_12">
-            <header>
-                <h1 id="banner" role="banner" aria-live="polite" class="grid_3">Krissy Tosi</h1>
-                <nav role="navigation" class="grid_9">
+            <header class="grid_3">
+                <h1 id="banner" role="banner" aria-live="polite">Krissy Tosi</h1>
+                <h3 id="banner" role="banner" aria-live="polite">Photographer &amp; Stylist</h3>
+                <nav role="navigation" class="grid_2">
                     <ul id="nav" role="menubar" class="navigation" style="display:none;">
                         <li role="menu-item">
                             <a id="home" class="active" href="javascript:void(0);" tabindex="1">home</a>
                         </li>
                         <li role="menu-item">
                             <a id="photoSets" href="javascript:void(0);" tabindex="2">portfolios</a>
+			                <nav role="navigation" class="grid_2">
+			                    <ul id="photoSetMenu" role="menubar" class="navigation subNavigation" style="display:none;" aria-hidden="true">
+			                    </ul>
+			                </nav>
                         </li>
                         <li role="menu-item">
                             <a id="store" href="javascript:void(0);" tabindex="5">store</a>
@@ -80,12 +85,8 @@
                         </li>
                     </ul>
                 </nav>
-                <nav role="navigation" class="grid_9">
-                    <ul id="photoSetMenu" role="menubar" class="navigation subNavigation" style="display:none;" aria-hidden="true">
-                    </ul>
-                </nav>
-            </header>
-            <div id="body" aria-busy="true">
+			</header>
+            <div id="body" aria-busy="true" class="grid_9">
                 <div id="loading">
                     <div id="cssSplash" style="display:none;">
                         <div class="bar1"></div>
@@ -109,7 +110,7 @@
                         If you enable JavaScript, this site will look a little better.
                     </p>
                 </noscript>
-                <div id="main" role="main" class="grid_12">
+                <div id="main" role="main">
                     <div id="homeContent" class="content" itemscope itemtype="http://schema.org/Photograph">
                         <img id="homePageImage" alt="View this portfolio." aria-hidden="true" style="display:none;"/>
                     </div>
