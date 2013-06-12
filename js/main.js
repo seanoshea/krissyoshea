@@ -125,7 +125,7 @@ $(function() {
             return this;
         },
         navigationClicked: function(evt) {
-            var id = evt.target.id.replace(/MenuItem/, '');
+            var id = evt.target.id;
             window.Application.navigateToGallery(id);
             this.togglePhotoSetMenu(true);
         },
@@ -500,7 +500,7 @@ $(function() {
             'click #banner': 'homeClicked',
             'click #homePageImage': 'homePageImageClicked'
         },
-        gallaries: {},
+        galleries: {},
         randomizedPhotoSetImage: {},
         initialize: function() {
             this.cssSplash = this.$('#cssSplash');
@@ -560,25 +560,25 @@ $(function() {
                 if (item.id === id + idSuffix) {
                     window.Application.toggleShow(item, true);
                     if (window.Application.hasGallery(id)) {
-                        window.Application.gallaries[id].model.set('visible', true);
+                        window.Application.galleries[id].model.set('visible', true);
                     }
                 } else {
                     window.Application.toggleShow(item, false);
                     if (window.Application.hasGallery(id)) {
-                        window.Application.gallaries[id].model.set('visible', false);
+                        window.Application.galleries[id].model.set('visible', false);
                     }
                 }
             });
         },
         hasGallery: function(id) {
-            return this.gallaries[id];
+            return this.galleries[id];
         },
         createGallery: function(id) {
             var photoList = new window.PhotoList(this.generateImageSourcesForPhotoList(id)), gm, name = KT.photoSets[id].title._content,
             photoPageList = new window.PhotoPageList(this.generateImageControlsForPhotoPageList(id));
             galleryModel = new window.GalleryModel({photoList: photoList, pageList: photoPageList, id: id, name: name, visible: true, maximumHeight: KT.photoSets[id].maximumHeight});
-            this.gallaries[id] = new window.GalleryView({model: galleryModel});
-            $('#main').append(this.gallaries[id].render().el);
+            this.galleries[id] = new window.GalleryView({model: galleryModel});
+            $('#main').append(this.galleries[id].render().el);
             photoList.postCreate(id);
             photoPageList.postCreate(id);
         },
@@ -628,12 +628,12 @@ $(function() {
                 window.Application.createGallery(id);
             } else {
                 // always reset the gallery to the first position.
-                window.Application.gallaries[id].model.reset();
+                window.Application.galleries[id].model.reset();
             }
             window.Router.navigate(id, true);
             window.Application.selectPane(id);
             window.Navigation.markActive('photoSet', true);
-            window.Application.gallaries[id].model.set('visible', true);
+            window.Application.galleries[id].model.set('visible', true);
         },
         determineImageSize: function() {
             // TODO - mobile detection

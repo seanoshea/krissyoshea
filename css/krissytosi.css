@@ -18,7 +18,7 @@
  * Customization for HTML5 Boilerplate
  */
 html, button, input, select, textarea {
-    font-family: "museo-slab", Lucida Grande, Arial, Helvetica, sans-serif;
+    font-family: "acta-display", Lucida Grande, Arial, Helvetica, sans-serif;
     color: #333;
     font-size: 0.875em;
 }
@@ -58,13 +58,14 @@ img {
     padding: 4px;
 }
 h1 {
+	font-size: 35px;
     margin: 20px 0 0 0;
 }
 h3 {
     display: inline;
 }
 #photoSetMenu {
-    margin-top: 10px;
+    margin: 10px 0 20px 0;
 }
 .navigation {
     margin-top: 10px;
@@ -95,8 +96,14 @@ input, textarea {
     padding: 4px;
     width: 250px;
 }
+.header {
+	margin: 15px 0 0 0;
+}
 .content {
     margin: 30px 0 0 0;
+}
+.content.photoContent {
+    margin: 20px 0 0 0;
 }
 .controls {
     display: table;
