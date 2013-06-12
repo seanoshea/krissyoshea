@@ -56,9 +56,9 @@
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
         <div id="viewporter" class="container_12">
-            <header class="grid_3">
+            <header class="grid_3 header">
                 <h1 id="banner" role="banner" aria-live="polite">Krissy Tosi</h1>
-                <h3 id="banner" role="banner" aria-live="polite">Photographer &amp; Stylist</h3>
+                <h3 id="banner" role="banner" aria-live="polite">Photography &amp; Styling</h3>
                 <nav role="navigation" class="grid_2">
                     <ul id="nav" role="menubar" class="navigation" style="display:none;">
                         <li role="menu-item">
@@ -108,7 +108,7 @@
                     </p>
                 </noscript>
                 <div id="main" role="main">
-                    <div id="homeContent" class="content" itemscope itemtype="http://schema.org/Photograph">
+                    <div id="homeContent" class="content photoContent" itemscope itemtype="http://schema.org/Photograph">
                         <img id="homePageImage" alt="View this portfolio." aria-hidden="true" style="display:none;"/>
                     </div>
                     <div id="newsContent" class="content" aria-hidden="true" style="display:none;">
@@ -173,11 +173,11 @@
         </script>
         <script type="text/template" id="photo-set-template">
             <span role="menu-item">
-                <a id="<%= id %>MenuItem" href="javascript:void(0);" tabindex="3"><%= name %></a>
+                <a id="<%= id %>" href="javascript:void(0);" tabindex="3"><%= name %></a>
             </span>
         </script>
         <script type="text/template" id="gallery-template">
-            <div id="<%= id %>Content" class="content" style="display:none;">
+            <div id="<%= id %>Content" class="content photoContent" style="display:none;">
                 <ul id="<%= id %>Container" style="height:<%= maximumHeight %>px"></ul>
                 <div class="controls">
                     <ol id="<%= id %>Controls" class="navigation subNavigation" style="display:none;"></ol>
