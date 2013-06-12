@@ -72,16 +72,13 @@
 			                </nav>
                         </li>
                         <li role="menu-item">
-                            <a id="store" href="javascript:void(0);" tabindex="5">store</a>
+                            <a id="biography" href="javascript:void(0);" tabindex="5">biography</a>
                         </li>
                         <li role="menu-item">
-                            <a id="biography" href="javascript:void(0);" tabindex="6">biography</a>
+                            <a id="news" href="javascript:void(0);" tabindex="6">news</a>
                         </li>
                         <li role="menu-item">
-                            <a id="news" href="javascript:void(0);" tabindex="7">news</a>
-                        </li>
-                        <li role="menu-item">
-                            <a id="contact" href="javascript:void(0);" tabindex="8">contact</a>
+                            <a id="contact" href="javascript:void(0);" tabindex="7">contact</a>
                         </li>
                     </ul>
                 </nav>
@@ -114,25 +111,6 @@
                     <div id="homeContent" class="content" itemscope itemtype="http://schema.org/Photograph">
                         <img id="homePageImage" alt="View this portfolio." aria-hidden="true" style="display:none;"/>
                     </div>
-                    <div id="storeContent" class="content" aria-hidden="true" style="display:none;">
-                        <p id="etsyAvailable">I've kept an Etsy store for the past few years. A selection below:</p>
-                        <p id="etsyUnavailable" style="display:none;">
-                            I've kept an Etsy store for the past few years.
-                            <a href="http://cottagefarm.etsy.com">Check it out</a>
-                        </p>
-                        <div id="etsyWidget" class='widget-content'>
-                            <script type='text/javascript' src='http://www.etsy.com/etsy_mini.js'></script>
-                            <script type='text/javascript'>
-                                try {
-                                    if ('EtsyNameSpace' in window) {
-                                        new EtsyNameSpace.Mini(7386975, 'shop', 'gallery', 3, 5).renderIframe();
-                                    }
-                                } catch (e) {
-                                    
-                                }
-                            </script>
-                        </div>
-                    </div>
                     <div id="newsContent" class="content" aria-hidden="true" style="display:none;">
                         <ol role="list" aria-active-descendent="hcalendar-VernissageLink">
                             <li id="hcalendar-Vernissage" class="vevent" role="listitem">
@@ -163,15 +141,21 @@
                             Kristina Tosi is a floral and event designer and freelance prop stylist. She has a background in photography and holds an MFA from the San Francisco Arts Institute. She specializes in event design, tabletop and life-style styling.
                         </p>
                     </div>
-                    <div id="contactContent" class="content container_12" aria-hidden="true" style="display:none;">
+                    <div id="contactContent" class="content" aria-hidden="true" style="display:none;">
+                        <p>
+                            You can email me at krissy at krissytosi.com.
+                        </p>
+                        <p>
+							Find me on <a href="http://instagram.com/cottagefarm">instagram</a>.
+                        </p>
+                        <p>
+							Check out my <a href="http://cottagefarm.etsy.com">Etsy Store</a>.
+                        </p>
+                        <p>
+							I <a href="http://www.twitter.com/cottagefarm">tweet</a> from time to time.
+                        </p>
                         <p>
                             I've been blogging for the past two years or so at <a href="http://cottagefarm.blogspot.com/">Cottage Farm</a>.
-                        </p>
-                        <div>
-                            <span id="twitter">Updates via Twitter:</span><a href="https://twitter.com/cottagefarm" class="twitter-follow-button" data-show-count="true" data-size="large">Follow @cottagefarm</a>
-                        </div>
-                        <p>
-                            Selected items on sale in Cottage Farm's <a href="http://www.etsy.com/shop/cottagefarm">Etsy</a> store.
                         </p>
                     </div>
                 </div>
@@ -191,9 +175,6 @@
             <span role="menu-item">
                 <a id="<%= id %>MenuItem" href="javascript:void(0);" tabindex="3"><%= name %></a>
             </span>
-            <span role="separator" style="display: <%= last ? 'none' : '' %>;">
-                |
-            </span>
         </script>
         <script type="text/template" id="gallery-template">
             <div id="<%= id %>Content" class="content" style="display:none;">
@@ -212,17 +193,6 @@
         <!-- end scripts -->
         <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
         mathiasbynens.be/notes/async-analytics-snippet -->
-        <script>
-            ! function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if(!d.getElementById(id)) {
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = "//platform.twitter.com/widgets.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }
-            }(document, "script", "twitter-wjs");
-        </script>
         <script>
             var _gaq = [['_setAccount', 'UA-32840879-1'], ['_trackPageview'], ['_setDomainName', 'krissytosi.com']]; ( function(d, t) {
                 var g = d.createElement(t), s = d.getElementsByTagName(t)[0];

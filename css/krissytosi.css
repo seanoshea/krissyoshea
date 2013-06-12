@@ -54,10 +54,7 @@ header {
 img {
     border: 1px solid #eee;
     display: block;
-	/*
-    margin: 0 auto;
-    max-height: 550px;
-	*/
+	margin: 15px 0 0 0;
     padding: 4px;
 }
 h1 {
@@ -98,14 +95,12 @@ input, textarea {
     padding: 4px;
     width: 250px;
 }
+.content {
+    margin: 30px 0 0 0;
+}
 .controls {
     display: table;
     margin: 20px auto;
-}
-#twitter {
-    line-height: 30px;
-    padding-right: 10px;
-    vertical-align: top;
 }
 /*
  * Splash

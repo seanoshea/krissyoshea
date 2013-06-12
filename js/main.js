@@ -21,7 +21,7 @@ $(function() {
     KT.userId = '91622522@N07';
 
     // navigational elements in the app.
-    KT.panes = ['store', 'biography', 'news', 'contact'];
+    KT.panes = ['biography', 'news', 'contact'];
 
     // some custom events.
     KT.PHOTO_PAGE_VIEW_CLICK = 'PHOTO_PAGE_VIEW_CLICK';
@@ -758,22 +758,12 @@ $(function() {
     window.ApplicationRouter = Backbone.Router.extend({
         routes: {
             'home': 'home',
-            'store': 'store',
             'biography': 'biography',
             'news': 'news',
             'contact': 'contact'
         },
         home: function() {
 
-        },
-        store: function() {
-            // the etsy mini script can be a little unreliable. Have some fallback logic to hide/show
-            // different elements based on whether or not the script loaded ok.
-            if ('EtsyNameSpace' in window) {
-                window.Application.toggleShow($('#etsyAvailable'), true);
-                window.Application.toggleShow($('#etsyWidget'), true);
-                window.Application.toggleShow($('#etsyUnavailable'));
-            }
         },
         biography: function() {
 
