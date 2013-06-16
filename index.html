@@ -155,7 +155,7 @@
 							I <a href="http://www.twitter.com/cottagefarm">tweet</a> from time to time.
                         </p>
                         <p>
-                            I've been blogging for the past two years or so at <a href="http://cottagefarm.blogspot.com/">Cottage Farm</a>.
+                            I've been blogging for the past few years or so at <a href="http://cottagefarm.blogspot.com/">Cottage Farm</a>.
                         </p>
                     </div>
                 </div>
@@ -163,8 +163,8 @@
             <footer id="footer" class="grid_12" style="display:none;"></footer>
         </div>
         <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script type="text/template" id="photo-template">
             <img src="<%= src %>" style="display: <%= position != 0 ? 'none' : 'block'%>;" itemscope itemtype="http://schema.org/Photograph" />
         </script>
@@ -196,8 +196,8 @@
         <script>
             var _gaq = [['_setAccount', 'UA-32840879-1'], ['_trackPageview'], ['_setDomainName', 'krissytosi.com']]; ( function(d, t) {
                 var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
-                g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
-                s.parentNode.insertBefore(g, s)
+	            g.src='//www.google-analytics.com/ga.js';
+	            s.parentNode.insertBefore(g,s)}(document,'script'));
             }(document, 'script'));
         </script>
     </body>
