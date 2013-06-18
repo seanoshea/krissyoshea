@@ -1,8 +1,5 @@
-language: objective-c
-before_install:
-  - rm -rf Dependencies/ios-etsy-sdk
-  - git submodule update --init --recursive
-  - chmod a+x travis/before_script.sh
-  - chmod a+x travis/script.sh
-before_script: travis/before_script.sh
-script: travis/script.sh
+language: node_js
+node_js:
+  - "0.10"
+install: "npm -g install jshint"
+script: "jshint js/main.js"
