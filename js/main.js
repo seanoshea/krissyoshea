@@ -688,23 +688,22 @@ $(function() {
             }
         },
         loadPhotoSetPhotos: function() {
-            var that = this;
+            var that = this, executeFunction = function(data) {
+				var maximumHeight = 0;
+				KT.photoSets[data.photoset.id].photoUrls = data.photoset.photo;
+				// get the maximum height of a photo
+				_.each(KT.photoSets[data.photoset.id].photoUrls, function(obj, key, list) {
+					if (obj.height_m > maximumHeight) {
+						maximumHeight = obj.height_m;
+					}
+				});
+				KT.photoSets[data.photoset.id].maximumHeight = maximumHeight;
+				that.checkAreAllPhotoSetUrlsLoaded();
+			};
             for (var photoset_id in KT.photoSets) {
                 if (KT.photoSets.hasOwnProperty(photoset_id)) {
                     $.getJSON('http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=' + photoset_id + '&api_key=' + KT.apiKey + '&jsoncallback=?',
-                        { format: 'json' },
-                        function(data) {
-                            var maximumHeight = 0;
-                            KT.photoSets[data.photoset.id].photoUrls = data.photoset.photo;
-                            // get the maximum height of a photo
-                            _.each(KT.photoSets[data.photoset.id].photoUrls, function(obj, key, list) {
-                                if (obj.height_m > maximumHeight) {
-                                    maximumHeight = obj.height_m;
-                                }
-                            });
-                            KT.photoSets[data.photoset.id].maximumHeight = maximumHeight;
-                            that.checkAreAllPhotoSetUrlsLoaded();
-                        }
+                        { format: 'json' }, executeFunction
                     );
                 }
             }
