@@ -41,6 +41,21 @@ input:invalid, textarea:invalid {
     background-color: #fff;
 }
 /*
+ * Typekit colours
+ */
+.wf-loading h1,
+.wf-loading h3 {
+	color: #fff;
+}
+.wf-active h1,
+.wf-active h3 {
+	color: #333;
+}
+.wf-inactive h1,
+.wf-inactive h3 {
+	color: #333;
+}
+/*
  * Colors
  *
  * #fff background
@@ -58,7 +73,6 @@ img {
     padding: 4px;
 }
 h1 {
-	font-size: 35px;
     margin: 20px 0 0 0;
 }
 h3 {
