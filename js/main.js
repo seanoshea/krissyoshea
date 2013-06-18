@@ -211,7 +211,7 @@ $(function() {
                 container.addClass('animate');
             }
             if (Modernizr.csstransforms3d) {
-                container.css('transform', 'translate3d(' + percent +'%,0,0) scale3d(1,1,1)');
+                container.css('transform', 'translate3d(' + percent + '%,0,0) scale3d(1,1,1)');
             } else if (Modernizr.csstransforms) {
                 container.css('transform', 'translate(' + percent + '%,0)');
             } else {
@@ -228,12 +228,12 @@ $(function() {
         checkForSwipeablePhotos: function(id) {
             var that = this, paneWidth = 100;
             // may the browser gods have pity on me.
-            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
                 $('#' + id + 'Content').hammer({ drag_lock_to_axis: true })
                     .on('release dragleft dragright swipeleft swiperight', function(ev) {
                         // quite a lot of this code is lifted from https://github.com/EightMedia/hammer.js
                         ev.gesture.preventDefault();
-                        switch(ev.type) {
+                        switch (ev.type) {
                             case 'dragright':
                             case 'dragleft':
                                 var paneCount = that.models.count, currentPane = that.currentPane;
