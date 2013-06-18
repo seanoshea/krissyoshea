@@ -236,8 +236,8 @@ $(function() {
                         switch (ev.type) {
                             case 'dragright':
                             case 'dragleft':
-                                var paneCount = that.models.count, currentPane = that.currentPane;
-                                paneOffset = - (100 / paneCount) * currentPane,
+                                var paneCount = that.models.count, currentPane = that.currentPane, paneOffset, dragOffset;
+                                paneOffset = - (100 / paneCount) * currentPane;
                                 dragOffset = ((100 / paneWidth) * ev.gesture.deltaX) / paneCount;
                                 if ((currentPane === 0 && ev.gesture.direction === Hammer.DIRECTION_RIGHT) ||
                                     (currentPane === paneCount - 1 && ev.gesture.direction === Hammer.DIRECTION_LEFT)) {
@@ -640,8 +640,10 @@ $(function() {
             return 'url_m';
         },
         checkAreAllPhotoSetUrlsLoaded: function() {
-            var numberOfPhotoSets = _.size(KT.photoSets), count = 0, models = [], model;
-            hash = window.location.hash, isViableHash = hash !== '', isPhotoSetHash = false, isMainPaneHash = false;
+            var numberOfPhotoSets = _.size(KT.photoSets), count = 0, models = [], model,
+            hash, isViableHash, isPhotoSetHash = false, isMainPaneHash = false;
+			hash = window.location.hash;
+			isViableHash = hash !== '';
             for (var photoset_id in KT.photoSets) {
                 if (KT.photoSets.hasOwnProperty(photoset_id)) {
                     model = KT.photoSets[photoset_id];
