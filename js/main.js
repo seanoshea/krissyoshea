@@ -132,7 +132,7 @@ $(function() {
         togglePhotoSetMenu: function(forceHide) {
             var wasOpen = forceHide || this.open, node = $('#photoSetMenu');
             if (!forceHide || this.open) {
-                node.slideToggle('fast', function() {
+                node.slideToggle('slow', function() {
                     window.Application.toggleShow(node, !wasOpen);
                     window.PhotoSetNavigation.open = !wasOpen;
                 });
@@ -335,7 +335,8 @@ $(function() {
         createControls: function(id) {
             _.each(this.models, function(item, index, array) {
                 var view = new PhotoPageView({model: item});
-                this.$('#' + id + 'Controls').append(view.render().el);
+				// TODO - commenting this out for now as I want to hide these controls.
+                // this.$('#' + id + 'Controls').append(view.render().el);
             });
         },
         setActive: function(model) {
@@ -575,8 +576,8 @@ $(function() {
         },
         createGallery: function(id) {
             var photoList = new window.PhotoList(this.generateImageSourcesForPhotoList(id)), gm, name = KT.photoSets[id].title._content,
-            photoPageList = new window.PhotoPageList(this.generateImageControlsForPhotoPageList(id));
-            galleryModel = new window.GalleryModel({photoList: photoList, pageList: photoPageList, id: id, name: name, visible: true, maximumHeight: KT.photoSets[id].maximumHeight});
+            photoPageList = new window.PhotoPageList(this.generateImageControlsForPhotoPageList(id)),
+            galleryModel = new window.GalleryModel({photoList: photoList, pageList: photoPageList, id: id, name: name, visible: true});
             this.galleries[id] = new window.GalleryView({model: galleryModel});
             $('#main').append(this.galleries[id].render().el);
             photoList.postCreate(id);
@@ -689,15 +690,7 @@ $(function() {
         },
         loadPhotoSetPhotos: function() {
             var that = this, executeFunction = function(data) {
-				var maximumHeight = 0;
 				KT.photoSets[data.photoset.id].photoUrls = data.photoset.photo;
-				// get the maximum height of a photo
-				_.each(KT.photoSets[data.photoset.id].photoUrls, function(obj, key, list) {
-					if (obj.height_m > maximumHeight) {
-						maximumHeight = obj.height_m;
-					}
-				});
-				KT.photoSets[data.photoset.id].maximumHeight = maximumHeight;
 				that.checkAreAllPhotoSetUrlsLoaded();
 			};
             for (var photoset_id in KT.photoSets) {
