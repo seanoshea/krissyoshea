@@ -330,13 +330,9 @@ $(function() {
         },
         postCreate: function(id) {
             this.id = id;
-            this.createControls(id);
-        },
-        createControls: function(id) {
             _.each(this.models, function(item, index, array) {
                 var view = new PhotoPageView({model: item});
-				// TODO - commenting this out for now as I want to hide these controls.
-                // this.$('#' + id + 'Controls').append(view.render().el);
+				this.$('#' + id + 'Controls').append(view.render().el);
             });
         },
         setActive: function(model) {
