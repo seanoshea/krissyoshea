@@ -21,7 +21,8 @@ $(function() {
     KT.userId = '91622522@N07';
 
     // navigational elements in the app.
-    KT.panes = ['biography', 'news', 'contact'];
+    // KT.panes = ['biography', 'news', 'contact'];
+	KT.panes = ['biography', 'contact'];
 
     // some custom events.
     KT.PHOTO_PAGE_VIEW_CLICK = 'PHOTO_PAGE_VIEW_CLICK';
@@ -749,7 +750,7 @@ $(function() {
         routes: {
             'home': 'home',
             'biography': 'biography',
-            'news': 'news',
+            // 'news': 'news',
             'contact': 'contact'
         },
         home: function() {
@@ -758,9 +759,9 @@ $(function() {
         biography: function() {
 
         },
-        news: function() {
-
-        },
+        // news: function() {
+        // 
+        // },
         contact: function() {
 
         }
