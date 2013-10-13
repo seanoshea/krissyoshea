@@ -73,6 +73,7 @@ img {
     padding: 4px;
 }
 h1 {
+	cursor: pointer;
     margin: 20px 0 0 0;
 }
 h3 {
@@ -109,7 +110,7 @@ input, textarea {
 	margin: 15px 0 0 0;
 }
 .content {
-    margin: 30px 0 0 0;
+    margin: 95px 0 0 0;
 }
 .content.photoContent {
     margin: 20px 0 0 0;
