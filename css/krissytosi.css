@@ -18,8 +18,8 @@
  * Customization for HTML5 Boilerplate
  */
 html, button, input, select, textarea {
+	color: #333;
     font-family: "acta-display", Lucida Grande, Arial, Helvetica, sans-serif;
-    color: #333;
     font-size: 0.875em;
 }
 ::-moz-selection {
@@ -39,6 +39,12 @@ ul, ol {
 }
 input:invalid, textarea:invalid {
     background-color: #fff;
+}
+/*
+ * Would prefer not to do this ...
+ */
+a:focus {
+    outline: none;
 }
 /*
  * Typekit colours
@@ -74,7 +80,8 @@ img {
 }
 h1 {
 	cursor: pointer;
-    margin: 20px 0 0 0;
+	font-size: 2.5em;
+    margin: 0;
 }
 h3 {
     display: inline;
@@ -110,7 +117,7 @@ input, textarea {
 	margin: 15px 0 0 0;
 }
 .content {
-    margin: 95px 0 0 0;
+    margin: 110px 0 0 0;
 }
 .content.photoContent {
     margin: 20px 0 0 0;
