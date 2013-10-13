@@ -100,6 +100,11 @@ h3 {
     padding: 10px;
     text-decoration: none;
 }
+.navigation li .active, .navigation li a:hover {
+    background: #999;
+    color: #fff;
+    text-shadow: 1px 1px 0 #666;
+}
 .subNavigation li a {
     font-size: 0.75em;
     padding: 4px;
@@ -123,8 +128,9 @@ input, textarea {
     margin: 20px 0 0 0;
 }
 .controls {
+	bottom: 10px;
     display: table;
-    margin: 20px auto;
+	position: absolute;
 }
 .controls .navigation.subNavigation li {
 	margin:10px 0 0 0;

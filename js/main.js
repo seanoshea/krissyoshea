@@ -333,7 +333,9 @@ $(function() {
             this.id = id;
             _.each(this.models, function(item, index, array) {
                 var view = new PhotoPageView({model: item});
-				this.$('#' + id + 'Controls').append(view.render().el);
+				if (1 === 1 || index === 0 || index === array.length - 1) {
+					this.$('#' + id + 'Controls').append(view.render().el);
+				}
             });
         },
         setActive: function(model) {
