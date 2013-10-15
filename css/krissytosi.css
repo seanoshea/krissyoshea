@@ -111,7 +111,9 @@ h3 {
     color: #fff;
     text-shadow: 1px 1px 0 #666;
 }
-.subNavigation li a {
+.subNavigation li a,
+.controlSummary {
+    color: #333;
     font-size: 0.75em;
     padding: 4px;
 }
@@ -136,7 +138,6 @@ input, textarea {
 .controls {
 	bottom: 10px;
     display: table;
-	position: absolute;
 }
 .controls .navigation.subNavigation li {
 	margin:10px 0 0 0;

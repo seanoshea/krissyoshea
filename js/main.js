@@ -189,6 +189,7 @@ $(function() {
                 }
             });
             this.checkForSwipeablePhotos(id);
+			this.setControlSummary(0);
         },
         setActive: function(model) {
             _.each(this.models, function(model) {
@@ -199,6 +200,7 @@ $(function() {
             _.each(this.models, function(model, key, list) {
                 model.setActive(key + 1 === index);
             });
+			this.setControlSummary(index - 1);
         },
         showPane: function(index) {
             index = Math.max(0, Math.min(index, this.models.count - 1));
@@ -226,6 +228,12 @@ $(function() {
         previous: function() {
             return this.showPane(this.currentPane - 1, true);
         },
+		setControlSummary: function(index) {
+			var count = this.models.length;
+            $('#' + this.name + 'ControlSummary').each(function(i, item) {
+				item.innerHTML = index + 1 + " of " + count;
+            });
+		},
         checkForSwipeablePhotos: function(id) {
             var that = this, paneWidth = 100;
             // may the browser gods have pity on me.
@@ -332,8 +340,8 @@ $(function() {
         postCreate: function(id) {
             this.id = id;
             _.each(this.models, function(item, index, array) {
-                var view = new PhotoPageView({model: item});
-				if (1 === 1 || index === 0 || index === array.length - 1) {
+				if (index === 0 || index === array.length - 1) {
+					var view = new PhotoPageView({model: item});
 					this.$('#' + id + 'Controls').append(view.render().el);
 				}
             });
