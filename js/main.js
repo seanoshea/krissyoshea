@@ -214,7 +214,8 @@ $(function() {
             this.setContainerOffset(-((100 / this.models.count) * this.currentPane), true);
         },
         setContainerOffset: function(percent, animate) {
-            var paneWidth = 100, container = this.$('#' + id + 'Container');
+			// console.log('here i am ', this.id);
+            var paneWidth = 100, container = $('#' + this.id + 'Container');
             container.removeClass('animate');
             if (animate) {
                 container.addClass('animate');
@@ -270,8 +271,8 @@ $(function() {
                                 var paneCount = that.models.count, currentPane = that.currentPane, paneOffset, dragOffset;
                                 paneOffset = - (100 / paneCount) * currentPane;
                                 dragOffset = ((100 / paneWidth) * ev.gesture.deltaX) / paneCount;
-                                if ((currentPane === 0 && ev.gesture.direction === Hammer.DIRECTION_RIGHT) ||
-                                    (currentPane === paneCount - 1 && ev.gesture.direction === Hammer.DIRECTION_LEFT)) {
+                                if ((currentPane === 0 && ev.gesture.direction === 'right') ||
+                                    (currentPane === paneCount - 1 && ev.gesture.direction === 'left')) {
                                     dragOffset *= 0.4;
                                 }
                                 that.setContainerOffset(dragOffset + paneOffset);
