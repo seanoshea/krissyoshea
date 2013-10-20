@@ -236,13 +236,13 @@ $(function() {
         },
 		alterMetadataForPhoto: function(index) {
 			var count = this.models.length, attributionText = this.attributionForPhotoAtIndex(index),
-			that = this, attribution = $('#' + this.name + 'attribution');
+			that = this, attribution = $('#' + this.name + 'Attribution');
             $('#' + this.name + 'ControlSummary').each(function(i, item) {
 				item.innerHTML = index + 1 + " of " + count;
             });
 			if (attributionText) {
 	            attribution.fadeIn('fast', function() {
-					this.innerHTML = attribution;
+					this.innerHTML = attributionText;
 					window.Application.toggleShow(this, true);
 					that.showingAttribution = true;
 	            });
@@ -254,7 +254,7 @@ $(function() {
 			}
 		},
 		attributionForPhotoAtIndex: function(index) {
-			return KT.attributions[this.name][index];
+			return KT.attributions[this.name] && KT.attributions[this.name][index];
 		},
         checkForSwipeablePhotos: function(id) {
             var that = this, paneWidth = 100;
