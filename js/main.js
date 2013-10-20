@@ -22,12 +22,12 @@ $(function() {
 
     // navigational elements in the app.
     // KT.panes = ['biography', 'news', 'contact'];
-	KT.panes = ['biography', 'contact'];
+    KT.panes = ['biography', 'contact'];
 
-	// attributions for different photos in the portfolios.
-	KT.attributions = {
+    // attributions for different photos in the portfolios.
+    KT.attributions = {
 
-	};
+    };
 
     // some custom events.
     KT.PHOTO_PAGE_VIEW_CLICK = 'PHOTO_PAGE_VIEW_CLICK';
@@ -167,7 +167,7 @@ $(function() {
     window.PhotoList = Backbone.Collection.extend({
         name: '',
         currentPane: 0,
-		showingAttribution: false,
+        showingAttribution: false,
         model: PhotoModel,
         initialize: function() {
 
@@ -195,7 +195,7 @@ $(function() {
                 }
             });
             this.checkForSwipeablePhotos(id);
-			this.alterMetadataForPhoto(0);
+            this.alterMetadataForPhoto(0);
         },
         setActive: function(model) {
             _.each(this.models, function(model) {
@@ -206,7 +206,7 @@ $(function() {
             _.each(this.models, function(model, key, list) {
                 model.setActive(key + 1 === index);
             });
-			this.alterMetadataForPhoto(index - 1);
+            this.alterMetadataForPhoto(index - 1);
         },
         showPane: function(index) {
             index = Math.max(0, Math.min(index, this.models.count - 1));
@@ -234,28 +234,28 @@ $(function() {
         previous: function() {
             return this.showPane(this.currentPane - 1, true);
         },
-		alterMetadataForPhoto: function(index) {
-			var count = this.models.length, attributionText = this.attributionForPhotoAtIndex(index),
-			that = this, attribution = $('#' + this.name + 'Attribution');
+        alterMetadataForPhoto: function(index) {
+            var count = this.models.length, attributionText = this.attributionForPhotoAtIndex(index),
+            that = this, attribution = $('#' + this.name + 'Attribution');
             $('#' + this.name + 'ControlSummary').each(function(i, item) {
-				item.innerHTML = index + 1 + ' of ' + count;
+                item.innerHTML = index + 1 + ' of ' + count;
             });
-			if (attributionText) {
-	            attribution.fadeIn('fast', function() {
-					this.innerHTML = attributionText;
-					window.Application.toggleShow(this, true);
-					that.showingAttribution = true;
-	            });
-			} else if (this.showingAttribution) {
-	            attribution.fadeOut('fast', function() {
-					window.Application.toggleShow(this, false);
-					that.showingAttribution = false;
-	            });
-			}
-		},
-		attributionForPhotoAtIndex: function(index) {
-			return KT.attributions[this.name] && KT.attributions[this.name][index];
-		},
+            if (attributionText) {
+                attribution.fadeIn('fast', function() {
+                    this.innerHTML = attributionText;
+                    window.Application.toggleShow(this, true);
+                    that.showingAttribution = true;
+                });
+            } else if (this.showingAttribution) {
+                attribution.fadeOut('fast', function() {
+                    window.Application.toggleShow(this, false);
+                    that.showingAttribution = false;
+                });
+            }
+        },
+        attributionForPhotoAtIndex: function(index) {
+            return KT.attributions[this.name] && KT.attributions[this.name][index];
+        },
         checkForSwipeablePhotos: function(id) {
             var that = this, paneWidth = 100;
             // may the browser gods have pity on me.
@@ -362,10 +362,10 @@ $(function() {
         postCreate: function(id) {
             this.id = id;
             _.each(this.models, function(item, index, array) {
-				if (index === 0 || index === array.length - 1) {
-					var view = new PhotoPageView({model: item});
-					this.$('#' + id + 'Controls').append(view.render().el);
-				}
+                if (index === 0 || index === array.length - 1) {
+                    var view = new PhotoPageView({model: item});
+                    this.$('#' + id + 'Controls').append(view.render().el);
+                }
             });
         },
         setActive: function(model) {
@@ -672,8 +672,8 @@ $(function() {
         checkAreAllPhotoSetUrlsLoaded: function() {
             var numberOfPhotoSets = _.size(KT.photoSets), count = 0, models = [], model,
             hash, isViableHash, isPhotoSetHash = false, isMainPaneHash = false;
-			hash = window.location.hash;
-			isViableHash = hash !== '';
+            hash = window.location.hash;
+            isViableHash = hash !== '';
             for (var photoset_id in KT.photoSets) {
                 if (KT.photoSets.hasOwnProperty(photoset_id)) {
                     model = KT.photoSets[photoset_id];
@@ -719,9 +719,9 @@ $(function() {
         },
         loadPhotoSetPhotos: function() {
             var that = this, executeFunction = function(data) {
-				KT.photoSets[data.photoset.id].photoUrls = data.photoset.photo;
-				that.checkAreAllPhotoSetUrlsLoaded();
-			};
+                KT.photoSets[data.photoset.id].photoUrls = data.photoset.photo;
+                that.checkAreAllPhotoSetUrlsLoaded();
+            };
             for (var photoset_id in KT.photoSets) {
                 if (KT.photoSets.hasOwnProperty(photoset_id)) {
                     $.getJSON('http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=' + photoset_id + '&api_key=' + KT.apiKey + '&jsoncallback=?',
