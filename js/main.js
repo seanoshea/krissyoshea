@@ -214,7 +214,6 @@ $(function() {
             this.setContainerOffset(-((100 / this.models.count) * this.currentPane), true);
         },
         setContainerOffset: function(percent, animate) {
-			// console.log('here i am ', this.id);
             var paneWidth = 100, container = $('#' + this.id + 'Container');
             container.removeClass('animate');
             if (animate) {
@@ -259,8 +258,7 @@ $(function() {
         },
         checkForSwipeablePhotos: function(id) {
             var that = this, paneWidth = 100;
-            // may the browser gods have pity on me.
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            if (window.Application.isMobile()) {
                 $('#' + id + 'Content').hammer({ drag_lock_to_axis: true })
                     .on('release dragleft dragright swipeleft swiperight', function(ev) {
                         // quite a lot of this code is lifted from https://github.com/EightMedia/hammer.js
@@ -667,8 +665,7 @@ $(function() {
             window.Application.galleries[id].model.set('visible', true);
         },
         determineImageSize: function() {
-            // TODO - mobile detection
-            return 'url_m';
+            return window.Application.isMobile() ? 'url_m' : 'url_o';
         },
         checkAreAllPhotoSetUrlsLoaded: function() {
             var numberOfPhotoSets = _.size(KT.photoSets), count = 0, models = [], model,
@@ -776,6 +773,10 @@ $(function() {
                 $(node).css('display', 'none');
                 $(node).attr('aria-hidden', 'true');
             }
+        },
+        isMobile: function() {
+            // may the browser gods have pity on me.
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
         }
     });
     window.Application = new ApplicationView();
