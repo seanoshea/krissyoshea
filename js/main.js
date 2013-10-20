@@ -776,7 +776,7 @@ $(function() {
         },
         isMobile: function() {
             // may the browser gods have pity on me.
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+            return (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent));
         }
     });
     window.Application = new ApplicationView();

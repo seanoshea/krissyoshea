@@ -177,12 +177,14 @@
         </script>
         <script type="text/template" id="gallery-template">
             <div id="<%= id %>Content" class="content photoContent" style="display:none;">
-                <ul id="<%= id %>Container"></ul>
-                <p id="<%= id %>ControlSummary" class="controlSummary"></p>
+                <h3 id="<%= id %>GalleryName" class="controlSummary">Props</h3><span class="separator" aria-role="separator">|</span>
+                <p id="<%= id %>ControlSummary" class="controlSummary"></p><span class="separator" aria-role="separator">|</span>
                 <div class="controls">
                     <ol id="<%= id %>Controls" class="navigation subNavigation" style="display:none;"></ol>
                 </div>
+                <span class="separator" aria-role="separator">|</span>
                 <small id="<%= id %>Attribution" class="attribution" style="display:none;"></small>
+                <ul id="<%= id %>Container" class="photoContainer"></ul>
             </div>
         </script>
         <!-- scripts concatenated and minified via build script -->

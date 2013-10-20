@@ -18,7 +18,7 @@
  * Customization for HTML5 Boilerplate
  */
 html, button, input, select, textarea {
-	color: #333;
+    color: #333;
     font-family: "acta-display", Lucida Grande, Arial, Helvetica, sans-serif;
     font-size: 0.875em;
 }
@@ -51,15 +51,15 @@ a:focus {
  */
 .wf-loading h1,
 .wf-loading h3 {
-	color: #fff;
+    color: #fff;
 }
 .wf-active h1,
 .wf-active h3 {
-	color: #333;
+    color: #333;
 }
 .wf-inactive h1,
 .wf-inactive h3 {
-	color: #333;
+    color: #333;
 }
 /*
  * Colors
@@ -75,12 +75,12 @@ header {
 img {
     border: 1px solid #eee;
     display: block;
-	margin: 15px 0 0 0;
+    margin: 15px 0 0 0;
     padding: 4px;
 }
 h1 {
-	cursor: pointer;
-	font-size: 2.5em;
+    cursor: pointer;
+    font-size: 2.5em;
     margin: 0;
 }
 h3 {
@@ -93,7 +93,7 @@ h3 {
     margin-top: 10px;
 }
 .navigation li {
-	padding:20px 0 0 0;
+    padding:20px 0 0 0;
 }
 .navigation li a {
     color: #333;
@@ -101,29 +101,38 @@ h3 {
     text-decoration: none;
 }
 .navigation li .active, .navigation li a:hover {
-	background-color: #999;
-	background-repeat: repeat-x;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#AAA), to(#999));
-	background: -webkit-linear-gradient(top, #999, #AAA);
-	background: -moz-linear-gradient(top, #999, #AAA);
-	background: -ms-linear-gradient(top, #999, #AAA);
-	background: -o-linear-gradient(top, #999, #AAA);
+    background-color: #999;
+    background-repeat: repeat-x;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#AAA), to(#999));
+    background: -webkit-linear-gradient(top, #999, #AAA);
+    background: -moz-linear-gradient(top, #999, #AAA);
+    background: -ms-linear-gradient(top, #999, #AAA);
+    background: -o-linear-gradient(top, #999, #AAA);
     color: #fff;
     text-shadow: 1px 1px 0 #666;
 }
-.controlSummary {
-	float:left;
-	margin:9px 0 0 0;
+.controlSummary,
+.separator {
+    float:left;
+    margin:9px 0 0 0;
+}
+.separator {
+    margin:12px 0 0 0;
 }
 .attribution {
-	float:left;
-	margin:13px 0 0 10px;
+    float:left;
+    margin:13px 0 0 10px;
 }
 .subNavigation li a,
 .controlSummary {
     color: #333;
     font-size: 0.75em;
     padding: 4px;
+}
+.photoContainer {
+    clear:both;
+    float:left;
+    margin:-10px 0 0 0;
 }
 #homePageImage {
     cursor: pointer;
@@ -135,7 +144,7 @@ input, textarea {
     width: 250px;
 }
 .header {
-	margin: 15px 0 0 0;
+    margin: 15px 0 0 0;
 }
 .content {
     margin: 110px 0 0 0;
@@ -144,13 +153,13 @@ input, textarea {
     margin: 20px 0 0 0;
 }
 .controls {
-	bottom: 10px;
+    bottom: 10px;
     display: table;
-	float: left;
+    float: left;
 }
 .controls .navigation.subNavigation li {
-	margin:10px 0 0 0;
-	display:inline;
+    margin:10px 0 0 0;
+    display:inline;
 }
 /*
  * Splash
