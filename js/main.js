@@ -23,10 +23,10 @@ $(function() {
     // navigational elements in the app.
     // KT.panes = ['biography', 'news', 'contact'];
 	KT.panes = ['biography', 'contact'];
-	
+
 	// attributions for different photos in the portfolios.
 	KT.attributions = {
-		
+
 	};
 
     // some custom events.
@@ -238,7 +238,7 @@ $(function() {
 			var count = this.models.length, attributionText = this.attributionForPhotoAtIndex(index),
 			that = this, attribution = $('#' + this.name + 'Attribution');
             $('#' + this.name + 'ControlSummary').each(function(i, item) {
-				item.innerHTML = index + 1 + " of " + count;
+				item.innerHTML = index + 1 + ' of ' + count;
             });
 			if (attributionText) {
 	            attribution.fadeIn('fast', function() {
@@ -792,7 +792,7 @@ $(function() {
 
         },
         // news: function() {
-        // 
+        //
         // },
         contact: function() {
 
