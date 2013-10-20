@@ -23,6 +23,11 @@ $(function() {
     // navigational elements in the app.
     // KT.panes = ['biography', 'news', 'contact'];
 	KT.panes = ['biography', 'contact'];
+	
+	// attributions for different photos in the portfolios.
+	KT.attributions = {
+		
+	};
 
     // some custom events.
     KT.PHOTO_PAGE_VIEW_CLICK = 'PHOTO_PAGE_VIEW_CLICK';
@@ -162,6 +167,7 @@ $(function() {
     window.PhotoList = Backbone.Collection.extend({
         name: '',
         currentPane: 0,
+		showingAttribution: false,
         model: PhotoModel,
         initialize: function() {
 
@@ -189,7 +195,7 @@ $(function() {
                 }
             });
             this.checkForSwipeablePhotos(id);
-			this.setControlSummary(0);
+			this.alterMetadataForPhoto(0);
         },
         setActive: function(model) {
             _.each(this.models, function(model) {
@@ -200,7 +206,7 @@ $(function() {
             _.each(this.models, function(model, key, list) {
                 model.setActive(key + 1 === index);
             });
-			this.setControlSummary(index - 1);
+			this.alterMetadataForPhoto(index - 1);
         },
         showPane: function(index) {
             index = Math.max(0, Math.min(index, this.models.count - 1));
@@ -228,11 +234,27 @@ $(function() {
         previous: function() {
             return this.showPane(this.currentPane - 1, true);
         },
-		setControlSummary: function(index) {
-			var count = this.models.length;
+		alterMetadataForPhoto: function(index) {
+			var count = this.models.length, attributionText = this.attributionForPhotoAtIndex(index),
+			that = this, attribution = $('#' + this.name + 'attribution');
             $('#' + this.name + 'ControlSummary').each(function(i, item) {
 				item.innerHTML = index + 1 + " of " + count;
             });
+			if (attributionText) {
+	            attribution.fadeIn('fast', function() {
+					this.innerHTML = attribution;
+					window.Application.toggleShow(this, true);
+					that.showingAttribution = true;
+	            });
+			} else if (this.showingAttribution) {
+	            attribution.fadeOut('fast', function() {
+					window.Application.toggleShow(this, false);
+					that.showingAttribution = false;
+	            });
+			}
+		},
+		attributionForPhotoAtIndex: function(index) {
+			return KT.attributions[this.name][index];
 		},
         checkForSwipeablePhotos: function(id) {
             var that = this, paneWidth = 100;
