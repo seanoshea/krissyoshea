@@ -111,6 +111,14 @@ h3 {
     color: #fff;
     text-shadow: 1px 1px 0 #666;
 }
+.controlSummary {
+	float:left;
+	margin:9px 0 0 0;
+}
+.attribution {
+	float:left;
+	margin:13px 0 0 10px;
+}
 .subNavigation li a,
 .controlSummary {
     color: #333;
@@ -138,6 +146,7 @@ input, textarea {
 .controls {
 	bottom: 10px;
     display: table;
+	float: left;
 }
 .controls .navigation.subNavigation li {
 	margin:10px 0 0 0;
