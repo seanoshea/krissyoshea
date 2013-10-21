@@ -29,6 +29,14 @@ $(function() {
 
     };
 
+    // holds information on what image sizes the application
+    // attempted to load. Always try to load the largest image
+    // possible, but offer at least something if the largest
+    // image doesn't load within a specific period of time.
+    KT.attemptedImageSizes = ['url_o','url_m'];
+    KT.homePageImageLoadTimeout;
+    KT.homePageLoadTimeout = 3000;
+
     // some custom events.
     KT.PHOTO_PAGE_VIEW_CLICK = 'PHOTO_PAGE_VIEW_CLICK';
     KT.PHOTO_CLICK = 'PHOTO_CLICK';
@@ -549,19 +557,37 @@ $(function() {
         },
         loadHomePageImage: function() {
             var img = new Image(), src = this.randomizeStartImage(), homePageImage = $('#homePageImage');
+            window.Application.clearHomePageImageLoadTimeout();
             if (src) {
                 img.src = src;
+                KT.homePageImageLoadTimeout = setTimeout(function() {
+                    window.Application.checkForAlternativeImageSizesAndTryToLoadHomePageImageAgain();
+                }, KT.homePageLoadTimeout);
                 $(img).load(function() {
+                    window.Application.clearHomePageImageLoadTimeout();
                     setTimeout(function() {
                         window.Application.fadeSplash();
                     }, 250);
                 }).error(function() {
+                    window.Application.checkForAlternativeImageSizesAndTryToLoadHomePageImageAgain();
                 }).attr('src', src);
                 homePageImage.attr('src', src);
                 homePageImage.css('display', 'none');
             } else {
                 window.Application.fadeSplash();
             }
+        },
+        clearHomePageImageLoadTimeout: function() {
+            if (KT.homePageImageLoadTimeout) {
+                clearTimeout(KT.homePageImageLoadTimeout);
+            }
+        },
+        checkForAlternativeImageSizesAndTryToLoadHomePageImageAgain: function() {
+            if (KT.attemptedImageSizes.length > 1) {
+                // remove the size from the global array and try again.
+                KT.attemptedImageSizes.splice(0, 1);
+            }
+            window.Application.loadHomePageImage();
         },
         fadeSplash: function() {
             $('#loading').fadeOut('fast', function() {
@@ -626,8 +652,6 @@ $(function() {
                     // just be sure
                     if (!url && key) {
                         url = KT.photoSets[key].photoUrls[0][that.determineImageSize()];
-                    } else {
-                        // TODO
                     }
                     that.randomizedPhotoSet = key;
                 }
@@ -665,7 +689,13 @@ $(function() {
             window.Application.galleries[id].model.set('visible', true);
         },
         determineImageSize: function() {
-            return window.Application.isMobile() ? 'url_m' : 'url_o';
+            var imageSize;
+            if (window.Application.isMobile()) {
+                imageSize = 'url_m'
+            } else if (KT.attemptedImageSizes.length) {
+                imageSize = KT.attemptedImageSizes[0];
+            }
+            return  imageSize;
         },
         checkAreAllPhotoSetUrlsLoaded: function() {
             var numberOfPhotoSets = _.size(KT.photoSets), count = 0, models = [], model,
