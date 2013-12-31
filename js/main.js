@@ -34,7 +34,6 @@ $(function() {
     // possible, but offer at least something if the largest
     // image doesn't load within a specific period of time.
     KT.attemptedImageSizes = ['url_o','url_m'];
-    KT.homePageImageLoadTimeout;
     KT.homePageLoadTimeout = 3000;
 
     // some custom events.
@@ -691,11 +690,11 @@ $(function() {
         determineImageSize: function() {
             var imageSize;
             if (window.Application.isMobile()) {
-                imageSize = 'url_m'
+                imageSize = 'url_m';
             } else if (KT.attemptedImageSizes.length) {
                 imageSize = KT.attemptedImageSizes[0];
             }
-            return  imageSize;
+            return imageSize;
         },
         checkAreAllPhotoSetUrlsLoaded: function() {
             var numberOfPhotoSets = _.size(KT.photoSets), count = 0, models = [], model,
