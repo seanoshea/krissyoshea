@@ -265,7 +265,7 @@ $(function() {
         },
         checkForSwipeablePhotos: function(id) {
             var that = this, paneWidth = 100;
-            if (window.Application.isMobile()) {
+            if (window.Application.shouldDetectTouches()) {
                 $('#' + id + 'Content').hammer({ drag_lock_to_axis: true })
                     .on('release dragleft dragright swipeleft swiperight', function(ev) {
                         // quite a lot of this code is lifted from https://github.com/EightMedia/hammer.js
@@ -806,6 +806,9 @@ $(function() {
         isMobile: function() {
             // may the browser gods have pity on me.
             return (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent));
+        },
+        shouldDetectTouches: function() {
+            return NO;
         }
     });
     window.Application = new ApplicationView();
