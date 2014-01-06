@@ -808,7 +808,7 @@ $(function() {
             return (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent));
         },
         shouldDetectTouches: function() {
-            return NO;
+            return false;
         }
     });
     window.Application = new ApplicationView();
