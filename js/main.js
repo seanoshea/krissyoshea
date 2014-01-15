@@ -559,6 +559,8 @@ $(function() {
             window.Application.clearHomePageImageLoadTimeout();
             if (src) {
                 img.src = src;
+                homePageImage.attr('src', src);
+                homePageImage.css('display', 'none');
                 KT.homePageImageLoadTimeout = setTimeout(function() {
                     window.Application.checkForAlternativeImageSizesAndTryToLoadHomePageImageAgain();
                 }, KT.homePageLoadTimeout);
@@ -570,8 +572,6 @@ $(function() {
                 }).error(function() {
                     window.Application.checkForAlternativeImageSizesAndTryToLoadHomePageImageAgain();
                 }).attr('src', src);
-                homePageImage.attr('src', src);
-                homePageImage.css('display', 'none');
             } else {
                 window.Application.fadeSplash();
             }
@@ -585,6 +585,9 @@ $(function() {
             if (KT.attemptedImageSizes.length > 1) {
                 // remove the size from the global array and try again.
                 KT.attemptedImageSizes.splice(0, 1);
+            } else {
+                // try again
+                KT.attemptedImageSizes = [];
             }
             window.Application.loadHomePageImage();
         },
@@ -637,7 +640,7 @@ $(function() {
             photoPageList.postCreate(id);
         },
         randomizeStartImage: function() {
-            var index = Math.floor(Math.random() * 4), url, count = 0, that = this;
+            var index = Math.floor(Math.random() * 3), url, count = 0, that = this;
             _.each(KT.photoSets, function(model, key, list) {
                 var photoSetIdentifier;
                 if (count === index) {
