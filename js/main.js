@@ -33,7 +33,7 @@ $(function() {
     // attempted to load. Always try to load the largest image
     // possible, but offer at least something if the largest
     // image doesn't load within a specific period of time.
-    KT.attemptedImageSizes = ['url_o','url_m'];
+    KT.attemptedImageSizes = ['url_o', 'url_m'];
     KT.homePageLoadTimeout = 3000;
 
     // some custom events.
