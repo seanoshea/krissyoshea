@@ -754,7 +754,7 @@ $(function() {
             };
             for (var photoset_id in KT.photoSets) {
                 if (KT.photoSets.hasOwnProperty(photoset_id)) {
-                    $.getJSON('http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=' + photoset_id + '&api_key=' + KT.apiKey + '&jsoncallback=?',
+                    $.getJSON('https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=' + photoset_id + '&api_key=' + KT.apiKey + '&jsoncallback=?',
                         { format: 'json' }, executeFunction
                     );
                 }
@@ -763,7 +763,7 @@ $(function() {
         start: function() {
             var that = this, photoSetName;
             // make the API call to retrieve the photo sets before proceeding.
-            $.getJSON('http://api.flickr.com/services/rest/?method=flickr.photosets.getList&user_id=' + KT.userId + '&api_key=' + KT.apiKey + '&jsoncallback=?',
+            $.getJSON('https://api.flickr.com/services/rest/?method=flickr.photosets.getList&user_id=' + KT.userId + '&api_key=' + KT.apiKey + '&jsoncallback=?',
                 { format: 'json' },
                 function(data) {
                     var photoSet;
