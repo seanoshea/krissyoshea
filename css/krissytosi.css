@@ -306,6 +306,27 @@ to {
     transform: scale(0.5) rotate(360deg);
 }
 }
+.navigation li.social {
+  padding:30px 0 0 0;
+}
+.navigation li.social a {
+  margin:0 10px 0 0;
+}
+li.social a.instagram,
+li.social a.instagram:hover {
+  background-image:url(/images/chrome/instagram.png);
+  background-repeat: no-repeat;
+}
+li.social .pinterest,
+li.social a.pinterest:hover{
+  background-image:url(/images/chrome/pinterest.png);
+  background-repeat: no-repeat;
+}
+li.social .twitter,
+li.social a.twitter:hover {
+  background-image:url(/images/chrome/twitter.png);
+  background-repeat: no-repeat;
+}
 /**
  * No JavaScript - there's always one.
  */

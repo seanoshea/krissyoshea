@@ -75,7 +75,9 @@ $(function() {
         },
         navigationClicked: function(evt) {
             var id = evt.target.id;
-            if (id !== 'photoSets') {
+            if (id === 'instagram_social' || id === 'pinterest_social' || id === 'twitter_social') {
+              return;
+            } else if (id !== 'photoSets') {
                 window.Router.navigate(id, true);
                 this.markActive(id);
                 this.togglePhotoSetMenu(true);
