@@ -21,8 +21,8 @@ $(function() {
     KT.userId = '91622522@N07';
 
     // navigational elements in the app.
-    // KT.panes = ['biography', 'news', 'contact'];
-    KT.panes = ['biography', 'contact'];
+    // KT.panes = ['about', 'news', 'contact'];
+    KT.panes = ['about', 'contact'];
 
     // attributions for different photos in the portfolios.
     KT.attributions = {
@@ -820,14 +820,14 @@ $(function() {
     window.ApplicationRouter = Backbone.Router.extend({
         routes: {
             'home': 'home',
-            'biography': 'biography',
+            'about': 'about',
             // 'news': 'news',
             'contact': 'contact'
         },
         home: function() {
 
         },
-        biography: function() {
+        about: function() {
 
         },
         // news: function() {

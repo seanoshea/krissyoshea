@@ -333,7 +333,7 @@ li.social a.twitter:hover {
 .no-js .main, .no-js .content, noscript {
     display: block !important;
 }
-.no-js #biographyContent p {
+.no-js #aboutContent p {
     margin: 10px 0 0 15px;
 }
 noscript {
