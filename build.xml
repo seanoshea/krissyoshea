@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="krissyoshea-Build" default="kt-build">
+<project name="krissyoshea-Build" default="kos-build">
 
     <!-- Bring in the boilerplate build file -->
     <import file="build/build.xml" />
