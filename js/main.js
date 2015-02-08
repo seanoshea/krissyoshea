@@ -1,31 +1,45 @@
 /*
-    Copyright 2012 - 2014 Sean O' Shea
+Copyright (c) 2014 - 2015 Upwards Northwards Software Limited
+All rights reserved.
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+3. All advertising materials mentioning features or use of this software
+   must display the following acknowledgement:
+   This product includes software developed by Upwards Northwards Software Limited.
+4. Neither the name of Upwards Northwards Software Limited nor the
+   names of its contributors may be used to endorse or promote products
+   derived from this software without specific prior written permission.
 
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+THIS SOFTWARE IS PROVIDED BY UPWARDS NORTHWARDS SOFTWARE LIMITED ''AS IS'' AND ANY
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL UPWARDS NORTHWARDS SOFTWARE LIMITED BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 $(function() {
 
-    KT = {};
+    KOS = {};
     // some API configuration
-    KT.apiKey = '3426649638b25fe317be122d3fbbc1b1';
-    KT.userId = '91622522@N07';
+    KOS.apiKey = '3426649638b25fe317be122d3fbbc1b1';
+    KOS.userId = '91622522@N07';
 
     // navigational elements in the app.
-    // KT.panes = ['about', 'news', 'contact'];
-    KT.panes = ['about', 'contact'];
+    // KOS.panes = ['about', 'news', 'contact'];
+    KOS.panes = ['about', 'contact'];
 
     // attributions for different photos in the portfolios.
-    KT.attributions = {
+    KOS.attributions = {
 
     };
 
@@ -33,14 +47,14 @@ $(function() {
     // attempted to load. Always try to load the largest image
     // possible, but offer at least something if the largest
     // image doesn't load within a specific period of time.
-    KT.attemptedImageSizes = ['url_o', 'url_m'];
-    KT.homePageLoadTimeout = 3000;
+    KOS.attemptedImageSizes = ['url_o', 'url_m'];
+    KOS.homePageLoadTimeout = 3000;
 
     // some custom events.
-    KT.PHOTO_PAGE_VIEW_CLICK = 'PHOTO_PAGE_VIEW_CLICK';
-    KT.PHOTO_CLICK = 'PHOTO_CLICK';
-    KT.PHOTO_PREVIOUS_NEXT_CLICK = 'PHOTO_PREVIOUS_NEXT_CLICK';
-    KT.FIRST_GALLERY_PHOTO_LOADED = 'FIRST_GALLERY_PHOTO_LOADED';
+    KOS.PHOTO_PAGE_VIEW_CLICK = 'PHOTO_PAGE_VIEW_CLICK';
+    KOS.PHOTO_CLICK = 'PHOTO_CLICK';
+    KOS.PHOTO_PREVIOUS_NEXT_CLICK = 'PHOTO_PREVIOUS_NEXT_CLICK';
+    KOS.FIRST_GALLERY_PHOTO_LOADED = 'FIRST_GALLERY_PHOTO_LOADED';
 
     // NAVIGATION
 
@@ -199,7 +213,7 @@ $(function() {
             $('#' + id + 'Container img').each(function(index, item) {
                 if (index === 0) {
                     item.onload = function() {
-                        that.trigger(KT.FIRST_GALLERY_PHOTO_LOADED, [id]);
+                        that.trigger(KOS.FIRST_GALLERY_PHOTO_LOADED, [id]);
                     };
                 }
             });
@@ -263,7 +277,7 @@ $(function() {
             }
         },
         attributionForPhotoAtIndex: function(index) {
-            return KT.attributions[this.name] && KT.attributions[this.name][index];
+            return KOS.attributions[this.name] && KOS.attributions[this.name][index];
         },
         checkForSwipeablePhotos: function(id) {
             var that = this, paneWidth = 100;
@@ -384,7 +398,7 @@ $(function() {
                     item.setActive(false);
                 }
             });
-            this.trigger(KT.PHOTO_PAGE_VIEW_CLICK, [indexClicked]);
+            this.trigger(KOS.PHOTO_PAGE_VIEW_CLICK, [indexClicked]);
         },
         setVisible: function() {
             window.Application.toggleShow($('#' + this.id + 'Controls'), true);
@@ -474,9 +488,9 @@ $(function() {
             };
         },
         initialize: function() {
-            this.get('pageList').bind(KT.PHOTO_PAGE_VIEW_CLICK, this.onPageListChange, this);
-            this.get('photoList').bind(KT.PHOTO_CLICK, this.onPhotoListChange, this);
-            this.get('photoList').bind(KT.FIRST_GALLERY_PHOTO_LOADED, this.onFirstGalleryPhotoLoaded, this);
+            this.get('pageList').bind(KOS.PHOTO_PAGE_VIEW_CLICK, this.onPageListChange, this);
+            this.get('photoList').bind(KOS.PHOTO_CLICK, this.onPhotoListChange, this);
+            this.get('photoList').bind(KOS.FIRST_GALLERY_PHOTO_LOADED, this.onFirstGalleryPhotoLoaded, this);
         },
         onPageListChange: function(indexClicked) {
             this.set('currentIndex', indexClicked[0]);
@@ -563,9 +577,9 @@ $(function() {
                 img.src = src;
                 homePageImage.attr('src', src);
                 homePageImage.css('display', 'none');
-                KT.homePageImageLoadTimeout = setTimeout(function() {
+                KOS.homePageImageLoadTimeout = setTimeout(function() {
                     window.Application.checkForAlternativeImageSizesAndTryToLoadHomePageImageAgain();
-                }, KT.homePageLoadTimeout);
+                }, KOS.homePageLoadTimeout);
                 $(img).load(function() {
                     window.Application.clearHomePageImageLoadTimeout();
                     setTimeout(function() {
@@ -579,17 +593,17 @@ $(function() {
             }
         },
         clearHomePageImageLoadTimeout: function() {
-            if (KT.homePageImageLoadTimeout) {
-                clearTimeout(KT.homePageImageLoadTimeout);
+            if (KOS.homePageImageLoadTimeout) {
+                clearTimeout(KOS.homePageImageLoadTimeout);
             }
         },
         checkForAlternativeImageSizesAndTryToLoadHomePageImageAgain: function() {
-            if (KT.attemptedImageSizes.length > 1) {
+            if (KOS.attemptedImageSizes.length > 1) {
                 // remove the size from the global array and try again.
-                KT.attemptedImageSizes.splice(0, 1);
+                KOS.attemptedImageSizes.splice(0, 1);
             } else {
                 // try again
-                KT.attemptedImageSizes = [];
+                KOS.attemptedImageSizes = [];
             }
             window.Application.loadHomePageImage();
         },
@@ -633,7 +647,7 @@ $(function() {
             return this.galleries[id];
         },
         createGallery: function(id) {
-            var photoList = new window.PhotoList(this.generateImageSourcesForPhotoList(id)), gm, name = KT.photoSets[id].title._content,
+            var photoList = new window.PhotoList(this.generateImageSourcesForPhotoList(id)), gm, name = KOS.photoSets[id].title._content,
             photoPageList = new window.PhotoPageList(this.generateImageControlsForPhotoPageList(id)),
             galleryModel = new window.GalleryModel({photoList: photoList, pageList: photoPageList, id: id, name: name, visible: true});
             this.galleries[id] = new window.GalleryView({model: galleryModel});
@@ -643,19 +657,19 @@ $(function() {
         },
         randomizeStartImage: function() {
             var index = Math.floor(Math.random() * 3), url, count = 0, that = this;
-            _.each(KT.photoSets, function(model, key, list) {
+            _.each(KOS.photoSets, function(model, key, list) {
                 var photoSetIdentifier;
                 if (count === index) {
                     // check to see which one is the primary photo
                     photoSetIdentifier = key;
-                    _.each(KT.photoSets[key].photoUrls, function(model, key, list) {
+                    _.each(KOS.photoSets[key].photoUrls, function(model, key, list) {
                         if (parseInt(model.isprimary, 10) === 1) {
                             url = model[that.determineImageSize()];
                         }
                     });
                     // just be sure
                     if (!url && key) {
-                        url = KT.photoSets[key].photoUrls[0][that.determineImageSize()];
+                        url = KOS.photoSets[key].photoUrls[0][that.determineImageSize()];
                     }
                     that.randomizedPhotoSet = key;
                 }
@@ -665,14 +679,14 @@ $(function() {
             return url;
         },
         generateImageSourcesForPhotoList: function(id) {
-            var arr = KT.photoSets[id].photoUrls, determineImageSize = this.determineImageSize, res = [];
+            var arr = KOS.photoSets[id].photoUrls, determineImageSize = this.determineImageSize, res = [];
             _.each(arr, function(item, index, array) {
                 res[index] = {src: arr[index][determineImageSize()], position: index};
             });
             return res;
         },
         generateImageControlsForPhotoPageList: function(id) {
-            var arr = KT.photoSets[id].photoUrls, res = [];
+            var arr = KOS.photoSets[id].photoUrls, res = [];
             res.push({index: 0, innerHTML: '&larr; Previous'});
             _.each(arr, function(item, index, array) {
                 res.push({index: index + 1, innerHTML: index + 1, active: index === 0});
@@ -696,19 +710,19 @@ $(function() {
             var imageSize;
             if (window.Application.isMobile()) {
                 imageSize = 'url_m';
-            } else if (KT.attemptedImageSizes.length) {
-                imageSize = KT.attemptedImageSizes[0];
+            } else if (KOS.attemptedImageSizes.length) {
+                imageSize = KOS.attemptedImageSizes[0];
             }
             return imageSize;
         },
         checkAreAllPhotoSetUrlsLoaded: function() {
-            var numberOfPhotoSets = _.size(KT.photoSets), count = 0, models = [], model,
+            var numberOfPhotoSets = _.size(KOS.photoSets), count = 0, models = [], model,
             hash, isViableHash, isPhotoSetHash = false, isMainPaneHash = false;
             hash = window.location.hash;
             isViableHash = hash !== '';
-            for (var photoset_id in KT.photoSets) {
-                if (KT.photoSets.hasOwnProperty(photoset_id)) {
-                    model = KT.photoSets[photoset_id];
+            for (var photoset_id in KOS.photoSets) {
+                if (KOS.photoSets.hasOwnProperty(photoset_id)) {
+                    model = KOS.photoSets[photoset_id];
                     if (model.photoUrls) {
                         count++;
                         models.push({id: model.id, name: model.title._content, last: count === numberOfPhotoSets});
@@ -723,8 +737,8 @@ $(function() {
                     // get rid of the initial pound symbol
                     hash = hash.substring(1);
                     // first check to see if the user is trying to initially navigate to a photo set page
-                    for (var j = 0, k = KT.photoSets.length; j < k; j++) {
-                        photoSetName = KT.photoSets[j].toLowerCase();
+                    for (var j = 0, k = KOS.photoSets.length; j < k; j++) {
+                        photoSetName = KOS.photoSets[j].toLowerCase();
                         if (photoSetName === hash) {
                            isPhotoSetHash = true;
                            break;
@@ -735,8 +749,8 @@ $(function() {
                         this.navigateToGallery(hash);
                     } else {
                         // perhaps the user is trying to navigate directly to one of the main panes?
-                        for (var m = 0, n = KT.panes.length; m < n; m++) {
-                            if (KT.panes[m] === hash) {
+                        for (var m = 0, n = KOS.panes.length; m < n; m++) {
+                            if (KOS.panes[m] === hash) {
                                 isMainPaneHash = true;
                                 break;
                             }
@@ -751,12 +765,12 @@ $(function() {
         },
         loadPhotoSetPhotos: function() {
             var that = this, executeFunction = function(data) {
-                KT.photoSets[data.photoset.id].photoUrls = data.photoset.photo;
+                KOS.photoSets[data.photoset.id].photoUrls = data.photoset.photo;
                 that.checkAreAllPhotoSetUrlsLoaded();
             };
-            for (var photoset_id in KT.photoSets) {
-                if (KT.photoSets.hasOwnProperty(photoset_id)) {
-                    $.getJSON('https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=' + photoset_id + '&api_key=' + KT.apiKey + '&jsoncallback=?',
+            for (var photoset_id in KOS.photoSets) {
+                if (KOS.photoSets.hasOwnProperty(photoset_id)) {
+                    $.getJSON('https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=' + photoset_id + '&api_key=' + KOS.apiKey + '&jsoncallback=?',
                         { format: 'json' }, executeFunction
                     );
                 }
@@ -765,17 +779,17 @@ $(function() {
         start: function() {
             var that = this, photoSetName;
             // make the API call to retrieve the photo sets before proceeding.
-            $.getJSON('https://api.flickr.com/services/rest/?method=flickr.photosets.getList&user_id=' + KT.userId + '&api_key=' + KT.apiKey + '&jsoncallback=?',
+            $.getJSON('https://api.flickr.com/services/rest/?method=flickr.photosets.getList&user_id=' + KOS.userId + '&api_key=' + KOS.apiKey + '&jsoncallback=?',
                 { format: 'json' },
                 function(data) {
                     var photoSet;
                     if (data.photosets && data.photosets.photoset) {
-                        KT.photoSets = {};
+                        KOS.photoSets = {};
                         data = data.photosets.photoset;
                         for (var index in data) {
                             if (data.hasOwnProperty(index)) {
                                 photoSet = data[index];
-                                KT.photoSets[photoSet.id] = photoSet;
+                                KOS.photoSets[photoSet.id] = photoSet;
                             }
                         }
                         that.loadPhotoSetPhotos();
