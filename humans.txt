@@ -3,7 +3,7 @@
 
 
 /* TEAM */
-  Code Slinger: Sean O Shea
+  Code Slinger: Sean O'Shea
   Site: http://www.github.com/seanoshea
   Twitter: http://www.twitter.com/seanoshea
   Location: London
