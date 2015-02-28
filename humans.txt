@@ -4,8 +4,9 @@
 
 /* TEAM */
   Code Slinger: Sean O'Shea
-  Site: http://www.github.com/seanoshea
+  Site: http://www.upwardsnorthwards.com
   Twitter: http://www.twitter.com/seanoshea
+  Github: http://www.github.com/seanoshea
   Location: London
 
 /* THANKS */
