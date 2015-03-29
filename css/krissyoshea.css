@@ -33,7 +33,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 html, button, input, select, textarea {
     color: #333;
-    font-family: "acta-display", Lucida Grande, Arial, Helvetica, sans-serif;
+	font-family: "Italiana", serif;
     font-size: 0.875em;
 }
 ::-moz-selection {
@@ -84,10 +84,17 @@ a:focus {
  * #999 selected text
  */
 header {
+ 	font-family: 'Cinzel', serif;
+	letter-spacing: 5px;
     padding: 5px 0 65px 0;
 }
+header h1 {
+	font-size: 2.4em;
+}
+header h3 {
+	font-family: 'Italiana', serif;
+}
 img {
-    border: 1px solid #eee;
     display: block;
     margin: 15px 0 0 0;
     padding: 4px;
@@ -111,17 +118,13 @@ h3 {
 }
 .navigation li a {
     color: #333;
+	font-size: 0.9em;
     padding: 10px;
     text-decoration: none;
 }
 .navigation li .active, .navigation li a:hover {
     background-color: #999;
     background-repeat: repeat-x;
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#AAA), to(#999));
-    background: -webkit-linear-gradient(top, #999, #AAA);
-    background: -moz-linear-gradient(top, #999, #AAA);
-    background: -ms-linear-gradient(top, #999, #AAA);
-    background: -o-linear-gradient(top, #999, #AAA);
     color: #fff;
     text-shadow: 1px 1px 0 #666;
 }
@@ -141,6 +144,7 @@ h3 {
 .controlSummary {
     color: #333;
     font-size: 0.75em;
+	letter-spacing: 1px;
     padding: 4px;
 }
 .photoContainer {
