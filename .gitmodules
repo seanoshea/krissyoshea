@@ -7,9 +7,3 @@
 [submodule "js/libs/underscore"]
 	path = js/libs/underscore
 	url = git://github.com/documentcloud/underscore.git
-[submodule "js/libs/viewporter"]
-	path = js/libs/viewporter
-	url = https://github.com/zynga/viewporter.git
-[submodule "js/libs/hammer"]
-	path = js/libs/hammer
-	url = git://github.com/EightMedia/hammer.js.git

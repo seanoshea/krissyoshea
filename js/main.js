@@ -217,7 +217,6 @@ $(function() {
                     };
                 }
             });
-            this.checkForSwipeablePhotos(id);
             this.alterMetadataForPhoto(0);
         },
         setActive: function(model) {
@@ -278,48 +277,6 @@ $(function() {
         },
         attributionForPhotoAtIndex: function(index) {
             return KOS.attributions[this.name] && KOS.attributions[this.name][index];
-        },
-        checkForSwipeablePhotos: function(id) {
-            var that = this, paneWidth = 100;
-            if (window.Application.shouldDetectTouches()) {
-                $('#' + id + 'Content').hammer({ drag_lock_to_axis: true })
-                    .on('release dragleft dragright swipeleft swiperight', function(ev) {
-                        // quite a lot of this code is lifted from https://github.com/EightMedia/hammer.js
-                        ev.gesture.preventDefault();
-                        switch (ev.type) {
-                            case 'dragright':
-                            case 'dragleft':
-                                var paneCount = that.models.count, currentPane = that.currentPane, paneOffset, dragOffset;
-                                paneOffset = - (100 / paneCount) * currentPane;
-                                dragOffset = ((100 / paneWidth) * ev.gesture.deltaX) / paneCount;
-                                if ((currentPane === 0 && ev.gesture.direction === 'right') ||
-                                    (currentPane === paneCount - 1 && ev.gesture.direction === 'left')) {
-                                    dragOffset *= 0.4;
-                                }
-                                that.setContainerOffset(dragOffset + paneOffset);
-                                break;
-                            case 'swipeleft':
-                                that.next();
-                                ev.gesture.stopDetect();
-                                break;
-                            case 'swiperight':
-                                that.previous();
-                                ev.gesture.stopDetect();
-                                break;
-                            case 'release':
-                                if (Math.abs(ev.gesture.deltaX) > paneWidth / 2) {
-                                    if (ev.gesture.direction == 'right') {
-                                        that.prev();
-                                    } else {
-                                        that.next();
-                                    }
-                                } else {
-                                    that.showPane(that.currentPane, true);
-                                }
-                                break;
-                        }
-                });
-            }
         }
     });
 
@@ -547,7 +504,7 @@ $(function() {
     // MAIN APPLICATION
 
     window.ApplicationView = Backbone.View.extend({
-        el: $('#viewporter'),
+        el: $('#mainapp'),
         events: {
             'click #banner': 'homeClicked',
             'click #homePageImage': 'homePageImageClicked'

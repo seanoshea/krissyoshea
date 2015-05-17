@@ -15,7 +15,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link href='http://fonts.googleapis.com/css?family=Cinzel|Italiana' rel='stylesheet' type='text/css'>
         <meta http-equiv="cleartype" content="on">
         <script type="text/javascript">
@@ -49,14 +49,13 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" type="text/css" href="css/krissyoshea.css" />
-        <script src="js/libs/viewporter/src/viewporter.js"></script>
 		<script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div id="viewporter" class="container_12">
+        <div id="mainapp" class="container_12">
             <header class="grid_3 header">
                 <h1 id="banner" role="banner" aria-live="polite">Krissy O'Shea</h1>
                 <h3 role="banner" aria-live="polite">Styling &amp; Photography</h3>
@@ -75,11 +74,6 @@
                         <li role="menu-item">
                             <a id="about" href="javascript:void(0);" tabindex="5">about</a>
                         </li>
-                        <!--
-                        <li role="menu-item">
-                            <a id="news" href="javascript:void(0);" tabindex="6">news</a>
-                        </li>
-                        -->
                         <li role="menu-item">
                             <a id="contact" href="javascript:void(0);" tabindex="6">information</a>
                         </li>
@@ -119,33 +113,6 @@
                     <div id="homeContent" class="content photoContent grid_9" itemscope itemtype="http://schema.org/Photograph">
                         <img id="homePageImage" alt="View this portfolio" aria-hidden="true" style="display:none;"/>
                     </div>
-                    <!--
-                    <div id="newsContent" class="content" aria-hidden="true" style="display:none;">
-                        <ol role="list" aria-active-descendent="hcalendar-VernissageLink">
-                            <li id="hcalendar-Vernissage" class="vevent" role="listitem">
-                                <a id="hcalendar-VernissageLink" href="http://www.sfai.edu/facilities/" tabindex="0">Vernissage</a>
-                                <aside>
-                                    <span>San Francisco, CA; </span>
-                                    <abbr class="dtstart" title="2010-05"> May </abbr>, <abbr class="dtend" title="2010-05"> 2010 </abbr>
-                                </aside>
-                            </li>
-                            <li id="hcalendar-CamfedFundraiser" class="vevent" role="listitem">
-                                <a id="hcalendar-CamfedFundraiserLink" href="https://camfed.org/" tabindex="-1">Camfed Fundraiser</a>
-                                <aside>
-                                    <span>San Francisco, CA; </span>
-                                    <abbr class="dtstart" title="2010-02"> February </abbr>, <abbr class="dtend" title="2010-02"> 2010 </abbr>
-                                </aside>
-                            </li>
-                            <li id="hcalendar-LandscapeInterrupted" class="vevent" role="listitem">
-                                <a id="hcalendar-LandscapeInterruptedLink" href="http://www.culturalpartners.org/landscape.htm" tabindex="-1">Landscape Interrupted</a>
-                                <aside>
-                                    <span class="location">Flagstaff, AZ; </span>
-                                    <abbr class="dtstart" title="2010-01"> January </abbr>, <abbr class="dtend" title="2010-01"> 2010 </abbr>
-                                </aside>
-                            </li>
-                        </ol>
-                    </div>
-                    -->
                     <div id="aboutContent" class="content" aria-hidden="true" style="display:none;">
                         <p>
                             Krissy O'Shea is a freelance prop and floral stylist & event designer. She has a background in photography and holds an MFA from the San Francisco Arts Institute. She specializes in tabletop and life-style styling as well as event design.
@@ -210,7 +177,6 @@
         <!-- scripts concatenated and minified via build script -->
         <script src="js/libs/underscore/underscore.js"></script>
         <script src="js/libs/backbone/backbone.js"></script>
-        <!-- <script src="js/libs/hammer/dist/jquery.hammer.min.js"></script> -->
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
         <!-- end scripts -->

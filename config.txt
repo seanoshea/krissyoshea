@@ -1,10 +1,4 @@
 # some reminders
-sudo /usr/sbin/apachectl restart
-/private/etc/apache2/other/kt.conf
-https://developers.google.com/appengine/docs/python/tools/uploadinganapp
-
 gjslint ~/dev/github/krissyoshea/js/main.js
 gjslint --nojsdoc ~/dev/github/krissyoshea/js/main.js
 fixjsstyle ~/dev/github/krissyoshea/js/main.js
-
-ant -Ddir.images=images -Dfile.root.stylesheet=krissyoshea.css
