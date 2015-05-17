@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name krissyosheaApp
- * @description
- * # krissyosheaApp
- *
- * Main module of the application.
- */
 angular
   .module('krissyosheaApp', [
     'ngAnimate',
@@ -28,6 +20,14 @@ angular
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
+      })
+      .when('/portfolio', {
+        templateUrl: 'views/portfolio.html',
+        controller: 'PortfolioCtrl'
+      })
+      .when('/information', {
+        templateUrl: 'views/information.html',
+        controller: 'InformationCtrl'
       })
       .otherwise({
         redirectTo: '/'
