@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - "0.10"
 before_script:
+  - git rm --cached js/libs/hammer
   - git submodule foreach git pull origin master
 install: "npm -g install jshint"
 script: "jshint js/main.js"
