@@ -25,8 +25,8 @@ angular
         templateUrl: 'views/portfolio.html',
         controller: 'PortfolioCtrl'
       })
-      .when('/information', {
-        templateUrl: 'views/information.html',
+      .when('/contact', {
+        templateUrl: 'views/contact.html',
         controller: 'InformationCtrl'
       })
       .otherwise({

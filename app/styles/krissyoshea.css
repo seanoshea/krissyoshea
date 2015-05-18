@@ -1,0 +1,361 @@
+/*
+Copyright (c) 2014 - 2015 Upwards Northwards Software Limited
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+3. All advertising materials mentioning features or use of this software
+   must display the following acknowledgement:
+   This product includes software developed by Upwards Northwards Software Limited.
+4. Neither the name of Upwards Northwards Software Limited nor the
+   names of its contributors may be used to endorse or promote products
+   derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY UPWARDS NORTHWARDS SOFTWARE LIMITED ''AS IS'' AND ANY
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL UPWARDS NORTHWARDS SOFTWARE LIMITED BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+/*
+ * Customization for HTML5 Boilerplate
+ */
+html, button, input, select, textarea {
+    color: #333;
+	font-family: "Italiana", serif;
+    font-size: 0.875em;
+}
+::-moz-selection {
+    background: #999;
+    color: #fff;
+    text-shadow: none;
+}
+::selection {
+    background: #999;
+    color: #fff;
+    text-shadow: none;
+}
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+input:invalid, textarea:invalid {
+    background-color: #fff;
+}
+/*
+ * Would prefer not to do this ...
+ */
+a:focus {
+    outline: none;
+}
+/*
+ * Typekit colours
+ */
+.wf-loading h1,
+.wf-loading h3 {
+    color: #fff;
+}
+.wf-active h1,
+.wf-active h3 {
+    color: #333;
+}
+.wf-inactive h1,
+.wf-inactive h3 {
+    color: #333;
+}
+/*
+ * Colors
+ *
+ * #fff background
+ * #eee image border
+ * #333 main text
+ * #999 selected text
+ */
+header {
+ 	font-family: 'Cinzel', serif;
+	letter-spacing: 5px;
+    padding: 5px 0 65px 0;
+}
+header h1 {
+	font-size: 2.4em;
+}
+header h3 {
+	font-family: 'Italiana', serif;
+}
+img {
+    display: block;
+    margin: 15px 0 0 0;
+    padding: 4px;
+}
+h1 {
+    cursor: pointer;
+    font-size: 2.5em;
+    margin: 0;
+}
+h3 {
+    display: inline;
+}
+#photoSetMenu {
+    margin: 10px 0 20px 0;
+}
+.navigation {
+    margin-top: 10px;
+}
+.navigation li {
+    padding:20px 0 0 0;
+}
+.navigation li a {
+    color: #333;
+	font-size: 0.9em;
+    padding: 10px;
+    text-decoration: none;
+}
+.navigation li .active, .navigation li a:hover {
+    background-color: #999;
+    background-repeat: repeat-x;
+    color: #fff;
+    text-shadow: 1px 1px 0 #666;
+}
+.controlSummary,
+.separator {
+    float:left;
+    margin:9px 0 0 0;
+}
+.separator {
+    margin:12px 0 0 0;
+}
+.attribution {
+    float:left;
+    margin:13px 0 0 10px;
+}
+.subNavigation li a,
+.controlSummary {
+    color: #333;
+    font-size: 0.75em;
+	letter-spacing: 1px;
+    padding: 4px;
+}
+.photoContainer {
+    clear:both;
+    float:left;
+    margin:-10px 0 0 0;
+}
+#homePageImage {
+    cursor: pointer;
+}
+input, textarea {
+    margin-bottom: 16px;
+    margin-top: 4px;
+    padding: 4px;
+    width: 250px;
+}
+.header {
+    margin: 15px 0 0 0;
+}
+.content {
+    margin: 110px 0 0 0;
+}
+.content.photoContent {
+    margin: 20px 0 0 0;
+}
+.controls {
+    bottom: 10px;
+    display: table;
+    float: left;
+}
+.controls .navigation.subNavigation li {
+    margin:10px 0 0 0;
+    display:inline;
+}
+/*
+ * Splash
+ */
+#cssSplash {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    -o-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -o-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-animation-name: rotateThis;
+    -moz-animation-name: rotateThis;
+    -webkit-animation-name: rotateThis;
+    -ms-animation-name: rotateThis;
+    -o-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -webkit-animation-duration: 2s;
+    -ms-animation-duration: 2s;
+    -o-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: infinite;
+    -o-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    -ms-animation-timing-function: linear;
+    border-radius: 100px;
+    transform: scale(0.5);
+    animation-name: rotateThis;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+}
+#cssSplash div {
+    width: 10px;
+    height: 30px;
+    background: #333;
+    position: absolute;
+    top: 35px;
+    left: 45px;
+    -o-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+}
+#body {
+    display: table;
+    overflow: hidden;
+    margin: 0 auto;
+}
+#loading {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+}
+.bar {
+    color:#FFF;
+}
+.bar1 {
+    -o-transform: rotate(0deg) translate(0, -40px);
+    -moz-transform: rotate(0deg) translate(0, -40px);
+    -webkit-transform: rotate(0deg) translate(0, -40px);
+    -ms-transform: rotate(0deg) translate(0, -40px);
+    transform: rotate(0deg) translate(0, -40px);
+    opacity: 0.12;
+}
+.bar2 {
+    -o-transform: rotate(45deg) translate(0, -40px);
+    -moz-transform: rotate(45deg) translate(0, -40px);
+    -webkit-transform: rotate(45deg) translate(0, -40px);
+    -ms-transform: rotate(45deg) translate(0, -40px);
+    transform: rotate(45deg) translate(0, -40px);
+    opacity: 0.25;
+}
+.bar3 {
+    -o-transform: rotate(90deg) translate(0, -40px);
+    -moz-transform: rotate(90deg) translate(0, -40px);
+    -webkit-transform: rotate(90deg) translate(0, -40px);
+    -ms-transform: rotate(90deg) translate(0, -40px);
+    transform: rotate(90deg) translate(0, -40px);
+    opacity: 0.37;
+}
+.bar4 {
+    -o-transform: rotate(135deg) translate(0, -40px);
+    -moz-transform: rotate(135deg) translate(0, -40px);
+    -webkit-transform: rotate(135deg) translate(0, -40px);
+    -ms-transform: rotate(135deg) translate(0, -40px);
+    transform: rotate(135deg) translate(0, -40px);
+    opacity: 0.50;
+}
+.bar5 {
+    -o-transform: rotate(180deg) translate(0, -40px);
+    -moz-transform: rotate(180deg) translate(0, -40px);
+    -webkit-transform: rotate(180deg) translate(0, -40px);
+    -ms-transform: rotate(180deg) translate(0, -40px);
+    transform: rotate(180deg) translate(0, -40px);
+    opacity: 0.62;
+}
+.bar6 {
+    -o-transform: rotate(225deg) translate(0, -40px);
+    -moz-transform: rotate(225deg) translate(0, -40px);
+    -webkit-transform: rotate(225deg) translate(0, -40px);
+    -ms-transform: rotate(225deg) translate(0, -40px);
+    transform: rotate(225deg) translate(0, -40px);
+    opacity: 0.75;
+}
+.bar7 {
+    -o-transform: rotate(270deg) translate(0, -40px);
+    -moz-transform: rotate(270deg) translate(0, -40px);
+    -webkit-transform: rotate(270deg) translate(0, -40px);
+    -ms-transform: rotate(270deg) translate(0, -40px);
+    transform: rotate(270deg) translate(0, -40px);
+    opacity: 0.87;
+}
+.bar8 {
+    -o-transform: rotate(315deg) translate(0, -40px);
+    -moz-transform: rotate(315deg) translate(0, -40px);
+    -webkit-transform: rotate(315deg) translate(0, -40px);
+    -ms-transform: rotate(315deg) translate(0, -40px);
+    transform: rotate(315deg) translate(0, -40px);
+    opacity: 1;
+}
+@-webkit-keyframes rotateThis {
+from {
+    -webkit-transform: scale(0.5) rotate(0deg);
+    transform: scale(0.5) rotate(0deg);
+}
+to {
+    -webkit-transform: scale(0.5) rotate(360deg);
+    transform: scale(0.5) rotate(360deg);
+}
+}
+@keyframes rotateThis {
+from {
+    -webkit-transform: scale(0.5) rotate(0deg);
+    transform: scale(0.5) rotate(0deg);
+}
+to {
+    -webkit-transform: scale(0.5) rotate(360deg);
+    transform: scale(0.5) rotate(360deg);
+}
+}
+.navigation li.social {
+  padding:30px 0 0 0;
+}
+.navigation li.social a {
+  margin:0 10px 0 0;
+}
+li.social a.instagram,
+li.social a.instagram:hover {
+  background-image:url(/images/chrome/instagram.png);
+  background-repeat: no-repeat;
+}
+li.social .pinterest,
+li.social a.pinterest:hover{
+  background-image:url(/images/chrome/pinterest.png);
+  background-repeat: no-repeat;
+}
+li.social .twitter,
+li.social a.twitter:hover {
+  background-image:url(/images/chrome/twitter.png);
+  background-repeat: no-repeat;
+}
+/**
+ * No JavaScript - there's always one.
+ */
+.no-js .main, .no-js .content, noscript {
+    display: block !important;
+}
+.no-js #aboutContent p {
+    margin: 10px 0 0 15px;
+}
+noscript {
+    background: #FFFFCC;
+    border: 1px solid #eee;
+    color: #333;
+    padding: 20px;
+}

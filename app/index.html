@@ -2,9 +2,41 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <title>Krissy O'Shea</title>
+    <meta name="description" content="Krissy O'Shea">
+    <meta name="keywords" content="Krissy O'Shea">
+    <meta name="author" content="Krissy O'Shea">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href='http://fonts.googleapis.com/css?family=Cinzel|Italiana' rel='stylesheet' type='text/css'>
+    <meta http-equiv="cleartype" content="on">
+    <script type="text/javascript">
+      (function() {
+        var config = {
+          kitId: 'ptm1gxm',
+          scriptTimeout: 3000
+        };
+        var h = document.getElementsByTagName('html')[0];
+        h.className += ' wf-loading';
+        var t = setTimeout(function() {
+          h.className = h.className.replace(/(\s|^)wf-loading(\s|$)/g, ' ');
+          h.className += ' wf-inactive';
+        }, config.scriptTimeout);
+        var d = false;
+        var tk = document.createElement('script');
+        tk.src = '//use.typekit.net/' + config.kitId + '.js';
+        tk.type = 'text/javascript';
+        tk.async = 'true';
+        tk.onload = tk.onreadystatechange = function() {
+          var rs = this.readyState;
+          if (d || rs && rs != 'complete' && rs != 'loaded') return;
+          d = true;
+          clearTimeout(t);
+          try { Typekit.load(config); } catch (e) {}
+        };
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(tk, s);
+      })();
+    </script>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -13,6 +45,7 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/krissyoshea.css">
     <!-- endbuild -->
   </head>
   <body ng-app="krissyosheaApp">
@@ -42,7 +75,7 @@
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/portfolio">Portfolio</a></li>
               <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/information">Information</a></li>
+              <li><a ng-href="#/contact">Contact</a></li>
             </ul>
           </div>
         </div>
