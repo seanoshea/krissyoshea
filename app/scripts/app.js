@@ -19,7 +19,6 @@ angular
       })
       .when('/about', {
         templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
       })
       .when('/portfolio', {
         templateUrl: 'views/portfolio.html',
@@ -27,7 +26,6 @@ angular
       })
       .when('/contact', {
         templateUrl: 'views/contact.html',
-        controller: 'InformationCtrl'
       })
       .otherwise({
         redirectTo: '/'

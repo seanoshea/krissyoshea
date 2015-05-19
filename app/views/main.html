@@ -1,6 +1,25 @@
 <div class="container-fluid">
-  <h2>My todos</h2>
-  <p class="form-group" ng-repeat="todo in todos">
-    <input type="text" ng-model="todo" class="form-control">
-  </p>
+    <div id="loading">
+        <div id="cssSplash">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <div class="bar4"></div>
+            <div class="bar5"></div>
+            <div class="bar6"></div>
+            <div class="bar7"></div>
+            <div class="bar8"></div>
+        </div>
+    </div>
+    <div id="error" style="display:none;">
+        <h2>There was an error :(</h2>
+        <p>Please try again later</p>
+    </div>
+    <noscript>
+        <h1>Welcome, noble navigator of the JavaScript-less interwebs</h1>
+        <p>
+            If you enable JavaScript, this site will look a little better.
+        </p>
+    </noscript>
+    <img id="homePageImage" alt="View this portfolio" aria-hidden="true" style="display:none;"/>
 </div>
