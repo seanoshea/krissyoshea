@@ -2,22 +2,32 @@
 
 describe('Controller: MainCtrl', function () {
 
-  // load the controller's module
+  var $httpBackend, $rootScope, createController, flickrRequestHandler;
+
   beforeEach(module('krissyosheaApp'));
 
-  var MainCtrl,
-    scope;
+  beforeEach(inject(function($injector) {
+     $httpBackend = $injector.get('$httpBackend');
+     flickrRequestHandler = $httpBackend.when('JSONP', 'https://api.flickr.com/services/rest/?method=flickr.photosets.getList&user_id=91622522@N07&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK').respond({
+        data: {'photosets': {'photoset': []}}
+     });
+     $rootScope = $injector.get('$rootScope');
+     var $controller = $injector.get('$controller');
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
-      $scope: scope
-    });
-  }));
+     createController = function() {
+       return $controller('MainCtrl', {'$scope' : $rootScope });
+     };
+   }));
 
-  it('should have access to the loading view', function () {
+  afterEach(function() {
+     $httpBackend.verifyNoOutstandingExpectation();
+     $httpBackend.verifyNoOutstandingRequest();
+   });
 
+  it('should make a request to Flickr to retrieve the portfolios', function () {
+    $httpBackend.expectJSONP('https://api.flickr.com/services/rest/?method=flickr.photosets.getList&user_id=91622522@N07&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK');
+     var controller = createController();
+     $httpBackend.flush();
   });
 
 });
