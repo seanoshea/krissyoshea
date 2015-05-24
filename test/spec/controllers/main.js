@@ -37,11 +37,5 @@ describe('Controller: MainCtrl', function () {
     $httpBackend.flush();
      expect($rootScope.loading).toBe(0);
   });
-
-  it('should set the portfolios property on the controller once the API call to Flickr to retrieve the portfolios has succeeded', function () {
-    $httpBackend.expectJSONP(expectedUrl);
-    var controller = createController();
-    $httpBackend.flush();
-     expect($rootScope.portfolios.length).toBe(4);
-  });
+  
 });
