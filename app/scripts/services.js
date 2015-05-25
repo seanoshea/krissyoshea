@@ -8,7 +8,7 @@ angular.module('krissyosheaApp.services', []).factory('portfolioService', functi
         portfolioDetailsLoadedMessage: 'portfolioDetailsLoadedMessage',
         portfolios: {},
         portfolioDetails: [],
-        get: function() {
+        getPortfolios: function() {
             var self = this;
 			$http.jsonp('https://api.flickr.com/services/rest/?method=flickr.photosets.getList&user_id=91622522@N07&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK').success(function(data) {
 				self.portfolios = data.photosets.photoset;
@@ -31,11 +31,20 @@ angular.module('krissyosheaApp.services', []).factory('portfolioService', functi
 
             });
         },
-        addPortfolioDetails: (function(data) {
+        addPortfolioDetails: function(data) {
             this.portfolioDetails.push(data);
             if (this.portfolioDetails.length == this.portfolios.length) {
-                $rootScope.$broadcast(self.portfolioDetailsLoadedMessage);
+                $rootScope.$broadcast(this.portfolioDetailsLoadedMessage);
             }
-        })
+        },
+        portfolioDetailsWithPortfolioId: function(id) {
+            var portfolioDetails;
+            angular.forEach(this.portfolioDetails, function(value, key) {
+                if (value.photoset.id === id) {
+                    portfolioDetails = value;
+                }
+            }, this);
+            return portfolioDetails;
+        }
     };
 });
