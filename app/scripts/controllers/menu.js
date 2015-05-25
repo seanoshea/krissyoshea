@@ -1,0 +1,17 @@
+'use strict';
+
+angular.module('krissyosheaApp')
+  .controller('MenuCtrl', function ($scope, $location, portfolioService) {
+  	$scope.portfolios = [];
+  	$scope.portfolioMenuVisible = false;
+	$scope.portfolioMenuPressed = function() {
+		$scope.portfolioMenuVisible = !$scope.portfolioMenuVisible;
+	};
+	$scope.portfolioMenuItemPressed = function(portfolio) {
+        $location.search({'portfolioId': portfolio.id});
+		$location.path('/portfolio');
+	};
+	$scope.$on(portfolioService.portfolioDetailsLoadedMessage,function() {
+		$scope.portfolios = portfolioService.portfolios;
+	});
+  });

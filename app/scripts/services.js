@@ -33,7 +33,7 @@ angular.module('krissyosheaApp.services', []).factory('portfolioService', functi
         },
         addPortfolioDetails: function(data) {
             this.portfolioDetails.push(data);
-            if (this.portfolioDetails.length == this.portfolios.length) {
+            if (this.portfolioDetails.length === this.portfolios.length) {
                 $rootScope.$broadcast(this.portfolioDetailsLoadedMessage);
             }
         },
