@@ -12,12 +12,14 @@ angular.module('krissyosheaApp')
 		angular.forEach(portfolioService.portfolios, function(value, key) {
 			if (key === index) {
 				var portfolioDetails = portfolioService.portfolioDetailsWithPortfolioId(value.id);
-				angular.forEach(portfolioDetails.photoset.photo, function(value, key) {
-					if (parseInt(value.isprimary, 10) === 1) {
-						url = value.url_o;
-					}
-				});
-				self.randomizedPortfolioKey = key;
+				if (portfolioDetails) {
+					angular.forEach(portfolioDetails.photoset.photo, function(value, key) {
+						if (parseInt(value.isprimary, 10) === 1) {
+							url = value.url_o;
+						}
+					});
+					self.randomizedPortfolioKey = key;
+				}
 			}
 		}, this);
 		return url;
