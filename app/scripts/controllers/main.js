@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('krissyosheaApp')
-  .controller('MainCtrl', function ($scope, portfolioService) {
+  .controller('MainCtrl', function ($scope, $location, portfolioService) {
 	$scope.loading = 0;
 	$scope.randomizedPortfolioKey = 0;
 	$scope.mainScreenImagePressed = function() {
-
+        $location.search({'portfolioId': $scope.randomizedPortfolioKey.id});
+		$location.path('/portfolio');
 	};
 	var randomiseMainScreenImage = function() {
 		var index = Math.floor(Math.random() * portfolioService.portfolios.length - 1), url;
@@ -18,7 +19,7 @@ angular.module('krissyosheaApp')
 							url = value.url_o;
 						}
 					});
-					self.randomizedPortfolioKey = key;
+					$scope.randomizedPortfolioKey = value;
 				}
 			}
 		}, this);
@@ -28,5 +29,4 @@ angular.module('krissyosheaApp')
 		$scope.loading = 0;
 		$scope.mainScreenImage = randomiseMainScreenImage();
 	});
-	portfolioService.getPortfolios();
   });
