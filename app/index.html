@@ -75,10 +75,10 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav" ng-controller="MenuCtrl">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-click="portfolioMenuPressed()">Portfolio</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/contact">Contact</a></li>
+              <li ng-class="{ active: isActive('/')}"><a href="#/">Home</a></li>
+              <li ng-class="{ active: isActive('/portfolio')}"><a ng-click="portfolioMenuPressed()">Portfolio</a></li>
+              <li ng-class="{ active: isActive('/about')}"><a ng-href="#/about">About</a></li>
+              <li ng-class="{ active: isActive('/contact')}"><a ng-href="#/contact">Contact</a></li>
               <li id="portfolioMenu" ng-if="portfolioMenuVisible">
                 <ul>
                   <li ng-repeat="portfolio in portfolios" ng-click="portfolioMenuItemPressed(portfolio)">{{portfolio.title._content}}</li>

@@ -33,5 +33,5 @@ angular
       });
   })
   .run(function(portfolioService) {
-      portfolioService.getPortfolios();
+    portfolioService.getPortfolios();
   });

@@ -8,6 +8,7 @@ angular.module('krissyosheaApp.services', []).factory('portfolioService', functi
         portfolioDetailsLoadedMessage: 'portfolioDetailsLoadedMessage',
         portfolios: {},
         portfolioDetails: [],
+        portfoliosLoaded: false,
         getPortfolios: function() {
             var self = this;
 			$http.jsonp('https://api.flickr.com/services/rest/?method=flickr.photosets.getList&user_id=91622522@N07&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK').success(function(data) {
@@ -34,6 +35,7 @@ angular.module('krissyosheaApp.services', []).factory('portfolioService', functi
         addPortfolioDetails: function(data) {
             this.portfolioDetails.push(data);
             if (this.portfolioDetails.length === this.portfolios.length) {
+                this.portfoliosLoaded = true;
                 $rootScope.$broadcast(this.portfolioDetailsLoadedMessage);
             }
         },

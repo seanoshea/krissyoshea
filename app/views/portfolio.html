@@ -1,4 +1,16 @@
-<h1>{Portfolio}</h1>
+<h1>{{ portfolio.photoset.title }}</h1>
+<div ng-if="isLoading">
+	<div id="cssSplash">
+		<div class="bar1"></div>
+		<div class="bar2"></div>
+		<div class="bar3"></div>
+		<div class="bar4"></div>
+		<div class="bar5"></div>
+		<div class="bar6"></div>
+		<div class="bar7"></div>
+		<div class="bar8"></div>
+	</div>
+</div>
 <ul>
 	<li ng-repeat="photo in portfolio.photoset.photo">
 		<img ng-src="{{ photo.url_o }}"  />

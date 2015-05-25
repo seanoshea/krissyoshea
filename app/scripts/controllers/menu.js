@@ -4,6 +4,9 @@ angular.module('krissyosheaApp')
   .controller('MenuCtrl', function ($scope, $location, portfolioService) {
   	$scope.portfolios = [];
   	$scope.portfolioMenuVisible = false;
+	$scope.isActive = function (viewLocation) { 
+        return viewLocation === $location.path();
+    };
 	$scope.portfolioMenuPressed = function() {
 		$scope.portfolioMenuVisible = !$scope.portfolioMenuVisible;
 	};

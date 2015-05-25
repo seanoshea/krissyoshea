@@ -25,7 +25,7 @@ angular.module('krissyosheaApp')
 		}, this);
 		return url;
 	};
-	$scope.$on(portfolioService.portfolioDetailsLoadedMessage,function() {
+	$scope.$on(portfolioService.portfolioDetailsLoadedMessage, function() {
 		$scope.loading = 0;
 		$scope.mainScreenImage = randomiseMainScreenImage();
 	});
