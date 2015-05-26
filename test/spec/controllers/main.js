@@ -52,7 +52,7 @@ describe('Controller: MainCtrl', function () {
     $httpBackend.expectJSONP(expectedUrl);
     var controller = createController();
     $httpBackend.flush();
-     expect($rootScope.loading).toBe(0);
+    expect($rootScope.loading).toBe(0);
   });
   
 });
