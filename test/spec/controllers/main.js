@@ -7,7 +7,8 @@ describe('Controller: MainCtrl', function () {
   expectedPortfolioDetailsUrlOne = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=72157632368742743&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK',
   expectedPortfolioDetailsUrlTwo = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=72157632372714598&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK',
   expectedPortfolioDetailsUrlThree = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=72157632372725922&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK',
-  expectedPortfolioDetailsUrlFour = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=72157647095408473&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK';
+  expectedPortfolioDetailsUrlFour = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=72157647095408473&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK',
+  location = {path: function() {}, search: function() {}};
 
   beforeEach(module('krissyosheaApp'));
 
@@ -33,7 +34,7 @@ describe('Controller: MainCtrl', function () {
      var $controller = $injector.get('$controller');
 
      createController = function() {
-       return $controller('MainCtrl', {'$scope' : $rootScope });
+       return $controller('MainCtrl', {'$scope' : $rootScope, '$location': location});
      };
    }));
 
@@ -53,6 +54,16 @@ describe('Controller: MainCtrl', function () {
     var controller = createController();
     $httpBackend.flush();
     expect($rootScope.loading).toBe(0);
+  });
+
+  it('should navigate to the appropriate portfolio when the user presses on the home screen image', function () {
+    $httpBackend.expectJSONP(expectedUrl);
+    spyOn(location, 'path');
+    var controller = createController();
+    $rootScope.randomizedPortfolioKey = {id: '123'};
+    $rootScope.mainScreenImagePressed();
+    expect(location.path).toHaveBeenCalledWith('/portfolio');
+    $httpBackend.flush();
   });
   
 });
