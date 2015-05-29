@@ -82,21 +82,16 @@ a:focus {
  * #333 main text
  * #999 selected text
  */
-header {
+.header {
  	font-family: 'Cinzel', serif;
 	letter-spacing: 5px;
     padding: 5px 0 65px 0;
 }
-header h1 {
+.header h1 {
 	font-size: 2.4em;
 }
-header h3 {
+.header h3 {
 	font-family: 'Italiana', serif;
-}
-img {
-    display: block;
-    margin: 15px 0 0 0;
-    padding: 4px;
 }
 h1 {
     cursor: pointer;
@@ -105,78 +100,6 @@ h1 {
 }
 h3 {
     display: inline;
-}
-#photoSetMenu {
-    margin: 10px 0 20px 0;
-}
-.navigation {
-    margin-top: 10px;
-}
-.navigation li {
-    padding:20px 0 0 0;
-}
-.navigation li a {
-    color: #333;
-	font-size: 0.9em;
-    padding: 10px;
-    text-decoration: none;
-}
-.navigation li .active, .navigation li a:hover {
-    background-color: #999;
-    background-repeat: repeat-x;
-    color: #fff;
-    text-shadow: 1px 1px 0 #666;
-}
-.controlSummary,
-.separator {
-    float:left;
-    margin:9px 0 0 0;
-}
-.separator {
-    margin:12px 0 0 0;
-}
-.attribution {
-    float:left;
-    margin:13px 0 0 10px;
-}
-.subNavigation li a,
-.controlSummary {
-    color: #333;
-    font-size: 0.75em;
-	letter-spacing: 1px;
-    padding: 4px;
-}
-.photoContainer {
-    clear:both;
-    float:left;
-    margin:-10px 0 0 0;
-}
-#mainScreenImage {
-    cursor: pointer;
-}
-input, textarea {
-    margin-bottom: 16px;
-    margin-top: 4px;
-    padding: 4px;
-    width: 250px;
-}
-.header {
-    margin: 15px 0 0 0;
-}
-.content {
-    margin: 110px 0 0 0;
-}
-.content.photoContent {
-    margin: 20px 0 0 0;
-}
-.controls {
-    bottom: 10px;
-    display: table;
-    float: left;
-}
-.controls .navigation.subNavigation li {
-    margin:10px 0 0 0;
-    display:inline;
 }
 /*
  * Splash
@@ -322,12 +245,6 @@ to {
     -webkit-transform: scale(0.5) rotate(360deg);
     transform: scale(0.5) rotate(360deg);
 }
-}
-.navigation li.social {
-  padding:30px 0 0 0;
-}
-.navigation li.social a {
-  margin:0 10px 0 0;
 }
 li.social a.instagram,
 li.social a.instagram:hover {

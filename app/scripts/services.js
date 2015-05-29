@@ -27,7 +27,7 @@ angular.module('krissyosheaApp.services', []).factory('portfolioService', functi
         getPortfolio: function(portfolioId) {
             var self = this;
             $http.jsonp('https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=' + portfolioId + '&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK').success(function(data) {
-                self.addPortfolioDetails(data)
+                self.addPortfolioDetails(data);
             }).error(function() {
 
             });
