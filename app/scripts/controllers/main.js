@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('krissyosheaApp')
-  .controller('MainCtrl', function ($scope, $location, portfolioService) {
+  .controller('MainCtrl', function ($scope, $location, portfolioService, $window) {
 	$scope.loading = 1;
 	$scope.randomizedPortfolioKey = 0;
 	$scope.mainScreenImagePressed = function() {
@@ -20,6 +20,9 @@ angular.module('krissyosheaApp')
 						}
 					});
 					$scope.randomizedPortfolioKey = value;
+					console.warn($window.localStorage);
+					$window.localStorage.setItem('randomizedPortfolioKey', value);
+					$window.localStorage.setItem('randomizedPortfolioUrl', url);
 				}
 			}
 		}, this);
@@ -32,6 +35,8 @@ angular.module('krissyosheaApp')
 			$scope.mainScreenImage = url;
 		});
 	} else {
-		// TODO: Need to load the randomized image from shared state.
+		$scope.loading = 0;
+		$scope.randomizedPortfolioKey = $window.localStorage.getItem('randomizedPortfolioKey');
+		$scope.mainScreenImage = $window.localStorage.getItem('randomizedPortfolioUrl');
 	}
   });
