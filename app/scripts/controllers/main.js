@@ -30,8 +30,7 @@ angular.module('krissyosheaApp')
 	if (!portfolioService.portfoliosLoaded) {
 		$scope.$on(portfolioService.portfolioDetailsLoadedMessage, function() {
 			$scope.loading = 0;
-			var url = $scope.randomiseMainScreenImage();
-			$scope.mainScreenImage = url;
+			$scope.mainScreenImage = $scope.randomiseMainScreenImage();
 		});
 	} else {
 		$scope.loading = 0;

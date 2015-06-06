@@ -47,6 +47,9 @@ angular.module('krissyosheaApp.services', []).factory('portfolioService', functi
                 }
             }, this);
             return portfolioDetails;
+        },
+        firstPortfolio: function() {
+            return this.portfolioDetails[0];
         }
     };
 });

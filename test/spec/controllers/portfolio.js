@@ -13,7 +13,7 @@ describe('Controller: PortfolioCtrl', function () {
      var $controller = $injector.get('$controller');
 
      createController = function() {
-       return $controller('PortfolioCtrl', {'$scope' : $rootScope, 'portfolioService': {'portfoliosLoaded': 1, portfolioDetailsWithPortfolioId: function() {return portfolio;}} });
+       return $controller('PortfolioCtrl', {'$scope' : $rootScope, 'portfolioService': {'portfoliosLoaded': 1, firstPortfolio: function() {return portfolio;}, portfolioDetailsWithPortfolioId: function() {return portfolio;}} });
      };
    }));
 
