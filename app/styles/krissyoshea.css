@@ -56,6 +56,9 @@ input:invalid, textarea:invalid {
 .header {
   border-bottom: none;
 }
+body {
+    font-family: "Italiana", serif;
+}
 /*
  * Typekit colours
  */
@@ -84,13 +87,16 @@ input:invalid, textarea:invalid {
 }
 .header h1 {
     margin: 0;
-	font-size: 1.4em;
+	font-size: 1.6em;
 }
 .header h3 {
 	font-family: 'Italiana', serif;
 }
 body {
     font-size: 1em;
+}
+.container h2 {
+    font-size: 1.3em;
 }
 /*
  * Splash
