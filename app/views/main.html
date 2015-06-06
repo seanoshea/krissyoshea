@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div id="loading" ng-if="isLoading">
+    <div id="loading" ng-if="loading">
         <div id="cssSplash">
             <div class="bar1"></div>
             <div class="bar2"></div>
@@ -21,5 +21,5 @@
             If you enable JavaScript, this site will look a little better.
         </p>
     </noscript>
-    <img id="mainScreenImage" alt="View this portfolio" ng-if="! isLoading" ng-src="{{ mainScreenImage }}" ng-click="mainScreenImagePressed()" />
+    <img id="mainScreenImage" alt="View this portfolio" ng-if="! loading" ng-src="{{ mainScreenImage }}" ng-click="mainScreenImagePressed()" />
 </div>
