@@ -28,7 +28,7 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 /*
- * Customization for HTML5 Boilerplate
+ * Customization for HTML5 Boilerplate/Yeoman/Bootstrap
  */
 html, button, input, select, textarea {
     color: #333;
@@ -53,11 +53,8 @@ ul, ol {
 input:invalid, textarea:invalid {
     background-color: #fff;
 }
-/*
- * Would prefer not to do this ...
- */
-a:focus {
-    outline: none;
+.header {
+  border-bottom: none;
 }
 /*
  * Typekit colours
@@ -86,14 +83,14 @@ a:focus {
  	font-family: 'Cinzel', serif;
 }
 .header h1 {
-	font-size: 2.4em;
+    margin: 0;
+	font-size: 1.4em;
 }
 .header h3 {
 	font-family: 'Italiana', serif;
 }
-h1 {
-    cursor: pointer;
-    font-size: 2.5em;
+body {
+    font-size: 1em;
 }
 /*
  * Splash
