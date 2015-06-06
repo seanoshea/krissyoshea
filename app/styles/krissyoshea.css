@@ -94,7 +94,6 @@ a:focus {
 h1 {
     cursor: pointer;
     font-size: 2.5em;
-    margin: 0;
 }
 /*
  * Splash
@@ -103,9 +102,6 @@ h1 {
     position: relative;
     width: 100px;
     height: 100px;
-    -o-border-radius: 100px;
-    -moz-border-radius: 100px;
-    -webkit-border-radius: 100px;
     -o-transform: scale(0.5);
     -moz-transform: scale(0.5);
     -webkit-transform: scale(0.5);
@@ -139,9 +135,6 @@ h1 {
     position: absolute;
     top: 35px;
     left: 45px;
-    -o-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
     border-radius: 20px;
 }
 #body {
@@ -159,86 +152,50 @@ h1 {
     color:#FFF;
 }
 .bar1 {
-    -o-transform: rotate(0deg) translate(0, -40px);
-    -moz-transform: rotate(0deg) translate(0, -40px);
-    -webkit-transform: rotate(0deg) translate(0, -40px);
-    -ms-transform: rotate(0deg) translate(0, -40px);
     transform: rotate(0deg) translate(0, -40px);
     opacity: 0.12;
 }
 .bar2 {
-    -o-transform: rotate(45deg) translate(0, -40px);
-    -moz-transform: rotate(45deg) translate(0, -40px);
-    -webkit-transform: rotate(45deg) translate(0, -40px);
-    -ms-transform: rotate(45deg) translate(0, -40px);
     transform: rotate(45deg) translate(0, -40px);
     opacity: 0.25;
 }
 .bar3 {
-    -o-transform: rotate(90deg) translate(0, -40px);
-    -moz-transform: rotate(90deg) translate(0, -40px);
-    -webkit-transform: rotate(90deg) translate(0, -40px);
-    -ms-transform: rotate(90deg) translate(0, -40px);
     transform: rotate(90deg) translate(0, -40px);
     opacity: 0.37;
 }
 .bar4 {
-    -o-transform: rotate(135deg) translate(0, -40px);
-    -moz-transform: rotate(135deg) translate(0, -40px);
-    -webkit-transform: rotate(135deg) translate(0, -40px);
-    -ms-transform: rotate(135deg) translate(0, -40px);
     transform: rotate(135deg) translate(0, -40px);
     opacity: 0.50;
 }
 .bar5 {
-    -o-transform: rotate(180deg) translate(0, -40px);
-    -moz-transform: rotate(180deg) translate(0, -40px);
-    -webkit-transform: rotate(180deg) translate(0, -40px);
-    -ms-transform: rotate(180deg) translate(0, -40px);
     transform: rotate(180deg) translate(0, -40px);
     opacity: 0.62;
 }
 .bar6 {
-    -o-transform: rotate(225deg) translate(0, -40px);
-    -moz-transform: rotate(225deg) translate(0, -40px);
-    -webkit-transform: rotate(225deg) translate(0, -40px);
-    -ms-transform: rotate(225deg) translate(0, -40px);
     transform: rotate(225deg) translate(0, -40px);
     opacity: 0.75;
 }
 .bar7 {
-    -o-transform: rotate(270deg) translate(0, -40px);
-    -moz-transform: rotate(270deg) translate(0, -40px);
-    -webkit-transform: rotate(270deg) translate(0, -40px);
-    -ms-transform: rotate(270deg) translate(0, -40px);
     transform: rotate(270deg) translate(0, -40px);
     opacity: 0.87;
 }
 .bar8 {
-    -o-transform: rotate(315deg) translate(0, -40px);
-    -moz-transform: rotate(315deg) translate(0, -40px);
-    -webkit-transform: rotate(315deg) translate(0, -40px);
-    -ms-transform: rotate(315deg) translate(0, -40px);
     transform: rotate(315deg) translate(0, -40px);
     opacity: 1;
 }
 @-webkit-keyframes rotateThis {
 from {
-    -webkit-transform: scale(0.5) rotate(0deg);
     transform: scale(0.5) rotate(0deg);
 }
 to {
-    -webkit-transform: scale(0.5) rotate(360deg);
     transform: scale(0.5) rotate(360deg);
 }
 }
 @keyframes rotateThis {
 from {
-    -webkit-transform: scale(0.5) rotate(0deg);
     transform: scale(0.5) rotate(0deg);
 }
 to {
-    -webkit-transform: scale(0.5) rotate(360deg);
     transform: scale(0.5) rotate(360deg);
 }
 }
@@ -262,9 +219,6 @@ li.social a.twitter:hover {
  */
 .no-js .main, .no-js .content, noscript {
     display: block !important;
-}
-.no-js #aboutContent p {
-    margin: 10px 0 0 15px;
 }
 noscript {
     background: #FFFFCC;
