@@ -20,7 +20,6 @@ angular.module('krissyosheaApp')
 						}
 					});
 					$scope.randomizedPortfolioKey = value;
-					console.warn($window.localStorage);
 					$window.localStorage.setItem('randomizedPortfolioKey', value);
 					$window.localStorage.setItem('randomizedPortfolioUrl', url);
 				}
