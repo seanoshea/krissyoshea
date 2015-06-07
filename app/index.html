@@ -78,11 +78,11 @@
               <li ng-class="{ active: isActive('/portfolio')}"><a ng-click="portfolioMenuPressed()">Portfolio</a></li>
               <li ng-class="{ active: isActive('/about')}"><a ng-href="#/about">About</a></li>
               <li ng-class="{ active: isActive('/contact')}"><a ng-href="#/contact">Contact</a></li>
-              <li id="portfolioMenu" ng-if="portfolioMenuVisible">
-                <ul>
+              <li class="portfolioMenu" ng-if="portfolioMenuVisible">
+                <ul class="container">
                   <li ng-repeat="portfolio in portfolios" ng-click="portfolioMenuItemPressed(portfolio)">{{portfolio.title._content}}</li>
                 <ul>
-              </li>  
+              </li>
             </ul>
           </div>
         </div>
