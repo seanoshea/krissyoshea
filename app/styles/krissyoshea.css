@@ -101,6 +101,9 @@ body {
 .container h3 {
     font-size: 1.1em;
 }
+.portfolioMenu .container li {
+    font-size: 0.75em;
+}
 /*
  * Splash
  */
