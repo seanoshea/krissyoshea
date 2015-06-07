@@ -53,11 +53,53 @@ ul, ol {
 input:invalid, textarea:invalid {
     background-color: #fff;
 }
-.header {
-  border-bottom: none;
-}
 body {
     font-family: "Italiana", serif;
+    font-size: 1em;
+}
+img {
+    margin-bottom: 1.5em;
+}
+.navbar {
+    margin-bottom: 0;
+}
+.header {
+    border-bottom: none;
+    font-family: 'Cinzel', serif;
+    margin-bottom:1.5em;
+}
+.header h1 {
+    margin: 0;
+    font-size: 1.6em;
+}
+.header h3 {
+    font-family: 'Italiana', serif;
+}
+.container h2 {
+    font-size: 1.3em;
+}
+.container h3 {
+    font-size: 1.1em;
+}
+.portfolioMenu .container li {
+    font-size: 0.75em;
+    margin: 0.75em 0;
+}
+/* Responsive: Portrait tablets and up */
+@media screen and (max-width: 768px) {
+  .portfolioMenu .container {
+    border-top:1px solid #e7e7e7;
+    padding-left:0;
+    padding-right:0;
+  }
+  .portfolioMenu .container li {
+    padding-left:0;
+    padding-right:0;
+    padding:5px 0;
+  }
+}
+.footer {
+    border:none;
 }
 /*
  * Typekit colours
@@ -73,36 +115,6 @@ body {
 .wf-inactive h1,
 .wf-inactive h3 {
     color: #333;
-}
-/*
- * Colors
- *
- * #fff background
- * #eee image border
- * #333 main text
- * #999 selected text
- */
-.header {
- 	font-family: 'Cinzel', serif;
-}
-.header h1 {
-    margin: 0;
-	font-size: 1.6em;
-}
-.header h3 {
-	font-family: 'Italiana', serif;
-}
-body {
-    font-size: 1em;
-}
-.container h2 {
-    font-size: 1.3em;
-}
-.container h3 {
-    font-size: 1.1em;
-}
-.portfolioMenu .container li {
-    font-size: 0.75em;
 }
 /*
  * Splash
