@@ -15,7 +15,7 @@ describe('Controller: MenuCtrl', function () {
      createController = function() {
        return $controller('MenuCtrl', {'$scope' : $rootScope,
         '$location': location,
-        'portfolioService': {'portfoliosLoaded': 1, portfolioDetailsWithPortfolioId: function() {return portfolio;}}});
+        'portfolioService': {'portfoliosLoaded': 1, portfolioDetailsWithPortfolioId: function() {return {};}}});
      };
    }));
 
