@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('krissyosheaApp')
-  .controller('MenuCtrl', function ($scope, $location, portfolioService) {
+  .controller('MenuCtrl', function($scope, $location, portfolioService) {
   	$scope.portfolios = [];
   	$scope.portfolioMenuVisible = false;
-	$scope.isActive = function (viewLocation) { 
+	$scope.isActive = function(viewLocation) {
         return viewLocation === $location.path();
     };
 	$scope.portfolioMenuPressed = function() {
@@ -15,7 +15,7 @@ angular.module('krissyosheaApp')
 		$location.path('/portfolio');
 		$scope.portfolioMenuPressed();
 	};
-	$scope.$on(portfolioService.portfolioDetailsLoadedMessage,function() {
+	$scope.$on(portfolioService.portfolioDetailsLoadedMessage, function() {
 		$scope.portfolios = portfolioService.portfolios;
 	});
 	$scope.$on('$locationChangeStart', function(event, next, current) {

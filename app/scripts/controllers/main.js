@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('krissyosheaApp')
-  .controller('MainCtrl', function ($scope, $location, portfolioService, $window) {
+  .controller('MainCtrl', function($scope, $location, portfolioService, $window) {
 	$scope.loading = 1;
 	$scope.randomizedPortfolioKey = 0;
 	$scope.mainScreenImagePressed = function() {

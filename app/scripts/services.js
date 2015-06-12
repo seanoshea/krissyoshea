@@ -2,7 +2,7 @@
 
 /* Services */
 
-angular.module('krissyosheaApp.services', []).factory('portfolioService', function ($rootScope, $http) {
+angular.module('krissyosheaApp.services', []).factory('portfolioService', function($rootScope, $http) {
     return {
     	portfolioListLoadedMessage: 'portfolioListLoadedMessage',
         portfolioDetailsLoadedMessage: 'portfolioDetailsLoadedMessage',
@@ -16,7 +16,7 @@ angular.module('krissyosheaApp.services', []).factory('portfolioService', functi
                 self.getPortfolioDetails(self.portfolios);
 				$rootScope.$broadcast(self.portfolioLoadedMessage);
 	    	}).error(function() {
-	    	  
+
     		});
         },
         getPortfolioDetails: function(portfolios) {

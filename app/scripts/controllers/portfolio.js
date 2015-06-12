@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('krissyosheaApp')
-  .controller('PortfolioCtrl', function ($scope, $location, portfolioService) {
+  .controller('PortfolioCtrl', function($scope, $location, portfolioService) {
     $scope.loading = !portfolioService.portfoliosLoaded;
     $scope.loadFirstPortfolio = function() {
       $scope.portfolio = portfolioService.firstPortfolio();
