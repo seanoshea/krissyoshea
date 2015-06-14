@@ -1,4 +1,4 @@
-<h2>{{ portfolio.photoset.title }}</h2>
+<h2 class="center">{{ portfolio.photoset.title }}</h2>
 <div class="loading" ng-if="loading">
 	<div class="cssSplash">
 		<div class="bar1"></div>
@@ -12,7 +12,7 @@
 	</div>
 </div>
 <ul>
-	<li ng-repeat="photo in portfolio.photoset.photo">
+	<li ng-repeat="photo in portfolio.photoset.photo" class="center">
 		<img ng-src="{{ photo.url_o }}"  />
 	</li>
 <ul>

@@ -85,6 +85,11 @@ img {
     font-size: 0.75em;
     margin: 0.75em 0;
 }
+.center {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (max-width: 768px) {
   .portfolioMenu .container {
