@@ -217,20 +217,10 @@ to {
     transform: scale(0.5) rotate(360deg);
 }
 }
-li.social a.instagram,
-li.social a.instagram:hover {
-  background-image:url(/images/chrome/instagram.png);
-  background-repeat: no-repeat;
-}
-li.social .pinterest,
-li.social a.pinterest:hover{
-  background-image:url(/images/chrome/pinterest.png);
-  background-repeat: no-repeat;
-}
-li.social .twitter,
-li.social a.twitter:hover {
-  background-image:url(/images/chrome/twitter.png);
-  background-repeat: no-repeat;
+.footer a {
+    height: 20px;
+    margin: 0 10px 0 0;
+    width: 20px;
 }
 /**
  * No JavaScript - there's always one.
