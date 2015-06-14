@@ -13,6 +13,11 @@
 </div>
 <ul>
 	<li ng-repeat="photo in portfolio.photoset.photo" class="center">
-		<img ng-src="{{ photo.url_o }}"  />
+		<div ng-switch-when="smallScreen">
+        	<img ng-src="{{ photo.url_m }}"  />
+    	</div>
+    	<div ng-switch-default>
+        	<img ng-src="{{ photo.url_o }}"  />
+    	</div>
 	</li>
 <ul>

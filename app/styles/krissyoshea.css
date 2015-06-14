@@ -90,7 +90,6 @@ img {
     justify-content:center;
     align-items:center;
 }
-/* Responsive: Portrait tablets and up */
 @media screen and (max-width: 768px) {
   .portfolioMenu .container {
     border-top:1px solid #e7e7e7;
@@ -101,6 +100,17 @@ img {
     padding-left:0;
     padding-right:0;
     padding:5px 0;
+  }
+}
+@media screen and (max-width: 320px) {
+  .header h1 {
+    font-size: 1em;
+  }
+  .container h2 {
+    font-size: 0.8em;
+  }
+  .container h3 {
+    font-size: 0.6em;
   }
 }
 .footer {
