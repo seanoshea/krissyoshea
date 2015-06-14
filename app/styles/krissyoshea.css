@@ -109,16 +109,13 @@ img {
 /*
  * Typekit colours
  */
-.wf-loading h1,
-.wf-loading h3 {
-    color: #fff;
+.wf-loading h1 {
+    color: #f8f8f8;
 }
-.wf-active h1,
-.wf-active h3 {
+.wf-active h1 {
     color: #333;
 }
-.wf-inactive h1,
-.wf-inactive h3 {
+.wf-inactive h1 {
     color: #333;
 }
 /*
