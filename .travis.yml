@@ -8,5 +8,5 @@ before_script:
   - 'npm install -g bower grunt-cli'
   - 'bower install'
 after_script: 
-  - cat ./coverage/lcov.info > lcov.info 
+  - cat ./coverage/*/lcov.info > lcov.info 
   - node node_modules/lcov-filter/index.js lcov.info config | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage

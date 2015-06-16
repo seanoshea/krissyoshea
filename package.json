@@ -27,6 +27,7 @@
     "grunt-usemin": "^3.0.0",
     "grunt-wiredep": "^2.0.0",
     "jshint-stylish": "^1.0.0",
+    "lcov-filter": "0.0.1",
     "karma-coverage": "^0.4.2",
     "karma-coveralls": "^0.1.4",
     "karma-jasmine": "*",
