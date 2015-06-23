@@ -1,0 +1,23 @@
+<h2 class="center">{{ portfolio.photoset.title }}</h2>
+<div class="loading" ng-if="loading">
+	<div class="cssSplash">
+		<div class="bar1"></div>
+		<div class="bar2"></div>
+		<div class="bar3"></div>
+		<div class="bar4"></div>
+		<div class="bar5"></div>
+		<div class="bar6"></div>
+		<div class="bar7"></div>
+		<div class="bar8"></div>
+	</div>
+</div>
+<ul>
+	<li ng-repeat="photo in portfolio.photoset.photo" class="center">
+		<div ng-if="smallScreen == 1">
+    		<img ng-src="{{ photo.url_m }}"  />
+		</div>
+		<div ng-if="smallScreen != 1">
+    		<img ng-src="{{ photo.url_o }}"  />
+		</div>
+	</li>
+<ul>
