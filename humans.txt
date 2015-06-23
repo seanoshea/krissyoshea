@@ -1,7 +1,6 @@
 /* the humans responsible & colophon */
 /* humanstxt.org */
 
-
 /* TEAM */
   Code Slinger: Sean O'Shea
   Site: http://www.upwardsnorthwards.com
@@ -10,13 +9,11 @@
   Location: London
 
 /* THANKS */
-  Names (& URL):    Paul Irish - http://www.twitter.com/paul_irish
-                    Divya Manian - http://nimbupani.com/
-                    Nathan Smith - http://960.gs/
-                    Shi Chuan - http://www.blog.highub.com/
-                    Mathias Bynens - http://mathiasbynens.be/
-                    Jeremy Ashkenas - https://github.com/jashkenas/
+  Names (& URL):    HTML 5 Boilerplate Crew (https://github.com/h5bp/html5-boilerplate)
+                    Yeoman Crew (http://yeoman.io/)
+                    Angular JS Crew (http://angularjs.org)
+
 /* SITE */
   Standards: HTML5, CSS3
-  Components: Modernizr, jQuery, Backbone.js, 960 grid
-  Software: TextMate, Google AppEngine
+  Components: HTML5 Boilerplate, Modernizr, AngularJS, Yeoman
+  Software: TextMate
