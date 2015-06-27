@@ -10,7 +10,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'krissyosheaApp.services'
+    'krissyosheaApp.services',
+    'krissyosheaApp.directives'
   ])
   .config(function($routeProvider) {
     $routeProvider
