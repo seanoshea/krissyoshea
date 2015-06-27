@@ -25,7 +25,7 @@ angular.module('krissyosheaApp')
 					}
 					$scope.randomizedPortfolioKey = portfolioValue;
 					$window.localStorage.setItem('randomizedPortfolioKey', portfolioValue);
-					$window.localStorage.setItem('randomizedPortfolioPhoto', photo);
+					$window.localStorage.setItem('photo', photo);
 				}
 			}
 		}, this);
@@ -34,11 +34,10 @@ angular.module('krissyosheaApp')
 	if (!portfolioService.portfoliosLoaded) {
 		$scope.$on(portfolioService.portfolioDetailsLoadedMessage, function() {
 			$scope.loading = 0;
-			$scope.responsivePhoto = $scope.getRandomizedPortfolioPhoto();
+			$scope.photo = $scope.getRandomizedPortfolioPhoto();
 		});
 	} else {
 		$scope.loading = 0;
-		$scope.randomizedPortfolioKey = $window.localStorage.getItem('randomizedPortfolioKey');
-		$scope.responsivePhoto = $window.localStorage.getItem('randomizedPortfolioPhoto');
+		$scope.photo = $scope.getRandomizedPortfolioPhoto();
 	}
   });

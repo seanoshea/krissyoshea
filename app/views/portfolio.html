@@ -13,11 +13,6 @@
 </div>
 <ul>
 	<li ng-repeat="photo in portfolio.photoset.photo" class="center">
-		<div ng-if="smallScreen == 1">
-    		<img ng-src="{{ photo.url_m }}" itemscope itemtype="http://schema.org/Photograph" />
-		</div>
-		<div ng-if="smallScreen != 1">
-    		<img ng-src="{{ photo.url_o }}" itemscope itemtype="http://schema.org/Photograph" />
-		</div>
+		<img responsive itemscope itemtype="http://schema.org/Photograph" />
 	</li>
 <ul>

@@ -3,7 +3,6 @@
 angular.module('krissyosheaApp')
   .controller('PortfolioCtrl', function($scope, $location, portfolioService) {
     $scope.loading = !portfolioService.portfoliosLoaded;
-    $scope.smallScreen = window.screen.width <= 320 ? 1 : 0;
     $scope.loadFirstPortfolio = function() {
       $scope.portfolio = portfolioService.firstPortfolio();
     };
