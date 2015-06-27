@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html lang="en" itemscope itemtype="http://schema.org/Person">
 <html class="no-js">
   <head>
     <meta charset="utf-8">
@@ -37,6 +37,16 @@
         s.parentNode.insertBefore(tk, s);
       })();
     </script>
+    <script type="application/ld+json">
+      { "@context" : "http://schema.org",
+        "@type" : "Person",
+        "name" : "Krissy O'Shea",
+        "url" : "http://krissyoshea.com",
+        "sameAs" : [ "http://instagram.com/cottagefarm",
+          "http://pinterest.com/cottagefarm",
+          "http://twitter.com/cottagefarm"] 
+      }
+</script>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -96,14 +106,15 @@
     </div>
 
     <div class="footer">
-      <ul class="center">
-        <a id="instagram_social" href="https://instagram.com/cottagefarm" target="new" title="Krissy O'Shea" class="instagram">
+      <ul class="center" itemscope itemtype="http://schema.org/Organization">
+        <link itemprop="url" href="http://krissyoshea.com">
+        <a itemprop="sameAs" id="instagram_social" href="https://instagram.com/cottagefarm" target="new" title="Krissy O'Shea" class="instagram">
           <img src="images/chrome/instagram.png" />
         </a>
-        <a id="pinterest_social" href="https://pinterest.com/cottagefarm" target="new" title="Krissy O'Shea" class="pinterest">
+        <a itemprop="sameAs" id="pinterest_social" href="https://pinterest.com/cottagefarm" target="new" title="Krissy O'Shea" class="pinterest">
           <img src="images/chrome/pinterest.png" />
         </a>
-        <a id="twitter_social" href="https://twitter.com/cottagefarm" target="new" title="Krissy O'Shea" class="twitter" >
+        <a itemprop="sameAs" id="twitter_social" href="https://twitter.com/cottagefarm" target="new" title="Krissy O'Shea" class="twitter" >
           <img src="images/chrome/twitter.png" />
         </a>
       </ul>
