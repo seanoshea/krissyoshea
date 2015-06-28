@@ -4,10 +4,10 @@ describe('Controller: MainCtrl', function () {
 
   var $httpBackend, $rootScope, createController, flickrPortfoliosRequestHandler, flickrDetailsRequestHandlerOne, flickrDetailsRequestHandlerTwo, flickrDetailsRequestHandlerThree, flickrDetailsRequestHandlerFour,
   expectedUrl = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getList&user_id=91622522@N07&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK',
-  expectedPortfolioDetailsUrlOne = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=72157632368742743&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK',
-  expectedPortfolioDetailsUrlTwo = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=72157632372714598&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK',
-  expectedPortfolioDetailsUrlThree = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=72157632372725922&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK',
-  expectedPortfolioDetailsUrlFour = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_sq,url_s,url_m,url_o&photoset_id=72157647095408473&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK',
+  expectedPortfolioDetailsUrlOne = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_m,url_o&photoset_id=72157632368742743&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK',
+  expectedPortfolioDetailsUrlTwo = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_m,url_o&photoset_id=72157632372714598&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK',
+  expectedPortfolioDetailsUrlThree = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_m,url_o&photoset_id=72157632372725922&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK',
+  expectedPortfolioDetailsUrlFour = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_m,url_o&photoset_id=72157647095408473&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSON_CALLBACK',
   location = {path: function() {}, search: function() {}};
 
   beforeEach(module('krissyosheaApp'));
