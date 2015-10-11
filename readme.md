@@ -4,3 +4,11 @@
 [![Coverage Status](https://coveralls.io/repos/seanoshea/krissyoshea/badge.png?branch=master)](https://coveralls.io/repos/seanoshea/krissyoshea)
 ### About
 Website for http://krissyoshea.com
+### Setup
+1. Get `npm` installed on your machine
+2. Install `yeoman`, `grunt` and `bower` with `sudo npm install -g yo grunt-cli bower`
+3. `cd` into the base directory and run `npm install` and `bower install`
+### Running the app locally
+1. `grunt serve` should be executed from the base of the project.
+### Running the tests
+1. `grunt test` should run the unit tests from the base of the project.
