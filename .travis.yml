@@ -1,12 +1,10 @@
 sudo: false
 language: node_js
 node_js:
-  - 'iojs'
-  - '0.12'
-  - '0.10'
+  - '4.1'
 before_script:
   - 'npm install -g bower grunt-cli'
   - 'bower install'
-after_script: 
-  - cat ./coverage/*/lcov.info > lcov.info 
+after_script:
+  - cat ./coverage/*/lcov.info > lcov.info
   - node node_modules/lcov-filter/index.js lcov.info config | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
