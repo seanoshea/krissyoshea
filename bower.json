@@ -17,5 +17,14 @@
     "angular-mocks": "^1.3.0"
   },
   "appPath": "app",
-  "moduleName": "krissyosheaApp"
+  "moduleName": "krissyosheaApp",
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  }
 }
