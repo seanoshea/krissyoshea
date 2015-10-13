@@ -10,6 +10,8 @@ Website for http://krissyoshea.com
 3. Install `yeoman`, `grunt` and `bower` with `sudo npm install -g yo grunt-cli bower`
 4. `cd` into the base directory and run `npm install` and `bower install`
 ### Running the app locally
-1. `grunt serve` should be executed from the base of the project.
+`grunt serve` should be executed from the base of the project.
 ### Running the tests
-1. `grunt test` should run the unit tests from the base of the project.
+`grunt test` should run the unit tests from the base of the project.
+### Building release versions
+`grunt build` will create a release version of the app.
