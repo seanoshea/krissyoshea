@@ -2,16 +2,17 @@
 [![License](http://img.shields.io/badge/license-BSD-green.svg?style=flat)](https://github.com/seanoshea/krissyoshea/blob/master/LICENSE)
 [![Build Status](https://img.shields.io/travis/seanoshea/krissyoshea/master.svg?style=flat)](https://travis-ci.org/seanoshea/krissyoshea)
 [![Coverage Status](https://coveralls.io/repos/seanoshea/krissyoshea/badge.png?branch=master)](https://coveralls.io/repos/seanoshea/krissyoshea)
-### About
+# About
 Website for http://krissyoshea.com
-### Setup
+# Setup
 1. Get `npm` installed on your machine.
 2. Alter `~/.npmrc` to point at `prefix = ~/.node`
 3. Install `yeoman`, `grunt` and `bower` with `sudo npm install -g yo grunt-cli bower`
 4. `cd` into the base directory and run `npm install` and `bower install`
-### Running the app locally
+
+## Running the app locally
 `grunt serve` should be executed from the base of the project.
-### Running the tests
+## Running the tests
 `grunt test` should run the unit tests from the base of the project.
-### Building release versions
+## Building release versions
 `grunt build` will create a release version of the app.
