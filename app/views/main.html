@@ -21,7 +21,9 @@
             If you enable JavaScript, this site will look a little better.
         </p>
     </noscript>
-    <div class="center">
-        <img id="mainScreenImage" alt="View this portfolio" ng-if="! loading" ng-click="mainScreenImagePressed()" itemscope itemtype="http://schema.org/Photograph" responsive />
-    </div>
+    <ul ng-if="! loading">
+        <li ng-repeat="photo in portfolio.photoset.photo" class="center">        
+            <img responsive itemscope itemtype="http://schema.org/Photograph" alt="View this portfolio" ng-click="mainScreenImagePressed(photo.portfolioId);" />
+        </li>
+    <ul>
 </div>
