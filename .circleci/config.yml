@@ -3,11 +3,12 @@ orbs:
   node: circleci/node@1.1.6
 jobs:
   build-and-test:
-    working_directory: ~/client
+    working_directory: ~/repo/client
     executor:
       name: node/default
     steps:
-      - checkout
+      - checkout:
+          path: ~/repo
       - node/with-cache:
           steps:
             - run: npm install
