@@ -23,6 +23,7 @@ jobs:
       - codecov/upload:
           conf: codecov.yml
           file: client/coverage/client/lcov.info
+      - run: bash <(curl -s https://codecov.io/bash)
 workflows:
     build-and-test:
       jobs:
