@@ -1,19 +1,23 @@
 version: 2.1
-orbs:
-  node: circleci/node@1.1.6
 jobs:
   build-and-test:
     working_directory: ~/repo/client
-    executor:
-      name: node/default
+    docker:
+      # specify the version you desire here
+      # see https://hub.docker.com/r/circleci/node/tags/
+      - image: circleci/node:12.0.0-browsers
     steps:
       - checkout:
           path: ~/repo
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm test
-            - run: bash <(curl -s https://codecov.io/bash)
+      - restore_cache:
+          key: krissyoshea-{{ .Branch }}-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - save_cache:
+          key: krissyoshea-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+             - "node_modules"
+      - run: npm run test -- --watch=false --progress=false --browsers=ChromeHeadlessCI
+      - run: npm run e2e -- --protractor-config=./e2e/protractor-ci.conf.js
 workflows:
     build-and-test:
       jobs:
