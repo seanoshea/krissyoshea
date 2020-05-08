@@ -67,3 +67,4 @@ describe('Controller: MainCtrl', function () {
   });
   
 });
+
