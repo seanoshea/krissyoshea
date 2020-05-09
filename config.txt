@@ -1,3 +1,0 @@
-# some reminders
-fixjsstyle ~/dev/github/krissyoshea/app/scripts/*.js
-fixjsstyle ~/dev/github/krissyoshea/app/scripts/controllers/*.js
