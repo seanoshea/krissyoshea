@@ -19,10 +19,6 @@ jobs:
           paths:
              - "node_modules"
       - run: npm run test -- --watch=false --progress=false --browsers=ChromeHeadlessCI --codeCoverage=true
-      # - run: npm run e2e -- --protractor-config=./e2e/protractor-ci.conf.js
-      # - codecov/upload:
-      #     conf: codecov.yml
-      #     file: client/coverage/client/lcov.info
       - run: bash <(curl -s https://codecov.io/bash)
 workflows:
     build-and-test:
