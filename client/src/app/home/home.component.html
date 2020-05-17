@@ -1,1 +1,4 @@
-<p>home works!</p>
+<img *ngIf="!loading" itemscope itemtype="http://schema.org/Photograph"
+        alt="View this portfolio"
+        ng-click="mainScreenImagePressed(randomizedPhoto.id);"
+        [src]="randomizedPhoto.url_o"/>

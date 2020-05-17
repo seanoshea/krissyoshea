@@ -1,6 +1,8 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { PortfoliosService } from './portfolios.service';
+import { TestPortfoliosService } from 'src/testing/test-portfolio-service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -11,6 +13,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [{
+        provide: PortfoliosService, useClass: TestPortfoliosService,
+      }],
     }).compileComponents();
   }));
 
