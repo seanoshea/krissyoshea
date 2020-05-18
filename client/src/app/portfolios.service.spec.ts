@@ -3,7 +3,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { PortfoliosService } from './portfolios.service';
 
 import { asyncData, asyncError } from '../testing/async-observable-helper';
-import { mockedPhoto } from '../testing/test-utils';
 const portfolioJSON: any = require('../testing/mocked_responses/portfolios.json');
 const photosJSON: any = require('../testing/mocked_responses/photos.json');
 

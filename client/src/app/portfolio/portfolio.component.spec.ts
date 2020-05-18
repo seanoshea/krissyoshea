@@ -42,7 +42,7 @@ describe('PortfolioComponent', () => {
     it('should send you back to the home page', () => {
       const navigateSpy = spyOn(router, 'navigate');
 
-      component.ngOnInit();
+      component.ngAfterContentChecked();
 
       expect(navigateSpy).toHaveBeenCalledWith(['/']);
     });
@@ -60,7 +60,7 @@ describe('PortfolioComponent', () => {
         const hasLoadedSpy = spyOn(service, 'hasLoadedPhotosForPortfolio').and.returnValue(true);
         const apiSpy = spyOn(service, 'fetchPhotos');
 
-        component.ngOnInit();
+        component.ngAfterContentChecked();
 
         expect(hasLoadedSpy).toHaveBeenCalledWith(service.selectedPortfolio);
         expect(apiSpy).not.toHaveBeenCalled();
@@ -71,7 +71,7 @@ describe('PortfolioComponent', () => {
         const hasLoadedSpy = spyOn(service, 'hasLoadedPhotosForPortfolio').and.returnValue(false);
         const apiSpy = spyOn(service, 'fetchPhotos').and.callThrough();
 
-        component.ngOnInit();
+        component.ngAfterContentChecked();
 
         expect(hasLoadedSpy).toHaveBeenCalledWith(service.selectedPortfolio);
         expect(apiSpy).toHaveBeenCalled();

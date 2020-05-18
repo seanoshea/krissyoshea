@@ -7,12 +7,12 @@ import { Router } from '@angular/router';
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.less']
 })
-export class PortfolioComponent implements OnInit {
+export class PortfolioComponent {
   photos: any;
 
   constructor(private router: Router, private service: PortfoliosService) { }
 
-  ngOnInit(): void {
+  ngAfterContentChecked(): void {
     // ensure that we have at least a portfolio
     if (!this.service.selectedPortfolio) {
       this.router.navigate(['/']);

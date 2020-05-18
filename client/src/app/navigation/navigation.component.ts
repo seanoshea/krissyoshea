@@ -26,6 +26,7 @@ export class NavigationComponent implements OnInit {
   }
 
   portfolioPressed(portfolio: Portfolio): void {
+    console.warn('portfolioPressed');
     this.service.selectedPortfolio = portfolio;
     this.router.navigate(['/portfolio']);
   }
