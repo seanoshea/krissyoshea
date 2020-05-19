@@ -79,14 +79,25 @@ describe('NavigationComponent', () => {
   });
 
   describe('Pressing on one of the secondary navigation items', () => {
+    let portfolio;
+    beforeAll(() => {
+      portfolio = service.parsePortfolios(portfolioJSON)[0];
+    });
     it('should send you over to the portfolio screen', () => {
-      const portfolios = service.parsePortfolios(portfolioJSON);
       const navigateSpy = spyOn(router, 'navigate');
 
-      component.portfolioPressed(portfolios[0]);
+      component.portfolioPressed(portfolio);
 
       expect(navigateSpy).toHaveBeenCalledWith(['/portfolio']);
       expect(service.selectedPortfolio).toBeDefined();
+    });
+    it('should close out on the sub navigation', () => {
+      const navigateSpy = spyOn(router, 'navigate');
+
+      component.portfolioPressed(portfolio);
+
+      expect(navigateSpy).toHaveBeenCalledWith(['/portfolio']);
+      expect(component.showSubnavigation).toBeFalse();
     });
   });
 });

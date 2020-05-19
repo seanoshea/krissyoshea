@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfoliosService } from '../portfolios.service';
 import { Portfolio } from '../portfolio.model';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { url } from 'inspector';
 
 @Component({
   selector: 'app-navigation',
@@ -11,7 +12,9 @@ import { Router } from '@angular/router';
 export class NavigationComponent implements OnInit {
   loading = true;
   showSubnavigation = false;
-  constructor(public service: PortfoliosService, private router: Router) { }
+  closeSubnavigationUrls = ['/', '/contact', '/about', '/home'];
+
+  constructor(public service: PortfoliosService, private router: Router) {}
 
   ngOnInit(): void {
     this.service.observablePortfolios.subscribe(() => {
@@ -26,8 +29,8 @@ export class NavigationComponent implements OnInit {
   }
 
   portfolioPressed(portfolio: Portfolio): void {
-    console.warn('portfolioPressed');
     this.service.selectedPortfolio = portfolio;
+    this.showSubnavigation = false;
     this.router.navigate(['/portfolio']);
   }
 }
