@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfoliosService } from '../portfolios.service';
 import { Portfolio } from '../portfolio.model';
-import { Router, NavigationEnd } from '@angular/router';
-import { url } from 'inspector';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
