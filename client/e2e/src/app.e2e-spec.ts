@@ -23,7 +23,7 @@ describe('Home Page', () => {
     expect(secondaryNavigationElements.count()).toBeGreaterThan(0);
   });
 
-  it('should display a home image', async () => {  
+  it('should display a home image', async () => {
     await element(by.css(selector));
   });
 
@@ -33,7 +33,7 @@ describe('Home Page', () => {
 
     await homePageImageElement.click();
 
-    expect(browser.getCurrentUrl()).toContain("/portfolio");
+    expect(browser.getCurrentUrl()).toContain('/portfolio');
   });
 
   afterEach(async () => {

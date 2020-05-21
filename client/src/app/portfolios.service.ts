@@ -10,6 +10,11 @@ import { Photo } from './photo.model';
   providedIn: 'root'
 })
 export class PortfoliosService {
+
+  constructor(private http: HttpClient) {
+    this.observablePortfolios = new BehaviorSubject<Portfolio[]>(this.portfolios);
+    this.observablePhotos = new BehaviorSubject<{}>(this.photos);
+  }
   portfoliosUrl = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getList&user_id=91622522@N07&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSONP_CALLBACK';
   portfolioPhotosUrl = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&extras=url_m,url_o&photoset_id=${0}&api_key=3426649638b25fe317be122d3fbbc1b1&format=json&jsoncallback=JSONP_CALLBACK';
   public portfolios: Portfolio[] = [];
@@ -18,9 +23,19 @@ export class PortfoliosService {
   observablePhotos: any;
   public selectedPortfolio: Portfolio;
 
-  constructor(private http: HttpClient) {
-    this.observablePortfolios = new BehaviorSubject<Portfolio[]>(this.portfolios);
-    this.observablePhotos = new BehaviorSubject<{}>(this.photos);
+  static parsePortfolios(json) {
+    return json.photosets.photoset.map(photoset => {
+      return new Portfolio(
+        photoset.id,
+        photoset.owner,
+        photoset.username,
+        photoset.primary,
+        photoset.count_photos,
+        photoset.count_videos,
+        photoset.title._content,
+        photoset.visibility_can_see_set
+      );
+    });
   }
 
   fetch() {
@@ -60,20 +75,5 @@ export class PortfoliosService {
 
   hasLoadedPhotosForPortfolio(portfolio) {
     return portfolio && this.photos[portfolio.id];
-  }
-
-  static parsePortfolios(json) {
-    return json.photosets.photoset.map(photoset => {
-      return new Portfolio(
-        photoset.id,
-        photoset.owner,
-        photoset.username,
-        photoset.primary,
-        photoset.count_photos,
-        photoset.count_videos,
-        photoset.title._content,
-        photoset.visibility_can_see_set
-      );
-    });
   }
 }

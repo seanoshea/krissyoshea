@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterContentChecked } from '@angular/core';
 import { PortfoliosService } from '../portfolios.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.less']
 })
-export class PortfolioComponent {
+export class PortfolioComponent implements AfterContentChecked {
   photos: any;
 
   constructor(private router: Router, private service: PortfoliosService) { }

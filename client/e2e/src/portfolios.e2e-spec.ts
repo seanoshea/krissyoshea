@@ -1,7 +1,7 @@
 import { browser, logging, element, by } from 'protractor';
 
 describe('Portfolios Page', () => {
-  let selector = 'img.homePageImage';
+  const selector = 'img.homePageImage';
 
   beforeEach(async () => {
     await browser.get(browser.baseUrl);
