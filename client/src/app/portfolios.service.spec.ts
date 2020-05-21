@@ -53,7 +53,7 @@ describe('PortfoliosService', () => {
       describe('defined portfolio', () => {
         let portfolio;
         beforeAll(() => {
-          const portfolios = service.parsePortfolios(portfolioJSON);
+          const portfolios = PortfoliosService.parsePortfolios(portfolioJSON);
           portfolio = portfolios[0];
         });
         describe('photos not loaded', () => {

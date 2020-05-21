@@ -81,7 +81,7 @@ describe('NavigationComponent', () => {
   describe('Pressing on one of the secondary navigation items', () => {
     let portfolio;
     beforeAll(() => {
-      portfolio = service.parsePortfolios(portfolioJSON)[0];
+      portfolio = PortfoliosService.parsePortfolios(portfolioJSON)[0];
     });
     it('should send you over to the portfolio screen', () => {
       const navigateSpy = spyOn(router, 'navigate');

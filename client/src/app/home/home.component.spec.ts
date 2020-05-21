@@ -40,7 +40,7 @@ describe('HomeComponent', () => {
 
   describe('Portfolios Loaded', () => {
     beforeEach(() => {
-      const portfolios = service.parsePortfolios(portfolioJSON);
+      const portfolios = PortfoliosService.parsePortfolios(portfolioJSON);
       service.selectedPortfolio = portfolios[0];
     });
     describe('Photos for this portfolio already loaded', () => {

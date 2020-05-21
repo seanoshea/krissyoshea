@@ -50,7 +50,7 @@ describe('PortfolioComponent', () => {
 
   describe('A portfolio is selected', () => {
     beforeEach(() => {
-      const portfolios = service.parsePortfolios(portfolioJSON);
+      const portfolios = PortfoliosService.parsePortfolios(portfolioJSON);
       service.selectedPortfolio = portfolios[0];
       service.photos = [];
       service.photos[service.selectedPortfolio] = [mockedPhoto(photosJSON)];

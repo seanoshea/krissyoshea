@@ -26,7 +26,7 @@ export class PortfoliosService {
   fetch() {
     return this.http.jsonp(this.portfoliosUrl, 'callback').pipe(
       map(res => {
-        this.portfolios = this.parsePortfolios(res);
+        this.portfolios = PortfoliosService.parsePortfolios(res);
         this.observablePortfolios.next(this.portfolios);
         return this.portfolios;
       })
@@ -62,7 +62,7 @@ export class PortfoliosService {
     return portfolio && this.photos[portfolio.id];
   }
 
-  parsePortfolios(json) {
+  static parsePortfolios(json) {
     return json.photosets.photoset.map(photoset => {
       return new Portfolio(
         photoset.id,

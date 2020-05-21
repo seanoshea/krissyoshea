@@ -44,7 +44,7 @@ export class MockedPortfoliosService extends PortfoliosService {
   }
 
   get portfolios() {
-    return this.parsePortfolios(portfolioJSON);
+    return PortfoliosService.parsePortfolios(portfolioJSON);
   }
 
   set portfolios(p) {
