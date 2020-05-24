@@ -22,15 +22,15 @@ workflows:
     build-and-test:
       jobs:
         - build-and-test
-      browser_tests:
-        jobs:
-          - saucelabs/with_proxy:
-              name: "Chrome Tests"
-              steps:
-                - run: mvn verify -B -Dsauce.browser=chrome  -Dsauce.tunnel="chrome"
-              tunnel_identifier: "chrome"
-          - saucelabs/with_proxy:
-              name: "Safari Tests"
-              steps:
-                - run: mvn verify -B -Dsauce.browser=safari  -Dsauce.tunnel="safari"
-              tunnel_identifier: "safari"
+    browser_tests:
+      jobs:
+        - saucelabs/with_proxy:
+            name: "Chrome Tests"
+            steps:
+              - run: mvn verify -B -Dsauce.browser=chrome  -Dsauce.tunnel="chrome"
+            tunnel_identifier: "chrome"
+        - saucelabs/with_proxy:
+            name: "Safari Tests"
+            steps:
+              - run: mvn verify -B -Dsauce.browser=safari  -Dsauce.tunnel="safari"
+            tunnel_identifier: "safari"
