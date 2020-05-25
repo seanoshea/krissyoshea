@@ -8,7 +8,6 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { PortfoliosService } from './portfolios.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -21,7 +20,6 @@ import { environment } from '../environments/environment';
     AboutComponent,
     ContactComponent,
     HomeComponent,
-    PageNotFoundComponent,
     NavigationComponent
   ],
   imports: [
