@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="767c08ddf7a652b9a48a746cae236caa9fb50ed5" datatype="html">
+        <source>
+    Krissy O&apos;Shea is a freelance prop and floral stylist &amp; event designer. She has a background in photography and holds an MFA from the San Francisco Arts Institute. She specializes in tabletop and life-style styling as well as event design.
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about/about.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a10c8f795a82410e1c7faec4629454314a5143a9" datatype="html">
+        <source>
+    You can email me at <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>krissyoshea at gmail.com<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contact/contact.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2499b8e9b6d2350e4e1b9267271183be26212be0" datatype="html">
+        <source>
+    Find me on <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>instagram<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contact/contact.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bb58b59ab6c3654e0872dd5c925b60dc795cd228" datatype="html">
+        <source>
+    I <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>tweet<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> from time to time
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contact/contact.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6d83208b646ea69b86486fae6ef6bbd4c6439aa2" datatype="html">
+        <source>
+    I <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>pin<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> from time to time
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contact/contact.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2ae6ca8cc6c36709058cde7fb85e417b0adbe071" datatype="html">
+        <source>
+    I am a sometimes blogger at <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Cottage Farm<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contact/contact.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="837276f1545a75e89f0dc56852a9650b3d45e2c6" datatype="html">
+        <source>Selected Clients</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contact/contact.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="92eee6be6de0b11c924e3ab27db30257159c0a7c" datatype="html">
+        <source>Home</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/navigation/navigation.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="323af13292ecc714ab3848b9dff48f923893be32" datatype="html">
+        <source>Portfolio</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/navigation/navigation.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="004b222ff9ef9dd4771b777950ca1d0e4cd4348a" datatype="html">
+        <source>About</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/navigation/navigation.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="34746fb1c7f3d2194d99652bdff89e6e14c9c4f4" datatype="html">
+        <source>Contact</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/navigation/navigation.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

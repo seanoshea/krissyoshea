@@ -1,9 +1,9 @@
 <nav>
     <ul class="primaryNavigation">
-        <li><a routerLink="/" routerLinkActive="active">Home</a></li>
-        <li><a routerLink="" id="portfolioLink" (click)="portfolioLinkPressed();">Portfolio</a></li>
-        <li><a routerLink="/about" routerLinkActive="active">About</a></li>
-        <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+        <li><a routerLink="/" routerLinkActive="active" i18n>Home</a></li>
+        <li><a routerLink="" id="portfolioLink" (click)="portfolioLinkPressed();" i18n>Portfolio</a></li>
+        <li><a routerLink="/about" routerLinkActive="active" i18n>About</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active" i18n>Contact</a></li>
     </ul>
     <ul *ngIf="showSubnavigation" class="secondaryNavigation">
         <li *ngFor="let portfolio of service.portfolios">
