@@ -4,11 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:fr": "ng serve --configuration=fr",
     "build": "ng build",
+    "build:fr": "ng build --configuration=production-fr",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "ci-e2e": "protractor e2e/protractor-ci.conf.js"
+    "ci-e2e": "protractor e2e/protractor-ci.conf.js",
+    "extract": "ng xi18n --output-path=locale"
   },
   "private": true,
   "dependencies": {
