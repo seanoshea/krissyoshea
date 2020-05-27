@@ -6,6 +6,7 @@ config.commonCapabilities = {
   'browserstack.key': 'd75JMR6aXSRUDXsEqWsX',
   'name': 'Bstack-[Protractor] Parallel Test'
 };
+config.directConnect = false;
 config.multiCapabilities = [{
   'browserName': 'Chrome'
 },{
