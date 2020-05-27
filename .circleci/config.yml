@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  sauce-connect: saucelabs/sauce-connect@1.0.1
 jobs:
   build-and-test:
     working_directory: ~/repo/client
@@ -17,20 +15,9 @@ jobs:
           paths:
              - "node_modules"
       - run: npm run test -- --watch=false --progress=false --browsers=ChromeHeadlessCI --codeCoverage=true
+      - run: npm run ci-e2e
       - run: bash <(curl -s https://codecov.io/bash)
 workflows:
     build-and-test:
       jobs:
         - build-and-test
-    browser_tests:
-      jobs:
-        - sauce-connect/with_proxy:
-            name: Chrome Tests
-            steps:
-              - run: mvn verify -B -Dsauce.browser=chrome  -Dsauce.tunnel="chrome"
-            tunnel_identifier: chrome
-        - sauce-connect/with_proxy:
-            name: Safari Tests
-            steps:
-              - run: mvn verify -B -Dsauce.browser=safari  -Dsauce.tunnel="safari"
-            tunnel_identifier: safari
