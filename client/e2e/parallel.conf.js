@@ -17,8 +17,8 @@ config.multiCapabilities = [{
 }];
 
 // Code to support common capabilities
-exports.config.multiCapabilities.forEach(function(caps){
-  for(var i in exports.config.commonCapabilities) caps[i] = caps[i] || exports.config.commonCapabilities[i];
+config.multiCapabilities.forEach(function(caps){
+  for(var i in config.commonCapabilities) caps[i] = caps[i] || config.commonCapabilities[i];
 });
 
 exports.config = config;
