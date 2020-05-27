@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "ci-e2e": "protractor e2e/parallel.conf.js"
+    "ci-e2e": "protractor e2e/parallel.conf.js",
+    "webdriver-update": "webdriver-manager update"
   },
   "private": true,
   "dependencies": {
