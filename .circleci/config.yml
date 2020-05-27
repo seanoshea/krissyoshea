@@ -15,7 +15,7 @@ jobs:
           paths:
              - "node_modules"
       - run: npm run test -- --watch=false --progress=false --browsers=ChromeHeadlessCI --codeCoverage=true
-      - run: npm run ci-e2e
+      - run: npm run webdriver-manager update && npm run ci-e2e
       - run: bash <(curl -s https://codecov.io/bash)
 workflows:
     build-and-test:
