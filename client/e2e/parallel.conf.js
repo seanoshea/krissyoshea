@@ -1,10 +1,12 @@
 const config = require('./protractor.conf').config;
 
-config.seleniumAddress = 'http://hub-cloud.browserstack.com/wd/hub';
 config.commonCapabilities = {
   'browserstack.user': 'seanoshea4',
   'browserstack.key': 'd75JMR6aXSRUDXsEqWsX',
-  'name': 'Bstack-[Protractor] Parallel Test'
+  'build': 'protractor-browserstack',
+  'name': 'parallel_test',
+  'browserstack.debug': 'true',
+  'browserName': 'Chrome'
 };
 config.directConnect = false;
 config.multiCapabilities = [{
